@@ -76,8 +76,6 @@ export default function MinimalLayout({ children }) {
         style={{
           position: "block",
           paddingTop: "100px",
-          // paddingLeft: "50px",
-          // paddingRight: "50px",
         }}
       >
         {children}
