@@ -59,13 +59,13 @@ const landingPageAnimation = () => {
     ".hero-title h1",
     0.3,
     {
-      x: -6,
+      x: 0,
       y: 2,
       opacity: 0,
     },
     {
       delay: 5,
-      x: 6,
+      x: 0,
       y: -2,
       opacity: 1,
 

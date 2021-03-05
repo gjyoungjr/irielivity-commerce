@@ -19,7 +19,7 @@ export default function LandingGif() {
       </div>
       <div className="watch">
         cart
-        <span className="cart-items-count">(30)</span>
+        <span className="cart-items-count">(0)</span>
       </div>
 
       <div className="navbar">
@@ -53,11 +53,21 @@ export default function LandingGif() {
         <div className="hero-gif"></div>
 
         <div className="hero-title">
-          <h1 className="glitch" data-text="Irielivity">
-            Irielivity
-          </h1>
-          <br></br>
-          <p>Live an Irie Life</p>
+          <h1 className="glitch1">IRIE LIFESTYLE</h1>
+
+       
+          {/* <Button
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              borderRadius: "25px",
+              width: "150px",
+              height: "50px",
+              textTransform: "none",
+            }}
+          >
+            Discover
+          </Button> */}
         </div>
 
         <div className="rotatethis">
@@ -66,8 +76,16 @@ export default function LandingGif() {
 
         <div className="social-media">
           <ul>
-            <li>facebook</li>
-            <li>instagram</li>
+            <li>
+              <a href="https://www.instagram.com/irielivity/" target="#">
+                facebook
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/irielivity/" target="#">
+                instagram
+              </a>
+            </li>
           </ul>
         </div>
 

@@ -38,8 +38,12 @@ export default function MinimalLayout({ children }) {
   }, []);
   return (
     <div className="wrapper">
-      <div className="artist" onClick={() => history.push("/")}>IRIELIVITY</div>
-      <div className="watch">cart</div>
+      <div className="artist" onClick={() => history.push("/")}>
+        IRIELIVITY
+      </div>
+      <div className="watch">
+        cart<span className="cart-items-count">(0)</span>
+      </div>
 
       <div className="navbar">
         <div className="nav-toggle" id="nav_toggle">
