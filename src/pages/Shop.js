@@ -54,12 +54,18 @@ const images = [
 export default function Shop() {
   return (
     <MinimalLayout>
-      <Grid container spacing={3}>
-        {images.map((img) => (
-          <Grid item xs={12} md={4} sm={6} lg={3}>
+      <Grid container spacing={4} style={{ padding: "100px" }}>
+        {/* {images.map((img, key) => (
+          <Grid key={key} item xs={12} md={3} sm={6} lg={3}>
             <img src={img.src} alt="" />
           </Grid>
-        ))}
+        ))} */}
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
       </Grid>
     </MinimalLayout>
   );

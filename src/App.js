@@ -9,7 +9,9 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 import NewPage from "./pages/Shop";
 /*** PAGES **/
-const HomeLandingPage = lazy(() => import("./pages/HomeLandingPage"));
+const Home = lazy(() => import("./pages/HomeLandingPage"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
 /*** END PAGES **/
 
 // home pages
@@ -145,18 +147,24 @@ const App = (props) => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeLandingPage}
+                  component={Home}
                 />
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/new"}
                   component={NewPage}
                 />
+                <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/login"}
+                  component={Login}
+                />
+                <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/register"}
+                  component={Register}
+                />
 
-                
-                
-                
-                
                 {/* Homepages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/home-fashion"}

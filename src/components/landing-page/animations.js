@@ -57,11 +57,12 @@ const landingPageAnimation = () => {
 
   TweenLite.fromTo(
     ".hero-title h1",
-    0.3,
+    0.5,
     {
       x: 0,
       y: 2,
       opacity: 0,
+      ease: Expo.easeInOut,
     },
     {
       delay: 5,
@@ -69,7 +70,7 @@ const landingPageAnimation = () => {
       y: -2,
       opacity: 1,
 
-      clearProps: "all",
+      // clearProps: "all",
     }
   );
 

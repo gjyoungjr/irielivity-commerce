@@ -22,7 +22,7 @@
   position: fixed;
   line-height: 80px;
   font-size: 20px;
-  margin: 0 40px;
+  margin: 0 20px;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -46,7 +46,16 @@
   font-weight: bold;
 
   @media #{$xs-layout} {
+    right: 90px;
+  }
+  @media #{$xxs-layout} {
     right: 50px;
+  }
+  @media #{$md-layout} {
+    right: 140px;
+  }
+  @media #{$sm-layout} {
+    right: 140px;
   }
 }
 
@@ -120,8 +129,8 @@
   }
 
   100% {
-    width: 48vw;
-    height: 46vh;
+    width: 58vw;
+    height: 66vh;
     @media #{$xs-layout} {
       width: 58vw;
       height: 56vh;
@@ -145,7 +154,7 @@
 .hero-title h1 {
   color: black;
   text-transform: uppercase;
-  font-size: 75px;
+  font-size: 85px;
   margin-bottom: 0%;
   font-family: "Monument Extended";
   font-weight: bolder;
@@ -330,12 +339,12 @@
 }
 
 .nav-items {
-  margin: 60px;
+  margin: 40px;
 }
 
 .nav-item {
   position: relative;
-  font-size: 120px;
+  font-size: 100px;
   padding: 60px;
   @media #{$xs-layout} {
     padding: 30px;

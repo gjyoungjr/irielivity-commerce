@@ -13,7 +13,7 @@ export default function LandingGif() {
   }, []);
 
   return (
-    <div className="wrapper noisy">
+    <div className="wrapper">
       <div className="artist" onClick={() => history.push("/")}>
         IRIELIVITY
       </div>
@@ -46,6 +46,10 @@ export default function LandingGif() {
             <Link to="#">Contact</Link>
             <div className="nav-item-wrapper"></div>
           </div>
+          <div className="nav-item">
+            <Link to="/login">Account</Link>
+            <div className="nav-item-wrapper"></div>
+          </div>
         </div>
       </div>
 
@@ -54,20 +58,6 @@ export default function LandingGif() {
 
         <div className="hero-title">
           <h1 className="glitch1">IRIE LIFESTYLE</h1>
-
-       
-          {/* <Button
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "25px",
-              width: "150px",
-              height: "50px",
-              textTransform: "none",
-            }}
-          >
-            Discover
-          </Button> */}
         </div>
 
         <div className="rotatethis">

@@ -1,0 +1,25 @@
+.auth-wrapper {
+  padding: 90px 150px;
+  @media #{$xs-layout} {
+    padding: 20px;
+  }
+
+  .auth-title {
+    font-size: 70px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 70px;
+    @media #{$xs-layout} {
+      font-size: 35px;
+      width: fit-content;
+      margin-bottom: 30px;
+    }
+  }
+
+  .auth-nav a {
+    &:hover {
+      color: grey;
+    }
+  }
+}

@@ -69,6 +69,10 @@ export default function MinimalLayout({ children }) {
             <Link to="#">Contact</Link>
             <div className="nav-item-wrapper"></div>
           </div>
+          <div className="nav-item">
+            <Link to="/login">Account</Link>
+            <div className="nav-item-wrapper"></div>
+          </div>
         </div>
       </div>
 
