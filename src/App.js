@@ -4,8 +4,12 @@ import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+
+// utils
+import { setCurrentUser } from "./redux/reducers/user/userActions";
+import { auth, handleUserProfile } from "./firebase/utils";
 
 import NewPage from "./pages/Shop";
 /*** PAGES **/
@@ -116,6 +120,7 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = (props) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     props.dispatch(
       loadLanguages({
@@ -127,6 +132,34 @@ const App = (props) => {
       })
     );
   });
+
+  // auth listener
+  useEffect(() => {
+    // tracks state of component mounted
+    let mounted = true;
+    console.log(".....");
+    // auth observer
+    auth.onAuthStateChanged(async (userAuth) => {
+      // if component is mounted
+      if (mounted) {
+        // if no auth user was found
+        // return & set state to null
+        if (!userAuth) {
+          setCurrentUser(null);
+          return;
+        }
+
+        // else set state to user auth
+        // and data returned from db
+        const userRef = await handleUserProfile(userAuth);
+        userRef.onSnapshot((snapshot) => {
+          dispatch(setCurrentUser({ userAuth, ...snapshot.data() }));
+        });
+      }
+    });
+    // clean up fxn
+    return () => (mounted = !mounted);
+  }, [dispatch]);
 
   return (
     <ToastProvider placement="bottom-left">

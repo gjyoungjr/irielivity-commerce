@@ -6,6 +6,8 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
+import logger from "redux-logger";
+
 import { fetchProducts } from "./redux/actions/productActions";
 import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
@@ -14,11 +16,12 @@ import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
+const middlewares = [logger];
 
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(thunk, save()))
+  composeWithDevTools(applyMiddleware(thunk, save(), ...middlewares))
 );
 
 // fetch products from json file

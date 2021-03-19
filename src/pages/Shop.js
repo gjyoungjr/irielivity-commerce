@@ -66,6 +66,42 @@ export default function Shop() {
         <Grid  item xs={12} md={3} sm={6} lg={3}>
           <img src={images[1].src} alt="" width="90%" />
         </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={4} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[0].src} alt="" width="90%" />
+        </Grid>
+        <Grid  item xs={12} md={3} sm={6} lg={3}>
+          <img src={images[1].src} alt="" width="90%" />
+        </Grid>
       </Grid>
     </MinimalLayout>
   );

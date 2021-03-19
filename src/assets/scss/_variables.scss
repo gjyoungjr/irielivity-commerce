@@ -1,10 +1,12 @@
 // Font Family
-$poppins: "Poppins", sans-serif;
-$abrilfatface: "Abril Fatface", cursive;
-$cormorantgaramond: "Cormorant Garamond";
-$greatvibes: "Great Vibes", cursive;
-$lobster: "Lobster", cursive;
-$josefin: "Josefin Sans", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;900&display=swap");
+
+$poppins: 'Manrope', sans-serif;
+$abrilfatface:  'Manrope', sans-serif;
+$cormorantgaramond:  'Manrope', sans-serif;
+$greatvibes: 'Manrope', sans-serif;
+$lobster:  'Manrope', sans-serif;
+$josefin:  'Manrope', sans-serif;
 
 // text Colors ---------------
 
@@ -25,7 +27,7 @@ $bg-purple: #f0e0ff;
 $heading-color: #000000;
 
 // Theme Color
-$theme-color: #a749ff;
+$theme-color: black;
 
 // Responsive Variables
 $xx-layout: "only screen and (min-width: 1366px) and (max-width: 1600px)";

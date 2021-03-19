@@ -1,92 +1,166 @@
-import React, { useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import React from "react";
+import Slider from "react-slick";
+import { useHistory } from "react-router-dom";
+// import { IconButton } from "@material-ui/core";
+// import { Howl } from "howler";
+import { Hidden } from "@material-ui/core";
 
-// utils
-import { landingPageAnimation } from "./animations";
+// audio
+// import introAudio from "../../assets/audio/intro.mp3";
+// icons
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+// import VolumeOffTwoToneIcon from "@material-ui/icons/VolumeOffTwoTone";
+// import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
-export default function LandingGif() {
+export default function LandingPage() {
   const history = useHistory();
+  // const [isPlaying, setIsPlaying] = useState(false);
 
-  // run GSAP animation on component first load
-  useEffect(() => {
-    landingPageAnimation();
-  }, []);
+  // var sound = new Howl({
+  //   src: [introAudio],
+  //   autoplay: true,
+  //   loop: true,
+  //   volume: 0.5,
+  //   onend: function () {
+  //     console.log("Finished!");
+  //   },
+  // });
 
+  // config/settings for slider
+  const imgConfigs = {
+    autoplay: true,
+    autoplaySpeed: 2400,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    speed: 2000,
+    cssEase: "cubic-bezier(.84, 0, .08, .99)",
+    // asNavFor: ".text-slider",
+    centerMode: true,
+    // prevArrow: $(".prev"),
+    // nextArrow: $(".next"),
+  };
+  const mobileImgConfigs = {
+    autoplay: true,
+    autoplaySpeed: 2400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 2000,
+    cssEase: "cubic-bezier(.84, 0, .08, .99)",
+    // asNavFor: ".text-slider",
+    centerMode: true,
+    // prevArrow: $(".prev"),
+    // nextArrow: $(".next"),
+  };
+
+  const textConfigs = {
+    autoplay: true,
+    autoplaySpeed: 2400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 1950,
+    cssEase: "cubic-bezier(.84, 0, .08, .99)",
+    // asNavFor: ".image-slider",
+    // prevArrow: $(".prev"),
+    // nextArrow: $(".next"),
+  };
   return (
-    <div className="wrapper">
-      <div className="artist" onClick={() => history.push("/")}>
-        IRIELIVITY
-      </div>
-      <div className="watch">
-        cart
-        <span className="cart-items-count">(0)</span>
-      </div>
+    <div className="landing-wrapper" id="landing-wrapper">
+      <div className="landing-inner">
+        <div className="text-slider-wrapper">
+          <div className="text-slider">
+            <Slider {...textConfigs}>
+              <div className="text-slide">
+                <h1>
+                  An introduction to <br />
+                  Rastafari Livity.
+                </h1>
+              </div>
+              <div className="text-slide">
+                <h1>
+                  From youths
+                  <br />
+                  for the youths.
+                </h1>
+              </div>
 
-      <div className="navbar">
-        <div className="nav-toggle" id="nav_toggle">
-          menu
-        </div>
-      </div>
-
-      <div className="nav">
-        <div className="nav-items" id="nav_items">
-          <div className="nav-item">
-            <Link to="/">Home</Link>
-            <div className="nav-item-wrapper"></div>
-          </div>
-          <div className="nav-item">
-            <Link to="/new">Merch</Link>
-            <div className="nav-item-wrapper"></div>
-          </div>
-          <div className="nav-item">
-            <Link to="#">Media</Link>
-            <div className="nav-item-wrapper"></div>
-          </div>
-          <div className="nav-item">
-            <Link to="#">Contact</Link>
-            <div className="nav-item-wrapper"></div>
-          </div>
-          <div className="nav-item">
-            <Link to="/login">Account</Link>
-            <div className="nav-item-wrapper"></div>
+              <div className="text-slide">
+                <h1>
+                  They didn’t
+                  <br />
+                  teach us the right way,
+                </h1>
+              </div>
+              <div className="text-slide">
+                <h1>
+                  we found Haile-I way, <br />
+                  trodding now! 🇪🇹
+                </h1>
+              </div>
+            </Slider>
           </div>
         </div>
+
+        {/* <div
+          style={{ position: "absolute", top: "2%", zIndex: "100", right: 15 }}
+        >
+          {!isPlaying ? (
+            <IconButton
+              color="primary"
+              onClick={() => {
+                setIsPlaying(true);
+                sound.play();
+              }}
+            >
+              <VolumeOffTwoToneIcon style={{ color: "white" }} />
+            </IconButton>
+          ) : (
+            <IconButton
+              color="primary"
+              onClick={() => {
+                setIsPlaying(false);
+                sound.stop();
+              }}
+            >
+              <VolumeUpIcon style={{ color: "white" }} />
+            </IconButton>
+          )}
+        </div> */}
+
+        <div className="slider-control">
+          <p className="explore" onClick={() => history.push("/new")}>
+            Explore <ArrowForwardIcon style={{ textDecoration: "underline" }} />
+          </p>
+        </div>
+
+        <div className="blocks">
+          <div className="block-1"></div>
+          <div className="block-2"></div>
+          <div className="block-3"></div>
+        </div>
+
+        <div className="overlay"></div>
+
+        <div className="image-slider">
+          <Hidden mdUp>
+            <Slider {...mobileImgConfigs}>
+              <div className="image-slide" id="one"></div>
+              <div className="image-slide" id="two"></div>
+              <div className="image-slide" id="three"></div>
+              <div className="image-slide" id="four"></div>
+              <div className="image-slide" id="five"></div>
+            </Slider>
+          </Hidden>
+          <Hidden smDown>
+            <Slider {...imgConfigs}>
+              <div className="image-slide" id="one"></div>
+              <div className="image-slide" id="two"></div>
+              <div className="image-slide" id="three"></div>
+              <div className="image-slide" id="four"></div>
+              <div className="image-slide" id="five"></div>
+            </Slider>
+          </Hidden>
+        </div>
       </div>
-
-      <div className="hero-section">
-        <div className="hero-gif"></div>
-
-        <div className="hero-title">
-          <h1 className="glitch1">IRIE LIFESTYLE</h1>
-        </div>
-
-        <div className="rotatethis">
-          <h2 id="rotated">stone • fox • swim • tapcheck • wolves </h2>
-        </div>
-
-        <div className="social-media">
-          <ul>
-            <li>
-              <a href="https://www.instagram.com/irielivity/" target="#">
-                facebook
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/irielivity/" target="#">
-                instagram
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="copyright">
-          <ul>
-            <li> &#169; IRIELIVITY 2021.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="gif-overlay"></div>
     </div>
   );
 }
