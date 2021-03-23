@@ -15,6 +15,11 @@
       width: fit-content;
       margin-bottom: 30px;
     }
+    @media #{$md-layout} {
+      font-size: 45px;
+      width: fit-content;
+      margin-bottom: 30px;
+    }
   }
 
   .auth-nav a {

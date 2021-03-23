@@ -13,9 +13,10 @@ import { auth, handleUserProfile } from "./firebase/utils";
 
 import NewPage from "./pages/Shop";
 /*** PAGES **/
-const Home = lazy(() => import("./pages/HomeLandingPage"));
+const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const Register = lazy(() => import("./pages/auth/Register"));
+const OrderHistory = lazy(() => import("./pages/OrderHistory"));
 /*** END PAGES **/
 
 // home pages
@@ -137,27 +138,26 @@ const App = (props) => {
   useEffect(() => {
     // tracks state of component mounted
     let mounted = true;
-    console.log(".....");
     // auth observer
     auth.onAuthStateChanged(async (userAuth) => {
       // if component is mounted
       if (mounted) {
-        // if no auth user was found
-        // return & set state to null
-        if (!userAuth) {
-          setCurrentUser(null);
-          return;
-        }
+      // if no auth user was found
+      // return & set state to null
+      if (!userAuth) {
+        dispatch(setCurrentUser(null));
+        return;
+      }
 
-        // else set state to user auth
-        // and data returned from db
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch(setCurrentUser({ userAuth, ...snapshot.data() }));
-        });
+      // else set state to user auth
+      // and data returned from db
+      const userRef = await handleUserProfile(userAuth);
+      userRef.onSnapshot((snapshot) => {
+        dispatch(setCurrentUser({ userAuth, ...snapshot.data() }));
+      });
       }
     });
-    // clean up fxn
+    // // clean up fxn
     return () => (mounted = !mounted);
   }, [dispatch]);
 
@@ -197,6 +197,14 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/register"}
                   component={Register}
                 />
+                <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/members"}
+                  component={OrderHistory}
+                />
+
+
+
 
                 {/* Homepages */}
                 <Route

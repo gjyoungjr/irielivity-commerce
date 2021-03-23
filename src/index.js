@@ -21,7 +21,15 @@ const middlewares = [logger];
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(thunk, save(), ...middlewares))
+  composeWithDevTools(
+    applyMiddleware(
+      thunk,
+      save({
+        namespace: "irielivity_ecommerce",
+      }),
+      ...middlewares
+    )
+  )
 );
 
 // fetch products from json file

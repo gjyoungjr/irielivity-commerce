@@ -128,7 +128,7 @@ export default function LandingPage() {
 
         <div className="slider-control">
           <p className="explore" onClick={() => history.push("/new")}>
-            Explore <ArrowForwardIcon style={{ textDecoration: "underline" }} />
+            Explore <ArrowForwardIcon  />
           </p>
         </div>
 

@@ -9,7 +9,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
 
 /*-- Common Style --*/
-
+.children-wrapper {
+  padding: 90px 80px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  @media #{$xs-layout} {
+    padding: 90px 10px;
+  }
+}
 *,
 *::after,
 *::before {
@@ -31,7 +39,7 @@ body {
   color: #000;
   // background-color: $white;
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 

@@ -2,13 +2,19 @@ import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // components
 import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
 
+// grabs user auth from redux store
+const mapState = ({ users }) => ({
+  currentUser: users.currentUser,
+});
+
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    // flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -24,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "25px",
     textTransform: "uppercase",
     cursor: "pointer",
-   
   },
   search: {
     position: "relative",
@@ -79,6 +84,9 @@ export default function MinimalLayout({ children }) {
   const classes = useStyles();
   const history = useHistory();
 
+  // destructure current user from redux state
+  const { currentUser } = useSelector(mapState);
+
   return (
     <div className={classes.grow}>
       <AppBar
@@ -86,6 +94,7 @@ export default function MinimalLayout({ children }) {
         style={{
           backgroundColor: "white",
           boxShadow: "none",
+          borderBottom: "1px solid #f5f5f5",
         }}
       >
         <NavMenu />
@@ -106,9 +115,17 @@ export default function MinimalLayout({ children }) {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <div className="mr-4" onClick={() => history.push('/login')}>
-              <p style={styles.menuItems}>Login</p>
-            </div>
+            {/* Auth Listener to Logout/Login */}
+            {currentUser ? (
+              <div className="mr-4" onClick={() => history.push("/members")}>
+                <p style={styles.menuItems}>Account</p>
+              </div>
+            ) : (
+              <div className="mr-4" onClick={() => history.push("/login")}>
+                <p style={styles.menuItems}>Login</p>
+              </div>
+            )}
+
             <div>
               <p style={styles.menuItems}>Bag(0)</p>
             </div>
@@ -122,7 +139,7 @@ export default function MinimalLayout({ children }) {
         </Toolbar>
       </AppBar>
 
-      {children}
+      <div className="children-wrapper">{children}</div>
     </div>
   );
 }

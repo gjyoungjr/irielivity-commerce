@@ -8,7 +8,7 @@ const HomeLandingPage = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>IRIELIVITY</title>
+        <title>Irielivity Ltd</title>
         <meta name="description" content="IRIELIVITY." />
       </MetaTags>
       <div>

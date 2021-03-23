@@ -128,7 +128,7 @@ export default function RegisterForm() {
                 InputLabelProps={{ style: styles.inputLabel }}
               />
             </Hidden>
-            <Hidden smUp>
+            <Hidden mdUp>
               <InputField
                 label={firstName.label}
                 name={firstName.name}
@@ -173,7 +173,7 @@ export default function RegisterForm() {
               />
             </Hidden>
 
-            <div>
+            <div className="text-left">
               <AppButton
                 type="submit"
                 bgColor="black"

@@ -30,6 +30,7 @@ export default function Menu() {
       "0.4",
       "-=0.6"
     );
+    t1.reverse();
 
     // grabs DOM Elements
     const openMenu = document.querySelector(".menu-open");
@@ -43,7 +44,6 @@ export default function Menu() {
       t1.reversed(!t1.reversed());
     });
 
-    t1.reverse();
 
     // grabs all nav links
     const navItems = document
@@ -56,6 +56,7 @@ export default function Menu() {
       })
     );
   }, []);
+  
   return (
     <div className="nav-container1">
       <div className="menu-close">Close</div>
@@ -93,8 +94,8 @@ export default function Menu() {
             </div>
           </div>
         </div>
-        <div className="menu__item"  to="/">
-          <Link className="menu__item-link">Contact</Link>
+        <div className="menu__item"  >
+          <Link className="menu__item-link" to="/">Contact</Link>
           <img className="menu__item-img" src={img1} alt="" />
           <div className="marquee">
             <div className="marquee__inner">
