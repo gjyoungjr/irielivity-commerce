@@ -5,7 +5,7 @@ import {
     // AccountDetailsFormModel,
     // ChangePasswordFormModel,
     // ReauthFormModel,
-    // AddProductFormModel,
+    AddProductFormModel,
     // CheckOutFormModel,
     // ProductReviewFormModel,
     // AdminAccountDetailsFormModel,
@@ -57,24 +57,24 @@ import {
 //     },
 //   } = CheckOutFormModel;
   
-//   const {
-//     formField: {
-//       productDescription,
-//       productName,
-//       productPrice,
-//       category,
-//       mainImgUrl,
-//       subImages,
-//       fit,
-//       materials,
-//       sizes,
-//       dimensions,
-//       subCategory,
-//       quantity,
-//       productDiscount,
-//       colors,
-//     },
-//   } = AddProductFormModel;
+  const {
+    formField: {
+      productDescription,
+      productName,
+      productPrice,
+      category,
+      mainImgUrl,
+      subImages,
+      fit,
+      materials,
+      sizes,
+      dimensions,
+      subCategory,
+      quantity,
+      productDiscount,
+      colors,
+    },
+  } = AddProductFormModel;
   
 //   const {
 //     formField: { subject, message, rating },
@@ -117,22 +117,22 @@ import {
 //     [reauthPassword.name]: "",
 //   };
   
-//   const AddProductFormValues = {
-//     [productDescription.name]: "",
-//     [productName.name]: "",
-//     [mainImgUrl.name]: "",
-//     [productPrice.name]: 0,
-//     [category.name]: "",
-//     [subCategory.name]: "",
-//     [fit.name]: "",
-//     [materials.name]: ["Wool"],
-//     [sizes.name]: ["S"],
-//     [dimensions.name]: "",
-//     [subImages.name]: [],
-//     [quantity.name]: 0,
-//     [productDiscount.name]: 0,
-//     [colors.name]: "",
-//   };
+  const AddProductFormValues = {
+    [productDescription.name]: "",
+    [productName.name]: "",
+    [mainImgUrl.name]: "",
+    [productPrice.name]: 0,
+    [category.name]: "",
+    [subCategory.name]: "",
+    [fit.name]: "",
+    [materials.name]: ["Wool"],
+    [sizes.name]: ["S"],
+    [dimensions.name]: "",
+    [subImages.name]: [],
+    [quantity.name]: 0,
+    [productDiscount.name]: 0,
+    [colors.name]: "",
+  };
   
 //   const CheckOutFormValues = {
 //     [first_Name.name]: "",
@@ -162,7 +162,7 @@ import {
     // AccountDetailsFormValues,
     // ChangePasswordFormValues,
     // ReauthFormValues,
-    // AddProductFormValues,
+    AddProductFormValues,
     // CheckOutFormValues,
     // ProductReviewFormValues,
     // AdminAccountDetailsFormValues,

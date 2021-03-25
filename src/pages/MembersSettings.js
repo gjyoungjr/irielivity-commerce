@@ -5,14 +5,15 @@ import MetaTags from "react-meta-tags";
 import MinimalLayout from "../layouts/MinimalLayout";
 
 // components
-import Orders from "../components/orders";
+import MembersSettings from "../components/members-settings";
+
 export default function OrderHistory() {
   return (
     <MinimalLayout>
       <MetaTags>
         <title>Irielivity Ltd. Members</title>
       </MetaTags>
-      <Orders />
+      <MembersSettings />
     </MinimalLayout>
   );
 }

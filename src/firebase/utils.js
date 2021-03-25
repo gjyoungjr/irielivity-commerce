@@ -170,6 +170,8 @@ export const checkIsUserAdmin = (currentUser) => {
   // if no current user signed in
   // or no user roles array found in user data
   // break
+
+  console.log(currentUser, 'fxn')
   if (!currentUser || !Array.isArray(currentUser.userRoles)) return false;
 
   // grabs user rols array

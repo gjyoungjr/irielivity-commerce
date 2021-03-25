@@ -4,17 +4,20 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+// utils fxn
+import { checkIsUserAdmin } from "../firebase/utils";
+
 // components
 import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
 
 // grabs user auth from redux store
-const mapState = ({ users }) => ({
-  currentUser: users.currentUser,
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
 });
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    // flexGrow: 1,
+    flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -87,16 +90,12 @@ export default function MinimalLayout({ children }) {
   // destructure current user from redux state
   const { currentUser } = useSelector(mapState);
 
+  //boolean state to detrmine if user is amdin
+  const isAdmin = checkIsUserAdmin(currentUser);
+
   return (
     <div className={classes.grow}>
-      <AppBar
-        position="fixed"
-        style={{
-          backgroundColor: "white",
-          boxShadow: "none",
-          borderBottom: "1px solid #f5f5f5",
-        }}
-      >
+      <AppBar position="fixed" style={styles.appbar}>
         <NavMenu />
 
         <Toolbar>
@@ -116,13 +115,22 @@ export default function MinimalLayout({ children }) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* Auth Listener to Logout/Login */}
-            {currentUser ? (
+
+            {!currentUser && (
+              <div className="mr-4" onClick={() => history.push("/login")}>
+                <p style={styles.menuItems}>Login</p>
+              </div>
+            )}
+
+            {currentUser && !isAdmin && (
               <div className="mr-4" onClick={() => history.push("/members")}>
                 <p style={styles.menuItems}>Account</p>
               </div>
-            ) : (
-              <div className="mr-4" onClick={() => history.push("/login")}>
-                <p style={styles.menuItems}>Login</p>
+            )}
+
+            {currentUser && isAdmin && (
+              <div className="mr-4" onClick={() => history.push("/admin/home")}>
+                <p style={styles.menuItems}>Dashboard</p>
               </div>
             )}
 
@@ -150,5 +158,10 @@ const styles = {
     fontWeight: "600",
     color: "black",
     cursor: "pointer",
+  },
+  appbar: {
+    backgroundColor: "white",
+    boxShadow: "none",
+    borderBottom: "1px solid #f5f5f5",
   },
 };

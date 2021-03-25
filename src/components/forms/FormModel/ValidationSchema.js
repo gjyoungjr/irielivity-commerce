@@ -6,7 +6,7 @@ import {
   //   AccountDetailsFormModel,
   //   ChangePasswordFormModel,
   //   ReauthFormModel,
-  //   AddProductFormModel,
+    AddProductFormModel,
   //   CheckOutFormModel,
   //   ProductReviewFormModel,
   //   AdminAccountDetailsFormModel,
@@ -35,17 +35,17 @@ const {
 // const {
 //   formField: { reauthEmail, reauthPassword },
 // } = ReauthFormModel;
-// const {
-//   formField: {
-//     productDescription,
-//     productName,
-//     productPrice,
-//     category,
-//     subCategory,
-//     quantity,
-//     materials,
-//   },
-// } = AddProductFormModel;
+const {
+  formField: {
+    productDescription,
+    productName,
+    productPrice,
+    category,
+    subCategory,
+    quantity,
+    materials,
+  },
+} = AddProductFormModel;
 
 // const {
 //   formField: {
@@ -137,28 +137,28 @@ const resetPasswordValidationSchema = Yup.object().shape({
 //     .matches(passwordRegex, `${reauthPassword.invalidErrorMsg}`),
 // });
 
-// // add product form validation shcema
-// const AddProductValidationSchema = [
-//   Yup.object().shape({
-//     [productDescription.name]: Yup.string().required(
-//       `${productDescription.requiredErrorMsg}`
-//     ),
-//     [productName.name]: Yup.string().required(
-//       `${productName.requiredErrorMsg}`
-//     ),
-//     [productPrice.name]: Yup.string().required(
-//       `${productPrice.requiredErrorMsg}`
-//     ),
-//     [category.name]: Yup.string().required(`${category.requiredErrorMsg}`),
-//     [subCategory.name]: Yup.string().required(
-//       `${subCategory.requiredErrorMsg}`
-//     ),
-//   }),
-//   Yup.object().shape({
-//     [quantity.name]: Yup.string().required(`${quantity.requiredErrorMsg}`),
-//     [materials.name]: Yup.array().min(1, `${materials.requiredErrorMsg}`),
-//   }),
-// ];
+// add product form validation shcema
+const AddProductValidationSchema = [
+  Yup.object().shape({
+    [productDescription.name]: Yup.string().required(
+      `${productDescription.requiredErrorMsg}`
+    ),
+    [productName.name]: Yup.string().required(
+      `${productName.requiredErrorMsg}`
+    ),
+    [productPrice.name]: Yup.string().required(
+      `${productPrice.requiredErrorMsg}`
+    ),
+    [category.name]: Yup.string().required(`${category.requiredErrorMsg}`),
+    [subCategory.name]: Yup.string().required(
+      `${subCategory.requiredErrorMsg}`
+    ),
+  }),
+  Yup.object().shape({
+    [quantity.name]: Yup.string().required(`${quantity.requiredErrorMsg}`),
+    [materials.name]: Yup.array().min(1, `${materials.requiredErrorMsg}`),
+  }),
+];
 
 // // check out form validation schema
 // const CheckOutValidationSchema = [
@@ -199,7 +199,7 @@ export {
   //   accountDetailsValidationSchema,
   //   changePasswordValidationSchema,
   //   reauthValidationSchema,
-  //   AddProductValidationSchema,
+    AddProductValidationSchema,
   //   CheckOutValidationSchema,
   //   ProductReviewValidationSchema,
   //   AdminAccountDetailsValidationSchema,

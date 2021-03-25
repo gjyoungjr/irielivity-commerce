@@ -132,78 +132,78 @@ const ResetPasswordFormModel = {
 //     },
 //   };
 
-//   const AddProductFormModel = {
-//     formId: "AddProductFormModel",
-//     formField: {
-//       productName: {
-//         name: "productName",
-//         label: "Product Name",
-//         requiredErrorMsg: "Product name is required",
-//       },
-//       productPrice: {
-//         name: "productPrice",
-//         label: "Product Price",
-//         requiredErrorMsg: "Product price is required",
-//         invalidErrorMsg: "Invalid input",
-//       },
-//       productDiscount: {
-//         name: "productDiscount",
-//         label: "Percentage discount",
-//       },
+  const AddProductFormModel = {
+    formId: "AddProductFormModel",
+    formField: {
+      productName: {
+        name: "productName",
+        label: "Product Name",
+        requiredErrorMsg: "Product name is required",
+      },
+      productPrice: {
+        name: "productPrice",
+        label: "Product Price",
+        requiredErrorMsg: "Product price is required",
+        invalidErrorMsg: "Invalid input",
+      },
+      productDiscount: {
+        name: "productDiscount",
+        label: "Percentage discount",
+      },
 
-//       productDescription: {
-//         name: "productDescription",
-//         label: "Product Description",
-//         requiredErrorMsg: "Product description is required",
-//       },
-//       category: {
-//         name: "category",
-//         label: "Product main category",
-//         requiredErrorMsg: "Product category is required",
-//       },
+      productDescription: {
+        name: "productDescription",
+        label: "Product Description",
+        requiredErrorMsg: "Product description is required",
+      },
+      category: {
+        name: "category",
+        label: "Product main category",
+        requiredErrorMsg: "Product category is required",
+      },
 
-//       subCategory: {
-//         name: "subCategory",
-//         label: "Product sub category",
-//         requiredErrorMsg: "Product sub category is required",
-//       },
+      subCategory: {
+        name: "subCategory",
+        label: "Product sub category",
+        requiredErrorMsg: "Product sub category is required",
+      },
 
-//       mainImgUrl: {
-//         name: "mainImgUrl",
-//         requiredErrorMsg: "Adding an image is required",
-//       },
-//       subImages: {
-//         name: "subImages",
-//       },
-//       materials: {
-//         name: "materials",
-//         label: "Enter product materials",
-//         requiredErrorMsg: "Minimum of 1 material is required.",
-//       },
-//       fit: {
-//         name: "fit",
-//         label: "Select product fit",
-//       },
-//       sizes: {
-//         name: "sizes",
-//         label: "Enter product sizes",
-//       },
-//       dimensions: {
-//         name: "dimensions",
-//         label: "Enter product dimensions",
-//         requiredErrorMsg: "Dimensions is required",
-//       },
-//       quantity: {
-//         name: "quantity",
-//         label: "Enter product quantity",
-//         requiredErrorMsg: "Product quantity is required",
-//       },
-//       colors: {
-//         name: "colors",
-//         label: "Enter product color",
-//       },
-//     },
-//   };
+      mainImgUrl: {
+        name: "mainImgUrl",
+        requiredErrorMsg: "Adding an image is required",
+      },
+      subImages: {
+        name: "subImages",
+      },
+      materials: {
+        name: "materials",
+        label: "Enter product materials",
+        requiredErrorMsg: "Minimum of 1 material is required.",
+      },
+      fit: {
+        name: "fit",
+        label: "Select product fit",
+      },
+      sizes: {
+        name: "sizes",
+        label: "Enter product sizes",
+      },
+      dimensions: {
+        name: "dimensions",
+        label: "Enter product dimensions",
+        requiredErrorMsg: "Dimensions is required",
+      },
+      quantity: {
+        name: "quantity",
+        label: "Enter product quantity",
+        requiredErrorMsg: "Product quantity is required",
+      },
+      colors: {
+        name: "colors",
+        label: "Enter product color",
+      },
+    },
+  };
 
 //   const CheckOutFormModel = {
 //     formId: "CheckOutFormModel",
@@ -293,7 +293,7 @@ export {
   // AccountDetailsFormModel,
   // ChangePasswordFormModel,
   // ReauthFormModel,
-  // AddProductFormModel,
+  AddProductFormModel,
   // CheckOutFormModel,
   // ProductReviewFormModel,
   // AdminAccountDetailsFormModel,

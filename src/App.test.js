@@ -3,24 +3,29 @@ import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
+import createSagaMiddle from "redux-saga";
 import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
-import { fetchProducts } from "./redux/actions/productActions";
-import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
-import App from "./App";
 import logger from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 
+// components
+import App from "./App";
+// styles
 import "./assets/scss/style.scss";
 
-const middlewares = [logger];
+// root reducer & saga
+import rootReducer from "./redux/reducers/rootReducer";
+import rootSaga from "./redux/reducers/rootSaga";
 
-import { composeWithDevTools } from "redux-devtools-extension";
+// creating middlewares
+const sagaMiddleware = createSagaMiddle();
+const middlewares = [logger, sagaMiddleware];
 
 const store = createStore(
   rootReducer,
-  load(),
+  load({ namespace: "irielivity_ecommerce" }),
   composeWithDevTools(
     applyMiddleware(
       thunk,
@@ -32,8 +37,8 @@ const store = createStore(
   )
 );
 
-// fetch products from json file
-store.dispatch(fetchProducts(products));
+// run saga
+sagaMiddleware.run(rootSaga);
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

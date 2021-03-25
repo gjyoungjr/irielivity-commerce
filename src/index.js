@@ -3,24 +3,30 @@ import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
+import createSagaMiddle from "redux-saga";
 import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import logger from "redux-logger";
-
-import { fetchProducts } from "./redux/actions/productActions";
-import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
-import App from "./App";
-import "./assets/scss/style.scss";
+import { composeWithDevTools } from "redux-devtools-extension";
 import * as serviceWorker from "./serviceWorker";
 
-import { composeWithDevTools } from "redux-devtools-extension";
-const middlewares = [logger];
+// components
+import App from "./App";
+// styles
+import "./assets/scss/style.scss";
+
+// root reducer & saga
+import rootReducer from "./redux/reducers/rootReducer";
+import rootSaga from "./redux/reducers/rootSaga";
+
+// creating middlewares
+const sagaMiddleware = createSagaMiddle();
+const middlewares = [logger, sagaMiddleware];
 
 const store = createStore(
   rootReducer,
-  load(),
+  load({ namespace: "irielivity_ecommerce" }),
   composeWithDevTools(
     applyMiddleware(
       thunk,
@@ -32,8 +38,8 @@ const store = createStore(
   )
 );
 
-// fetch products from json file
-store.dispatch(fetchProducts(products));
+// run saga
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

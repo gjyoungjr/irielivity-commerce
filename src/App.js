@@ -11,12 +11,21 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { setCurrentUser } from "./redux/reducers/user/userActions";
 import { auth, handleUserProfile } from "./firebase/utils";
 
+// hoc for auth handling
+import WithAuth from "./hoc/withAuth";
+import WithAdminAuth from "./hoc/withAdminAuth";
+
 import NewPage from "./pages/Shop";
 /*** PAGES **/
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const Register = lazy(() => import("./pages/auth/Register"));
-const OrderHistory = lazy(() => import("./pages/OrderHistory"));
+const MembersSettings = lazy(() => import("./pages/MembersSettings"));
+
+/**ADMIN PAGES **/
+const AdminHome = lazy(() => import("./pages/admin/Home"));
+const AdminAddProduct = lazy(() => import("./pages/admin/AddProduct"));
+
 /*** END PAGES **/
 
 // home pages
@@ -142,19 +151,19 @@ const App = (props) => {
     auth.onAuthStateChanged(async (userAuth) => {
       // if component is mounted
       if (mounted) {
-      // if no auth user was found
-      // return & set state to null
-      if (!userAuth) {
-        dispatch(setCurrentUser(null));
-        return;
-      }
+        // if no auth user was found
+        // return & set state to null
+        if (!userAuth) {
+          dispatch(setCurrentUser(null));
+          return;
+        }
 
-      // else set state to user auth
-      // and data returned from db
-      const userRef = await handleUserProfile(userAuth);
-      userRef.onSnapshot((snapshot) => {
-        dispatch(setCurrentUser({ userAuth, ...snapshot.data() }));
-      });
+        // else set state to user auth
+        // and data returned from db
+        const userRef = await handleUserProfile(userAuth);
+        userRef.onSnapshot((snapshot) => {
+          dispatch(setCurrentUser({ userAuth, ...snapshot.data() }));
+        });
       }
     });
     // // clean up fxn
@@ -197,14 +206,33 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/register"}
                   component={Register}
                 />
+
                 <Route
-                  exact
                   path={process.env.PUBLIC_URL + "/members"}
-                  component={OrderHistory}
+                  render={(routeProps) => (
+                    <WithAuth>
+                      <MembersSettings />
+                    </WithAuth>
+                  )}
+               />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/admin/home"}
+                  render={(routeProps) => (
+                    <WithAdminAuth>
+                      <AdminHome />
+                    </WithAdminAuth>
+                  )}
                 />
 
-
-
+                <Route
+                  path={process.env.PUBLIC_URL + "/admin/add-product"}
+                  render={(routeProps) => (
+                    <WithAdminAuth>
+                      <AdminAddProduct />
+                    </WithAdminAuth>
+                  )}
+                />
 
                 {/* Homepages */}
                 <Route
