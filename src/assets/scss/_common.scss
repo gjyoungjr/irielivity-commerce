@@ -9,15 +9,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
 
 /*-- Common Style --*/
-.children-wrapper {
-  padding: 90px 80px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  @media #{$xs-layout} {
-    padding: 90px 10px;
-  }
-}
 *,
 *::after,
 *::before {
@@ -1353,18 +1344,18 @@ textarea:-ms-input-placeholder {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-input {
-  font-size: 14px;
+// input {
+//   font-size: 14px;
 
-  width: 100%;
-  height: 45px;
-  padding-left: 10px;
+//   width: 100%;
+//   height: 45px;
+//   padding-left: 10px;
 
-  color: #333;
-  border: 2px solid #eceff8;
-  background: #eceff8;
-  box-shadow: none;
-}
+//   color: #333;
+//   border: 2px solid #eceff8;
+//   background: #eceff8;
+//   box-shadow: none;
+// }
 
 select {
   font-size: 14px;
@@ -1390,23 +1381,23 @@ input:focus {
   background: transparent;
 }
 
-textarea {
-  font-size: 14px;
+// textarea {
+//   font-size: 14px;
 
-  width: 100%;
-  padding: 10px;
+//   width: 100%;
+//   padding: 10px;
 
-  resize: vertical;
+//   resize: vertical;
 
-  border: 2px solid #eceff8;
-  background: #eceff8;
-}
+//   border: 2px solid #eceff8;
+//   background: #eceff8;
+// }
 
-textarea:focus {
-  border: 2px solid #4fc1f0;
-  outline: none;
-  background: transparent;
-}
+// textarea:focus {
+//   border: 2px solid #4fc1f0;
+//   outline: none;
+//   background: transparent;
+// }
 
 .input-group.divcenter.input-group .form-control {
   padding-left: 0;

@@ -4,11 +4,15 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+// components
+import AuthFormDialog from "../components/auth/FormDialog";
+import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
+
 // utils fxn
 import { checkIsUserAdmin } from "../firebase/utils";
 
-// components
-import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
+// imgs -> company logo
+import logo from "../assets/logo/logo.png";
 
 // grabs user auth from redux store
 const mapState = ({ user }) => ({
@@ -17,7 +21,7 @@ const mapState = ({ user }) => ({
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    // flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -86,7 +90,14 @@ const useStyles = makeStyles((theme) => ({
 export default function MinimalLayout({ children }) {
   const classes = useStyles();
   const history = useHistory();
+  const [showAuthForm, setShowAuthForm] = React.useState(false);
 
+  const handleOpenAuthForm = () => {
+    setShowAuthForm(true);
+  };
+  const handleCloseAuthForm = () => {
+    setShowAuthForm(false);
+  };
   // destructure current user from redux state
   const { currentUser } = useSelector(mapState);
 
@@ -95,6 +106,9 @@ export default function MinimalLayout({ children }) {
 
   return (
     <div className={classes.grow}>
+      {/* Log in regsiter form  */}
+      <AuthFormDialog open={showAuthForm} onClose={handleCloseAuthForm} />
+
       <AppBar position="fixed" style={styles.appbar}>
         <NavMenu />
 
@@ -109,15 +123,17 @@ export default function MinimalLayout({ children }) {
             noWrap
             onClick={() => history.push("/")}
           >
-            Irielivity
+            <img src={logo} alt="" className="logo-img" /> Irielivity
           </Typography>
 
           <div className={classes.grow} />
+
+          {/* Desktop */}
           <div className={classes.sectionDesktop}>
             {/* Auth Listener to Logout/Login */}
 
             {!currentUser && (
-              <div className="mr-4" onClick={() => history.push("/login")}>
+              <div className="mr-4" onClick={() => handleOpenAuthForm()}>
                 <p style={styles.menuItems}>Login</p>
               </div>
             )}
@@ -139,6 +155,7 @@ export default function MinimalLayout({ children }) {
             </div>
           </div>
 
+          {/* Mobile */}
           <div className={classes.sectionMobile}>
             <div>
               <p style={styles.menuItems}>Bag(0)</p>
@@ -147,6 +164,7 @@ export default function MinimalLayout({ children }) {
         </Toolbar>
       </AppBar>
 
+      {/* Children */}
       <div className="children-wrapper">{children}</div>
     </div>
   );
@@ -163,5 +181,6 @@ const styles = {
     backgroundColor: "white",
     boxShadow: "none",
     borderBottom: "1px solid #f5f5f5",
+    zIndex: 5,
   },
 };

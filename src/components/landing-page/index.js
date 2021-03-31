@@ -47,7 +47,7 @@ export default function LandingPage() {
     speed: 2000,
     cssEase: "cubic-bezier(.84, 0, .08, .99)",
     // asNavFor: ".text-slider",
-    centerMode: true,
+    // centerMode: true,
     // prevArrow: $(".prev"),
     // nextArrow: $(".next"),
   };
@@ -128,7 +128,7 @@ export default function LandingPage() {
 
         <div className="slider-control">
           <p className="explore" onClick={() => history.push("/new")}>
-            Explore <ArrowForwardIcon  />
+            Explore <ArrowForwardIcon />
           </p>
         </div>
 

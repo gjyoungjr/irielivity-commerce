@@ -23,7 +23,7 @@ import {
 } from "react-feather";
 
 // utils
-import { auth } from "../../../../firebase/utils";
+import { auth } from "../../../../firebase/utils"
 
 // components
 import NavItem from "./NavItem";

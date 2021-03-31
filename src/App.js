@@ -2,10 +2,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect, useDispatch } from "react-redux";
-import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 // utils
 import { setCurrentUser } from "./redux/reducers/user/userActions";
@@ -18,13 +16,12 @@ import WithAdminAuth from "./hoc/withAdminAuth";
 import NewPage from "./pages/Shop";
 /*** PAGES **/
 const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/auth/Login"));
-const Register = lazy(() => import("./pages/auth/Register"));
 const MembersSettings = lazy(() => import("./pages/MembersSettings"));
 
 /**ADMIN PAGES **/
 const AdminHome = lazy(() => import("./pages/admin/Home"));
 const AdminAddProduct = lazy(() => import("./pages/admin/AddProduct"));
+const AdminProducts = lazy(() => import("./pages/admin/Products"));
 
 /*** END PAGES **/
 
@@ -171,354 +168,353 @@ const App = (props) => {
   }, [dispatch]);
 
   return (
-    <ToastProvider placement="bottom-left">
-      <BreadcrumbsProvider>
-        <Router>
-          <ScrollToTop>
-            <Suspense
-              fallback={
-                <div className="flone-preloader-wrapper">
-                  <div className="flone-preloader">
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              }
-            >
-              <Switch>
-                <Route
-                  exact
-                  path={process.env.PUBLIC_URL + "/"}
-                  component={Home}
-                />
-                <Route
-                  exact
-                  path={process.env.PUBLIC_URL + "/new"}
-                  component={NewPage}
-                />
-                <Route
-                  exact
-                  path={process.env.PUBLIC_URL + "/login"}
-                  component={Login}
-                />
-                <Route
-                  exact
-                  path={process.env.PUBLIC_URL + "/register"}
-                  component={Register}
-                />
+    <Router>
+      <ScrollToTop>
+        <Suspense
+          fallback={
+            <div className="flone-preloader-wrapper">
+              <div className="flone-preloader">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          }
+        >
+          <Switch>
+            <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + "/new"}
+              component={NewPage}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/new/:demo"}
+              component={NewPage}
+            />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/members"}
-                  render={(routeProps) => (
-                    <WithAuth>
-                      <MembersSettings />
-                    </WithAuth>
-                  )}
-               />
+            <Route
+              path={process.env.PUBLIC_URL + "/members"}
+              render={(routeProps) => (
+                <WithAuth>
+                  <MembersSettings />
+                </WithAuth>
+              )}
+            />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/admin/home"}
-                  render={(routeProps) => (
-                    <WithAdminAuth>
-                      <AdminHome />
-                    </WithAdminAuth>
-                  )}
-                />
+            <Route
+              path={process.env.PUBLIC_URL + "/admin/home"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminHome />
+                </WithAdminAuth>
+              )}
+            />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/admin/add-product"}
-                  render={(routeProps) => (
-                    <WithAdminAuth>
-                      <AdminAddProduct />
-                    </WithAdminAuth>
-                  )}
-                />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + "/admin/add-product"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminAddProduct {...routeProps} />
+                </WithAdminAuth>
+              )}
+            />
 
-                {/* Homepages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion"}
-                  component={HomeFashion}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-two"}
-                  component={HomeFashionTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-three"}
-                  // component={HomeFashionThree}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-four"}
-                  component={HomeFashionFour}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-five"}
-                  component={HomeFashionFive}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-six"}
-                  component={HomeFashionSix}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-seven"}
-                  component={HomeFashionSeven}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-eight"}
-                  component={HomeFashionEight}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-kids-fashion"}
-                  component={HomeKidsFashion}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-cosmetics"}
-                  component={HomeCosmetics}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture"}
-                  component={HomeFurniture}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-two"}
-                  component={HomeFurnitureTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-three"}
-                  component={HomeFurnitureThree}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-four"}
-                  component={HomeFurnitureFour}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-five"}
-                  component={HomeFurnitureFive}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-six"}
-                  component={HomeFurnitureSix}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-seven"}
-                  component={HomeFurnitureSeven}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-electronics"}
-                  component={HomeElectronics}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-electronics-two"}
-                  component={HomeElectronicsTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-electronics-three"}
-                  component={HomeElectronicsThree}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-book-store"}
-                  component={HomeBookStore}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-book-store-two"}
-                  component={HomeBookStoreTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-plants"}
-                  component={HomePlants}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-flower-shop"}
-                  component={HomeFlowerShop}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-flower-shop-two"}
-                  component={HomeFlowerShopTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-organic-food"}
-                  component={HomeOrganicFood}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-organic-food-two"}
-                  component={HomeOrganicFoodTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-onepage-scroll"}
-                  component={HomeOnepageScroll}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-grid-banner"}
-                  component={HomeGridBanner}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-auto-parts"}
-                  component={HomeAutoParts}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-cake-shop"}
-                  component={HomeCakeShop}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-handmade"}
-                  component={HomeHandmade}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-pet-food"}
-                  component={HomePetFood}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-medical-equipment"}
-                  component={HomeMedicalEquipment}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-christmas"}
-                  component={HomeChristmas}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-black-friday"}
-                  component={HomeBlackFriday}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-black-friday-two"}
-                  component={HomeBlackFridayTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-valentines-day"}
-                  component={HomeValentinesDay}
-                />
+            <Route
+              path={process.env.PUBLIC_URL + "/admin/add-product/:productID"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminAddProduct {...routeProps} />
+                </WithAdminAuth>
+              )}
+            />
 
-                {/* Shop pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-standard"}
-                  component={ShopGridStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-filter"}
-                  component={ShopGridFilter}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
-                  component={ShopGridTwoColumn}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
-                  component={ShopGridNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
-                  component={ShopGridFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
-                  component={ShopGridRightSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-standard"}
-                  component={ShopListStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-full-width"}
-                  component={ShopListFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-two-column"}
-                  component={ShopListTwoColumn}
-                />
+            <Route
+              path={process.env.PUBLIC_URL + "/admin/products"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminProducts />
+                </WithAdminAuth>
+              )}
+            />
 
-                {/* Shop product pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/product/:id"}
-                  render={(routeProps) => (
-                    <Product {...routeProps} key={routeProps.match.params.id} />
-                  )}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                  component={ProductTabLeft}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
-                  component={ProductTabRight}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-sticky/:id"}
-                  component={ProductSticky}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-slider/:id"}
-                  component={ProductSlider}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
-                  component={ProductFixedImage}
-                />
+            {/* Homepages */}
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion"}
+              component={HomeFashion}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-two"}
+              component={HomeFashionTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-three"}
+              // component={HomeFashionThree}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-four"}
+              component={HomeFashionFour}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-five"}
+              component={HomeFashionFive}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-six"}
+              component={HomeFashionSix}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-seven"}
+              component={HomeFashionSeven}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-fashion-eight"}
+              component={HomeFashionEight}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-kids-fashion"}
+              component={HomeKidsFashion}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-cosmetics"}
+              component={HomeCosmetics}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture"}
+              component={HomeFurniture}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-two"}
+              component={HomeFurnitureTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-three"}
+              component={HomeFurnitureThree}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-four"}
+              component={HomeFurnitureFour}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-five"}
+              component={HomeFurnitureFive}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-six"}
+              component={HomeFurnitureSix}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-furniture-seven"}
+              component={HomeFurnitureSeven}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-electronics"}
+              component={HomeElectronics}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-electronics-two"}
+              component={HomeElectronicsTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-electronics-three"}
+              component={HomeElectronicsThree}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-book-store"}
+              component={HomeBookStore}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-book-store-two"}
+              component={HomeBookStoreTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-plants"}
+              component={HomePlants}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-flower-shop"}
+              component={HomeFlowerShop}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-flower-shop-two"}
+              component={HomeFlowerShopTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-organic-food"}
+              component={HomeOrganicFood}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-organic-food-two"}
+              component={HomeOrganicFoodTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-onepage-scroll"}
+              component={HomeOnepageScroll}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-grid-banner"}
+              component={HomeGridBanner}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-auto-parts"}
+              component={HomeAutoParts}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-cake-shop"}
+              component={HomeCakeShop}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-handmade"}
+              component={HomeHandmade}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-pet-food"}
+              component={HomePetFood}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-medical-equipment"}
+              component={HomeMedicalEquipment}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-christmas"}
+              component={HomeChristmas}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-black-friday"}
+              component={HomeBlackFriday}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-black-friday-two"}
+              component={HomeBlackFridayTwo}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/home-valentines-day"}
+              component={HomeValentinesDay}
+            />
 
-                {/* Blog pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-standard"}
-                  component={BlogStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
-                  component={BlogNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
-                  component={BlogRightSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-details-standard"}
-                  component={BlogDetailsStandard}
-                />
+            {/* Shop pages */}
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+              component={ShopGridStandard}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-filter"}
+              component={ShopGridFilter}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
+              component={ShopGridTwoColumn}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
+              component={ShopGridNoSidebar}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
+              component={ShopGridFullWidth}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
+              component={ShopGridRightSidebar}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-list-standard"}
+              component={ShopListStandard}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-list-full-width"}
+              component={ShopListFullWidth}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/shop-list-two-column"}
+              component={ShopListTwoColumn}
+            />
 
-                {/* Other pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/about"}
-                  component={About}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/contact"}
-                  component={Contact}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/my-account"}
-                  component={MyAccount}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/login-register"}
-                  component={LoginRegister}
-                />
+            {/* Shop product pages */}
+            <Route
+              path={process.env.PUBLIC_URL + "/product/:id"}
+              render={(routeProps) => (
+                <Product {...routeProps} key={routeProps.match.params.id} />
+              )}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
+              component={ProductTabLeft}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
+              component={ProductTabRight}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/product-sticky/:id"}
+              component={ProductSticky}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/product-slider/:id"}
+              component={ProductSlider}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
+              component={ProductFixedImage}
+            />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/cart"}
-                  component={Cart}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/wishlist"}
-                  component={Wishlist}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/compare"}
-                  component={Compare}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/checkout"}
-                  component={Checkout}
-                />
+            {/* Blog pages */}
+            <Route
+              path={process.env.PUBLIC_URL + "/blog-standard"}
+              component={BlogStandard}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
+              component={BlogNoSidebar}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
+              component={BlogRightSidebar}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/blog-details-standard"}
+              component={BlogDetailsStandard}
+            />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/not-found"}
-                  component={NotFound}
-                />
+            {/* Other pages */}
+            <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
+            <Route
+              path={process.env.PUBLIC_URL + "/contact"}
+              component={Contact}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/my-account"}
+              component={MyAccount}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/login-register"}
+              component={LoginRegister}
+            />
 
-                <Route exact component={NotFound} />
-              </Switch>
-            </Suspense>
-          </ScrollToTop>
-        </Router>
-      </BreadcrumbsProvider>
-    </ToastProvider>
+            <Route path={process.env.PUBLIC_URL + "/cart"} component={Cart} />
+            <Route
+              path={process.env.PUBLIC_URL + "/wishlist"}
+              component={Wishlist}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/compare"}
+              component={Compare}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/checkout"}
+              component={Checkout}
+            />
+
+            <Route
+              path={process.env.PUBLIC_URL + "/not-found"}
+              component={NotFound}
+            />
+
+            <Route exact component={NotFound} />
+          </Switch>
+        </Suspense>
+      </ScrollToTop>
+    </Router>
   );
 };
 

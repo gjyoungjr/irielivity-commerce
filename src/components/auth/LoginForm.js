@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { Hidden, InputAdornment, IconButton } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import {
+  FormControlLabel,
+  InputAdornment,
+  IconButton,
+  Checkbox,
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import { Form, Formik } from "formik";
 
 // utils
@@ -26,7 +31,7 @@ export default function LoginForm() {
   const history = useHistory();
   // enables/disbable password viewing
   const [showPassword, setShowPassword] = useState(false);
-  const [displayPasswordModal, setDisplayPasswordModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
   // state for  server sider errors
   const [_errorMsg, setErrorMsg] = useState({
     userNotFound: "",
@@ -53,18 +58,19 @@ export default function LoginForm() {
 
   // redirect on success form post
   const onSucces = (history, actions) => {
-    history.push(process.env.PUBLIC_URL + "/");
+    window.location.reload(false);
     actions.resetForm({});
   };
   return (
-    <>
-      {/* Reset Password Modal */}
+    <React.Fragment>
       <ResetPassword
-        open={displayPasswordModal}
-        onClose={() => setDisplayPasswordModal(false)}
+        open={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
       />
       <div className="auth-wrapper">
-        <p className="text-left auth-title">Login</p>
+        <p className="text-center auth-title  font-weight-bold">
+          Hello, Welcome Back!
+        </p>
 
         <Formik
           initialValues={LoginFormValues}
@@ -84,76 +90,67 @@ export default function LoginForm() {
             <Form onSubmit={props.handleSubmit}>
               <p style={{ color: "red" }}>{_errorMsg.userNotFound}</p>
               <p style={{ color: "red" }}>{_errorMsg.invalidEmailorPassword}</p>
-              <Hidden smDown>
-                <InputField
-                  label={email.label}
-                  name={email.name}
-                  className="mb-3"
-                  fullWidth
-                  inputProps={{ style: styles.generalStyling }}
-                  InputLabelProps={{ style: styles.inputLabel }}
-                />
-                <InputField
-                  label={password.label}
-                  name={password.name}
-                  type={showPassword ? "text" : "password"}
-                  className="mb-3"
-                  fullWidth
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          onMouseDown={(e) => e.preventDefault()}
-                          edge="end"
-                        >
-                          {showPassword ? (
-                            <VisibilityIcon />
-                          ) : (
-                            <VisibilityOffIcon />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  inputProps={{ style: styles.generalStyling }}
-                  InputLabelProps={{ style: styles.inputLabel }}
-                />
-              </Hidden>
-              <Hidden mdUp>
-                <InputField
-                  label={email.label}
-                  name={email.name}
-                  className="mb-3"
-                  fullWidth
-                />
-                <InputField
-                  type={showPassword ? "text" : "password"}
-                  label={password.label}
-                  name={password.name}
-                  className="mb-3"
-                  fullWidth
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          onMouseDown={(e) => e.preventDefault()}
-                          edge="end"
-                        >
-                          {showPassword ? (
-                            <VisibilityIcon />
-                          ) : (
-                            <VisibilityOffIcon />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Hidden>
 
-              <div className="text-left">
+              <InputField
+                label={email.label}
+                name={email.name}
+                className="mb-3"
+                fullWidth
+              />
+              <InputField
+                label={password.label}
+                name={password.name}
+                type={showPassword ? "text" : "password"}
+                className="mb-3"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton
+                        onClick={() => setShowPassword(!showPassword)}
+                        onMouseDown={(e) => e.preventDefault()}
+                        edge="end"
+                      >
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <div
+                className="d-flex justify-content-between"
+                style={{ marginTop: "15px" }}
+              >
+                <FormControlLabel
+                  style={{ marginTop: "-5px" }}
+                  value="end"
+                  control={
+                    <Checkbox
+                      style={{ color: "black" }}
+                      size="small"
+                      defaultChecked
+                    />
+                  }
+                  label={<p className="sign-in">Keep me signed in.</p>}
+                  labelPlacement="end"
+                />
+                <a
+                  href="#/"
+                  onClick={() => {
+                    setShowPasswordModal(true);
+                  }}
+                  className="forgot-password"
+                >
+                  Forgot Password?{" "}
+                </a>
+              </div>
+              <br></br>
+
+              <div className="text-center">
                 <AppButton
                   type="submit"
                   bgColor="black"
@@ -167,34 +164,13 @@ export default function LoginForm() {
                   }
                   height="45px"
                   borderRadius="30px"
-                  width="130px"
+                  width="100%"
                 />
               </div>
             </Form>
           )}
         </Formik>
-
-        <div className="d-flex justify-content-start mt-3 auth-nav">
-          <Link to="/register" className="mr-3">
-            Create Account
-          </Link>
-          <Link
-            to="#"
-            className="mr-3"
-            onClick={() => setDisplayPasswordModal(true)}
-          >
-            Forgot your Password?
-          </Link>
-        </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
-const styles = {
-  generalStyling: {
-    fontSize: "32px",
-  },
-  inputLabel: {
-    fontSize: "26px",
-  },
-};

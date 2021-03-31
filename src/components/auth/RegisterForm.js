@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Hidden, InputAdornment, IconButton } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import { InputAdornment, IconButton } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import { Form, Formik } from "formik";
 
 //utils
@@ -12,6 +12,9 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 // components
 import AppButton from "../app-button";
+import LoadingCircular from "../loading/LoadingCircular";
+
+// ->form fields
 import { InputField } from "../forms/FormFields";
 // ->form model
 import { RegisterFormModel } from "../forms/FormModel/FormModel";
@@ -22,7 +25,10 @@ export default function RegisterForm() {
   const history = useHistory();
   // enables/disbable password viewing
   const [showPassword, setShowPassword] = useState(false);
-
+  const [_errorMsg, setErrorMsg] = useState({
+    userNotFound: "",
+    emailAlreadyInUse: "",
+  });
   // destructure for form fields
   const {
     formField: { _email, _password, lastName, firstName },
@@ -30,13 +36,22 @@ export default function RegisterForm() {
 
   // redirect on success
   const onSuccess = (history, actions) => {
-    history.push(process.env.PUBLIC_URL + "/new");
-    actions.setSubmitting(false);
+    window.location.reload(false);
     actions.resetForm({});
+  };
+
+  // helper fxn handle server side errors
+  const handleServerErrors = (code) => {
+    if (code === "auth/email-already-in-use") {
+      setErrorMsg({
+        emailAlreadyInUse:
+          "The email address is already in use by another account.",
+      });
+    }
   };
   return (
     <div className="auth-wrapper">
-      <p className="text-left auth-title">Register</p>
+      <p className="text-center auth-title">Create Account</p>
 
       <Formik
         initialValues={RegisterFormValues}
@@ -68,143 +83,79 @@ export default function RegisterForm() {
             //   console.err(err);
             // });
             onSuccess(history, actions);
-          } catch (err) {
-            console.log("Err->", err);
+          } catch ({ code }) {
+            handleServerErrors(code);
           }
         }}
       >
         {(props) => (
           <Form onSubmit={props.handleSubmit}>
-            <Hidden smDown>
-              <InputField
-                label={firstName.label}
-                name={firstName.name}
-                className="mb-3"
-                fullWidth
-                inputProps={{ style: styles.generalStyling }}
-                InputLabelProps={{ style: styles.inputLabel }}
-              />
-              <InputField
-                label={lastName.label}
-                name={lastName.name}
-                className="mb-3"
-                fullWidth
-                inputProps={{ style: styles.generalStyling }}
-                InputLabelProps={{ style: styles.inputLabel }}
-              />
-              <InputField
-                label={_email.label}
-                name={_email.name}
-                className="mb-3"
-                fullWidth
-                inputProps={{ style: styles.generalStyling }}
-                InputLabelProps={{ style: styles.inputLabel }}
-                autoFocus={false}
-              />
-              <InputField
-                label={_password.label}
-                name={_password.name}
-                type={showPassword ? "text" : "password"}
-                className="mb-3"
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton
-                        onClick={() => setShowPassword(!showPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                      >
-                        {showPassword ? (
-                          <VisibilityIcon />
-                        ) : (
-                          <VisibilityOffIcon />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                inputProps={{ style: styles.generalStyling }}
-                InputLabelProps={{ style: styles.inputLabel }}
-              />
-            </Hidden>
-            <Hidden mdUp>
-              <InputField
-                label={firstName.label}
-                name={firstName.name}
-                className="mb-3"
-                fullWidth
-              />
-              <InputField
-                label={lastName.label}
-                name={lastName.name}
-                className="mb-3"
-                fullWidth
-              />
-              <InputField
-                label={_email.label}
-                name={_email.name}
-                className="mb-3"
-                fullWidth
-              />
-              <InputField
-                type={showPassword ? "text" : "password"}
-                label={_password.label}
-                name={_password.name}
-                className="mb-3"
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton
-                        onClick={() => setShowPassword(!showPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                      >
-                        {showPassword ? (
-                          <VisibilityIcon />
-                        ) : (
-                          <VisibilityOffIcon />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Hidden>
+            <p style={{ color: "red" }}>{_errorMsg.emailAlreadyInUse}</p>
 
-            <div className="text-left">
+            <InputField
+              label={firstName.label}
+              name={firstName.name}
+              className="mb-3"
+              fullWidth
+            />
+            <InputField
+              label={lastName.label}
+              name={lastName.name}
+              className="mb-3"
+              fullWidth
+            />
+            <InputField
+              label={_email.label}
+              name={_email.name}
+              className="mb-3"
+              fullWidth
+              autoFocus={false}
+            />
+            <InputField
+              label={_password.label}
+              name={_password.name}
+              type={showPassword ? "text" : "password"}
+              className="mb-3"
+              fullWidth
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      onMouseDown={(e) => e.preventDefault()}
+                      edge="end"
+                    >
+                      {showPassword ? (
+                        <VisibilityIcon />
+                      ) : (
+                        <VisibilityOffIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            <div className="text-center">
               <AppButton
                 type="submit"
                 bgColor="black"
                 color="white"
-                label="Register"
+                label={
+                  props.isSubmitting ? (
+                    <LoadingCircular color="white" size={20} />
+                  ) : (
+                    "Register"
+                  )
+                }
                 height="45px"
                 borderRadius="30px"
-                width="130px"
+                width="100%"
               />
             </div>
           </Form>
         )}
       </Formik>
-
-      <div className="auth-nav d-flex justify-content-start mt-3">
-        <Link to="/register" className="mr-3">
-          Create Account
-        </Link>
-        <Link to="" className="mr-3">
-          Forgot your Password?
-        </Link>
-      </div>
     </div>
   );
 }
-
-const styles = {
-  generalStyling: {
-    fontSize: "32px",
-  },
-  inputLabel: {
-    fontSize: "26px",
-  },
-};

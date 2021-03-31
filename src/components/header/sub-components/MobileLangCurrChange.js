@@ -46,7 +46,7 @@ const MobileLangCurrChange = ({
       <div className="lang-curr-style">
         <span className="title mb-2">Choose Currency</span>
         <select
-          value={currency.currencyName}
+          // value={currency.currencyName}
           onChange={e => {
             setCurrencyTrigger(e);
             closeMobileMenu();

@@ -93,6 +93,7 @@ export default function CheckoutPage() {
 
   // grabs productID from url
   const { productID } = useParams();
+
   // destructure to get product from redux store
   const { product } = useSelector(mapState);
 

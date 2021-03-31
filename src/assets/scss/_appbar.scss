@@ -1,0 +1,20 @@
+.logo-img {
+  width: 1.5%;
+  margin-top: -5px;
+  @media #{$xs-layout} {
+   width: 7.5%;
+  }
+  @media #{$md-layout} {
+   width: 3.5%;
+  }
+}
+
+.children-wrapper {
+  padding: 90px 80px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  @media #{$xs-layout} {
+    padding: 90px 10px;
+  }
+}
