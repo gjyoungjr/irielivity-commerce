@@ -13,11 +13,11 @@ import { Form, Formik } from "formik";
 
 // components
 // -> form fields
-import { InputField } from "../../forms/formFields";
+import { InputField } from "../../forms/FormFields";
 // -> form models/structure
-import { AdminAccountDetailsFormModel } from "../../forms/formModel/FormModel";
-import { AdminAccountDetailsValidationSchema } from "../../forms/formModel/ValidationSchema";
-import { AdminAccountDetailsFormValues } from "../../forms/formModel/FormInitialValues";
+import { AdminAccountDetailsFormModel } from "../../forms/FormModel/FormModel";
+import { AdminAccountDetailsValidationSchema } from "../../forms/FormModel/ValidationSchema";
+import { AdminAccountDetailsFormValues } from "../../forms/FormModel/FormInitialValues";
 
 // map user state to component
 const mapState = ({ user }) => ({

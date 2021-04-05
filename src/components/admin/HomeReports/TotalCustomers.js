@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   avatar: {
-    backgroundColor:"rgba(23.0, 82.0, 255.0, 0.3)",
+    backgroundColor: "rgba(23.0, 82.0, 255.0, 0.3)",
     height: 56,
     width: 56,
   },
@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
 const TotalCustomers = ({ className, usersCount, ...rest }) => {
   const classes = useStyles();
 
-  // const totalCustomers = usersCount.length > 0 ? usersCount[0].usersCount : 0
+  // gets total user from data props
+  const totalCustomers = usersCount.length > 0 ? usersCount[0].usersCount : 0;
 
   return (
     <Card
@@ -51,16 +52,30 @@ const TotalCustomers = ({ className, usersCount, ...rest }) => {
       <CardContent>
         <Grid container justify="space-between" spacing={3}>
           <Grid item>
-            <Typography color="textSecondary" className="font-weight-bold" gutterBottom variant="h6">
+            <Typography
+              color="textSecondary"
+              className="font-weight-bold"
+              gutterBottom
+              variant="h6"
+            >
               TOTAL CUSTOMER
             </Typography>
-            <Typography color="textPrimary" className="font-weight-bold" variant="h3">
-            {/* <CountUp start={0} end={totalCustomers - 2} duration={2.75} separator="," /> */}
+            <Typography
+              color="textPrimary"
+              className="font-weight-bold"
+              variant="h3"
+            >
+              <CountUp
+                start={0}
+                end={totalCustomers - 1}
+                duration={2.75}
+                separator=","
+              />
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <PeopleIcon style={{color: '#1752FF'}} />
+              <PeopleIcon style={{ color: "#1752FF" }} />
             </Avatar>
           </Grid>
         </Grid>

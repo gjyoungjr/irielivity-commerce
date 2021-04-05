@@ -175,8 +175,13 @@
 
 /*  PRODUCT CATEGORIES MENU */
 
+.project {
+  width: 100%;
+  // position: relative;
+}
+
 .menu-back {
-  position: absolute;
+  position: absolute !important;
   top: 5%;
   left: 5%;
   cursor: pointer;
@@ -242,6 +247,9 @@
   transform: translate3d(calc(-100% - 6vw), -30%, 0) rotate3d(0, 0, 1, 4deg);
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  @media #{$xs-layout} {
+    display: none;
+  }
 }
 
 .menu {
@@ -287,6 +295,22 @@
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
+
+// @media #{$xs-layout} {
+//   .menu__item-link ~ .marquee .marquee__inner {
+//     -webkit-animation-play-state: running;
+//     animation-play-state: running;
+//     opacity: 1;
+//     -webkit-transition-duration: 0.4s;
+//     transition-duration: 0.4s;
+//   }
+//   .menu__item-link {
+//     display: none;
+//   }
+//   // .marquee .marquee__inner{
+//   //  border-top: 1px solid white;
+//   // }
+// }
 
 .menu__item-link,
 .marquee span {

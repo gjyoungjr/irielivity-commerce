@@ -21,7 +21,7 @@ export const handleGetAllUsers = () => {
   });
 };
 
-// gets total users from db tabl
+// gets total users from db table
 export const handleGetTotalUsers = () => {
   return new Promise((resolve, reject) => {
     firestore

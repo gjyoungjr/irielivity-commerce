@@ -9,7 +9,7 @@ import {
     AddProductFormModel,
   //   CheckOutFormModel,
   //   ProductReviewFormModel,
-  //   AdminAccountDetailsFormModel,
+    AdminAccountDetailsFormModel,
 } from "./FormModel";
 
 // grabs form fields
@@ -25,9 +25,9 @@ const {
 // const {
 //   formField: { accountLastName, accountFirstName, accountEmail },
 // } = AccountDetailsFormModel;
-// const {
-//   formField: { adminEmail, adminFirstName, adminLastName },
-// } = AdminAccountDetailsFormModel;
+const {
+  formField: { adminEmail, adminFirstName, adminLastName },
+} = AdminAccountDetailsFormModel;
 
 // const {
 //   formField: { newPassword },
@@ -108,17 +108,17 @@ const resetPasswordValidationSchema = Yup.object().shape({
 //   ),
 // });
 
-// const AdminAccountDetailsValidationSchema = Yup.object().shape({
-//   [adminEmail.name]: Yup.string()
-//     .required(`${adminEmail.requiredErrorMsg}`)
-//     .email(`${adminEmail.invalidErrorMsg}`),
-//   [adminFirstName.name]: Yup.string().required(
-//     `${adminFirstName.requiredErrorMsg}`
-//   ),
-//   [adminLastName.name]: Yup.string().required(
-//     `${adminLastName.requiredErrorMsg}`
-//   ),
-// });
+const AdminAccountDetailsValidationSchema = Yup.object().shape({
+  [adminEmail.name]: Yup.string()
+    .required(`${adminEmail.requiredErrorMsg}`)
+    .email(`${adminEmail.invalidErrorMsg}`),
+  [adminFirstName.name]: Yup.string().required(
+    `${adminFirstName.requiredErrorMsg}`
+  ),
+  [adminLastName.name]: Yup.string().required(
+    `${adminLastName.requiredErrorMsg}`
+  ),
+});
 
 // // account details form validaiton schema
 // const changePasswordValidationSchema = Yup.object().shape({
@@ -202,5 +202,5 @@ export {
     AddProductValidationSchema,
   //   CheckOutValidationSchema,
   //   ProductReviewValidationSchema,
-  //   AdminAccountDetailsValidationSchema,
+    AdminAccountDetailsValidationSchema,
 };

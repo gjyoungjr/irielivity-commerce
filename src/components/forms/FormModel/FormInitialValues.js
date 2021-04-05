@@ -8,7 +8,7 @@ import {
     AddProductFormModel,
     // CheckOutFormModel,
     // ProductReviewFormModel,
-    // AdminAccountDetailsFormModel,
+    AdminAccountDetailsFormModel,
   } from "./FormModel";
   
   // GRABS FORM FIELDS
@@ -28,9 +28,9 @@ import {
 //     formField: { accountEmail, accountFirstName, accountLastName },
 //   } = AccountDetailsFormModel;
   
-//   const {
-//     formField: { adminEmail, adminFirstName, adminLastName },
-//   } = AdminAccountDetailsFormModel;
+  const {
+    formField: { adminEmail, adminFirstName, adminLastName },
+  } = AdminAccountDetailsFormModel;
   
 //   const {
 //     formField: { newPassword },
@@ -102,11 +102,11 @@ import {
 //     [accountLastName.name]: "",
 //   };
   
-//   const AdminAccountDetailsFormValues = {
-//     [adminEmail.name]: "",
-//     [adminFirstName.name]: "",
-//     [adminLastName.name]: "",
-//   };
+  const AdminAccountDetailsFormValues = {
+    [adminEmail.name]: "",
+    [adminFirstName.name]: "",
+    [adminLastName.name]: "",
+  };
   
 //   const ChangePasswordFormValues = {
 //     [newPassword.name]: "",
@@ -165,6 +165,6 @@ import {
     AddProductFormValues,
     // CheckOutFormValues,
     // ProductReviewFormValues,
-    // AdminAccountDetailsFormValues,
+    AdminAccountDetailsFormValues,
   };
   

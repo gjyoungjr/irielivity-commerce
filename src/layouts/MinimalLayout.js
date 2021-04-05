@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 // components
 import AuthFormDialog from "../components/auth/FormDialog";
 import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
+import CartDrawer from "../components/cart";
 
 // utils fxn
 import { checkIsUserAdmin } from "../firebase/utils";
@@ -91,7 +92,9 @@ export default function MinimalLayout({ children }) {
   const classes = useStyles();
   const history = useHistory();
   const [showAuthForm, setShowAuthForm] = React.useState(false);
-
+  const [cartDrawerPos, setCartDrawerPos] = React.useState({
+    right: false,
+  });
   const handleOpenAuthForm = () => {
     setShowAuthForm(true);
   };
@@ -104,10 +107,27 @@ export default function MinimalLayout({ children }) {
   //boolean state to detrmine if user is amdin
   const isAdmin = checkIsUserAdmin(currentUser);
 
+  // opens & close cart drawer
+  const toggleCartDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setCartDrawerPos({ ...cartDrawerPos, [anchor]: open });
+  };
   return (
     <div className={classes.grow}>
       {/* Log in regsiter form  */}
       <AuthFormDialog open={showAuthForm} onClose={handleCloseAuthForm} />
+      
+      {/* Cart Drawer */}
+      <CartDrawer
+        toggleCartDrawer={toggleCartDrawer}
+        cartDrawerPos={cartDrawerPos}
+      />
 
       <AppBar position="fixed" style={styles.appbar}>
         <NavMenu />
@@ -150,14 +170,14 @@ export default function MinimalLayout({ children }) {
               </div>
             )}
 
-            <div>
+            <div onClick={toggleCartDrawer("right", true)}>
               <p style={styles.menuItems}>Bag(0)</p>
             </div>
           </div>
 
           {/* Mobile */}
           <div className={classes.sectionMobile}>
-            <div>
+            <div onClick={toggleCartDrawer("right", true)}>
               <p style={styles.menuItems}>Bag(0)</p>
             </div>
           </div>

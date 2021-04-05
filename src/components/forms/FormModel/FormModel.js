@@ -78,27 +78,27 @@ const ResetPasswordFormModel = {
 //     },
 //   };
 
-//   const AdminAccountDetailsFormModel = {
-//     formId: "AdminAccountDetailsFormModel",
-//     formField: {
-//       adminFirstName: {
-//         name: "adminFirstName",
-//         label: "First Name",
-//         requiredErrorMsg: "First Name is required",
-//       },
-//       adminLastName: {
-//         name: "adminLastName",
-//         label: "Last Name",
-//         requiredErrorMsg: "Last Name is required",
-//       },
-//       adminEmail: {
-//         name: "adminEmail",
-//         label: "Email address",
-//         requiredErrorMsg: "Email is required",
-//         invalidErrorMsg: "Please Enter a valid email address",
-//       },
-//     },
-//   };
+  const AdminAccountDetailsFormModel = {
+    formId: "AdminAccountDetailsFormModel",
+    formField: {
+      adminFirstName: {
+        name: "adminFirstName",
+        label: "First Name",
+        requiredErrorMsg: "First Name is required",
+      },
+      adminLastName: {
+        name: "adminLastName",
+        label: "Last Name",
+        requiredErrorMsg: "Last Name is required",
+      },
+      adminEmail: {
+        name: "adminEmail",
+        label: "Email address",
+        requiredErrorMsg: "Email is required",
+        invalidErrorMsg: "Please Enter a valid email address",
+      },
+    },
+  };
 
 //   const ChangePasswordFormModel = {
 //     formId: "ChangePasswordFormModel",
@@ -296,5 +296,5 @@ export {
   AddProductFormModel,
   // CheckOutFormModel,
   // ProductReviewFormModel,
-  // AdminAccountDetailsFormModel,
+  AdminAccountDetailsFormModel,
 };

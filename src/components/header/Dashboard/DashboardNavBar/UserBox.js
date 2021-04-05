@@ -70,8 +70,6 @@ export default function UserBox() {
   const classes = useStyles();
   // destructure current user from redux state
   const { currentUser } = useSelector(mapState);
-  // const { firstName, lastName } = currentUser;
-  // const fullName = firstName + " " + lastName;
 
   const fullName = currentUser
     ? currentUser.firstName + " " + currentUser.lastName
@@ -90,7 +88,7 @@ export default function UserBox() {
         <Avatar
           className={classes.avatar}
           component={RouterLink}
-          // src={currentUser.avatarUrl || ''}
+          src={currentUser.avatarUrl || ""}
           to="/admin/account"
         />
       </StyledBadge>

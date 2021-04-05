@@ -22,6 +22,8 @@ const MembersSettings = lazy(() => import("./pages/MembersSettings"));
 const AdminHome = lazy(() => import("./pages/admin/Home"));
 const AdminAddProduct = lazy(() => import("./pages/admin/AddProduct"));
 const AdminProducts = lazy(() => import("./pages/admin/Products"));
+const AdminCustomers = lazy(() => import("./pages/admin/Customers"));
+const AdminAccount = lazy(() => import("./pages/admin/Account"));
 
 /*** END PAGES **/
 
@@ -181,6 +183,7 @@ const App = (props) => {
           }
         >
           <Switch>
+            {/* Customer Pages  */}
             <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
             <Route
               exact
@@ -201,6 +204,7 @@ const App = (props) => {
               )}
             />
 
+            {/* Admin Pages */}
             <Route
               path={process.env.PUBLIC_URL + "/admin/home"}
               render={(routeProps) => (
@@ -237,6 +241,24 @@ const App = (props) => {
                 </WithAdminAuth>
               )}
             />
+
+            <Route
+              path={process.env.PUBLIC_URL + "/admin/customers"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminCustomers />
+                </WithAdminAuth>
+              )}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/admin/account"}
+              render={(routeProps) => (
+                <WithAdminAuth>
+                  <AdminAccount />
+                </WithAdminAuth>
+              )}
+            />
+            {/* End Admin Pages */}
 
             {/* Homepages */}
             <Route

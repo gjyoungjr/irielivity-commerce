@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //utils
-import { getAllUsers } from "../../redux/reducers/users/userActions";
+import { getAllUsers } from "../../redux/reducers/user/userActions";
 
 // layout
 import DashboardLayout from "../../layouts/DashboardLayout";
