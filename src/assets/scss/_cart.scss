@@ -13,6 +13,9 @@
 
     opacity: 1;
   }
+  @media #{$xs-layout} {
+    width: 260px;
+  }
   // @media #{$xs-layout} {
   //   top: 100%;
   //   right: -52px;

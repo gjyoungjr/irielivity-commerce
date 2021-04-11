@@ -33,19 +33,19 @@ export default function Menu() {
   useEffect(() => {
     const tl = new TimelineMax({ paused: true });
 
-    tl.to(".nav-menu-left", 1, {
+    tl.to(".nav-menu-left", 1.8, {
       left: 0,
       ease: Expo.easeInOut,
     });
 
     tl.to(
       ".nav-menu-right",
-      1,
+      1.8,
       {
         right: 0,
         ease: Expo.easeInOut,
       },
-      "-=1"
+      "-=1.8"
     );
 
     tl.staggerFrom(

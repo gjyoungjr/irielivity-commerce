@@ -32,8 +32,8 @@ export default function LandingPage() {
     autoplaySpeed: 2400,
     slidesToShow: 2,
     slidesToScroll: 1,
-    speed: 2000,
-    cssEase: "cubic-bezier(.84, 0, .08, .99)",
+    speed: 2700,
+    cssEase: "cubic-bezier(.84, 0, .08, 1)",
     // asNavFor: ".text-slider",
     centerMode: true,
     // prevArrow: $(".prev"),
@@ -44,7 +44,7 @@ export default function LandingPage() {
     autoplaySpeed: 2400,
     slidesToShow: 1,
     slidesToScroll: 1,
-    speed: 2000,
+    speed: 2700,
     cssEase: "cubic-bezier(.84, 0, .08, .99)",
     // asNavFor: ".text-slider",
     // centerMode: true,
@@ -57,7 +57,7 @@ export default function LandingPage() {
     autoplaySpeed: 2400,
     slidesToShow: 1,
     slidesToScroll: 1,
-    speed: 1950,
+    speed: 2500,
     cssEase: "cubic-bezier(.84, 0, .08, .99)",
     // asNavFor: ".image-slider",
     // prevArrow: $(".prev"),
@@ -65,6 +65,22 @@ export default function LandingPage() {
   };
   return (
     <div className="landing-wrapper" id="landing-wrapper">
+      <div className="animated-text-container">
+        <div className="animated-text-wrapper">
+          <div className="text-1 text">Irielivity</div>
+          <div className="text-2 text">Irielivity</div>
+          <div className="text-3 text">Irielivity</div>
+          <div className="text-4 text">Irielivity</div>
+          <div className="text-5 text">Irielivity</div>
+          <div className="text-6 text">Irielivity</div>
+          <div className="text-7 text">Irielivity</div>
+          <div className="text-8 text">Irielivity</div>
+          <div className="text-9 text">Irielivity</div>
+          <div className="text-10 text">Irielivity</div>
+          <div className="text-11 text">Irielivity</div>
+        </div>
+      </div>
+
       <div className="landing-inner">
         <div className="text-slider-wrapper">
           <div className="text-slider">
