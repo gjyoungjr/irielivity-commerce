@@ -44,7 +44,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 @-moz-keyframes blink {
@@ -58,7 +58,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 @-o-keyframes blink {
@@ -72,7 +72,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 @keyframes blink {
@@ -86,7 +86,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 
@@ -158,180 +158,180 @@
   opacity: 0;
 }
 
-// @-webkit-keyframes slide-out {
-//   0% {
-//     opacity: 0%;
-//   }
-//   1% {
-//     opacity: 100%;
-//   }
+@-webkit-keyframes slide-out {
+  0% {
+    opacity: 0%;
+  }
+  1% {
+    opacity: 100%;
+  }
 
-//   19% {
-//     opacity: 100%;
-//   }
-//   20% {
-//     opacity: 0%;
-//   }
+  19% {
+    opacity: 100%;
+  }
+  20% {
+    opacity: 0%;
+  }
 
-//   39% {
-//     opacity: 0%;
-//   }
-//   40% {
-//     opacity: 100%;
-//   }
+  39% {
+    opacity: 0%;
+  }
+  40% {
+    opacity: 100%;
+  }
 
-//   59% {
-//     opacity: 100%;
-//   }
-//   60% {
-//     opacity: 0%;
-//   }
+  59% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 0%;
+  }
 
-//   79% {
-//     opacity: 0%;
-//   }
-//   80% {
-//     opacity: 100%;
-//   }
+  79% {
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
 
-//   100% {
-//     opacity: 100%;
-//   }
-// }
-// @-moz-keyframes slide-out {
-//   0% {
-//     opacity: 0%;
-//   }
-//   1% {
-//     opacity: 100%;
-//   }
+  100% {
+    opacity: 100%;
+  }
+}
+@-moz-keyframes slide-out {
+  0% {
+    opacity: 0%;
+  }
+  1% {
+    opacity: 100%;
+  }
 
-//   19% {
-//     opacity: 100%;
-//   }
-//   20% {
-//     opacity: 0%;
-//   }
+  19% {
+    opacity: 100%;
+  }
+  20% {
+    opacity: 0%;
+  }
 
-//   39% {
-//     opacity: 0%;
-//   }
-//   40% {
-//     opacity: 100%;
-//   }
+  39% {
+    opacity: 0%;
+  }
+  40% {
+    opacity: 100%;
+  }
 
-//   59% {
-//     opacity: 100%;
-//   }
-//   60% {
-//     opacity: 0%;
-//   }
+  59% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 0%;
+  }
 
-//   79% {
-//     opacity: 0%;
-//   }
-//   80% {
-//     opacity: 100%;
-//   }
+  79% {
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
 
-//   100% {
-//     opacity: 100%;
-//   }
-// }
-// @-o-keyframes slide-out {
-//   0% {
-//     opacity: 0%;
-//   }
-//   1% {
-//     opacity: 100%;
-//   }
+  100% {
+    opacity: 100%;
+  }
+}
+@-o-keyframes slide-out {
+  0% {
+    opacity: 0%;
+  }
+  1% {
+    opacity: 100%;
+  }
 
-//   19% {
-//     opacity: 100%;
-//   }
-//   20% {
-//     opacity: 0%;
-//   }
+  19% {
+    opacity: 100%;
+  }
+  20% {
+    opacity: 0%;
+  }
 
-//   39% {
-//     opacity: 0%;
-//   }
-//   40% {
-//     opacity: 100%;
-//   }
+  39% {
+    opacity: 0%;
+  }
+  40% {
+    opacity: 100%;
+  }
 
-//   59% {
-//     opacity: 100%;
-//   }
-//   60% {
-//     opacity: 0%;
-//   }
+  59% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 0%;
+  }
 
-//   79% {
-//     opacity: 0%;
-//   }
-//   80% {
-//     opacity: 100%;
-//   }
+  79% {
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
 
-//   100% {
-//     opacity: 100%;
-//   }
-// }
-// @keyframes slide-out {
-//   0% {
-//     opacity: 0%;
-//   }
-//   1% {
-//     opacity: 100%;
-//   }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes slide-out {
+  0% {
+    opacity: 0%;
+  }
+  1% {
+    opacity: 100%;
+  }
 
-//   19% {
-//     opacity: 100%;
-//   }
-//   20% {
-//     opacity: 0%;
-//   }
+  19% {
+    opacity: 100%;
+  }
+  20% {
+    opacity: 0%;
+  }
 
-//   39% {
-//     opacity: 0%;
-//   }
-//   40% {
-//     opacity: 100%;
-//   }
+  39% {
+    opacity: 0%;
+  }
+  40% {
+    opacity: 100%;
+  }
 
-//   59% {
-//     opacity: 100%;
-//   }
-//   60% {
-//     opacity: 0%;
-//   }
+  59% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 0%;
+  }
 
-//   79% {
-//     opacity: 0%;
-//   }
-//   80% {
-//     opacity: 100%;
-//   }
+  79% {
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
 
-//   100% {
-//     opacity: 100%;
-//   }
-// }
+  100% {
+    opacity: 100%;
+  }
+}
 
-// @keyframes slide-out-container {
-//   0% {
-//     height: 100vh;
-//   }
+@keyframes slide-out-container {
+  0% {
+    height: 100vh;
+  }
 
-//   40% {
-//     height: 100vh;
-//   }
+  40% {
+    height: 100vh;
+  }
 
-//   100% {
-//     height: 0%;
-//   }
-// }
+  100% {
+    height: 0%;
+  }
+}
 
 @media (max-width: 990px) {
   .header {
