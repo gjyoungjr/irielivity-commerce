@@ -44,7 +44,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 @-moz-keyframes blink {
@@ -58,7 +58,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 @-o-keyframes blink {
@@ -72,7 +72,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 @keyframes blink {
@@ -86,7 +86,7 @@
     opacity: 100%;
   }
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
