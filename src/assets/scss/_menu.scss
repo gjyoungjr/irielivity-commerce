@@ -166,10 +166,10 @@
 /* MOBILE NAV FOR AUTH ON MENU */
 .mobile-auth-wrapper {
   position: absolute;
-  bottom: 12%;
-  left: 20%;
+  bottom: 15%;
+  left: 15%;
   @media #{$md-layout} {
-    left: 35%;
+    left: 28%;
   }
 }
 

@@ -23,139 +23,26 @@
   padding-bottom: 40px;
 }
 
-.text-1,
-.text-3,
-.text-4,
-.text-8,
-.text-9,
-.text-11 {
-  color: #f9efe2;
-  -webkit-text-stroke: 1px black;
+.text-1 {
+  color: #000;
 }
 
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0%;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
   }
-  1% {
-    opacity: 100%;
-  }
-  99% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-@-moz-keyframes blink {
-  0% {
-    opacity: 0%;
-  }
-  1% {
-    opacity: 100%;
-  }
-  99% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-@-o-keyframes blink {
-  0% {
-    opacity: 0%;
-  }
-  1% {
-    opacity: 100%;
-  }
-  99% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-@keyframes blink {
-  0% {
-    opacity: 0%;
-  }
-  1% {
-    opacity: 100%;
-  }
-  99% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 100%;
+  to {
+    opacity: 0;
   }
 }
 
 .text-1 {
-  -webkit-animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
-  animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
-  opacity: 0;
-}
-
-.text-2 {
-  animation: blink 0.8s linear 0.8s, blink 0.8s linear 2.1s;
-  -webkit-animation: blink 0.8s linear 0.8s, blink 0.8s linear 2.1s;
-  opacity: 0;
-}
-
-.text-3 {
-  animation: blink 0.8s linear 0.7s, blink 0.8s linear 2.2s;
-  -webkit-animation: blink 0.8s linear 0.7s, blink 0.8s linear 2.2s;
-  opacity: 0;
-}
-
-.text-4 {
-  animation: blink 0.8s linear 0.6s, blink 0.8s linear 2.3s;
-  -webkit-animation: blink 0.8s linear 0.6s, blink 0.8s linear 2.3s;
-  opacity: 0;
-}
-
-.text-5 {
-  animation: blink 0.8s linear 0.5s, blink 0.8s linear 2.4s;
-  -webkit-animation: blink 0.8s linear 0.5s, blink 0.8s linear 2.4s;
-  opacity: 0;
-}
-
-.text-6 {
-  animation: blink 0.8s linear 0.4s, blink 0.8s linear 2.5s,
-    slide-out 1s linear 3.2s;
-  -webkit-animation: blink 0.8s linear 0.4s, blink 0.8s linear 2.5s,
-    slide-out 1s linear 3.2s;
-  opacity: 0;
-}
-
-.text-7 {
-  animation: blink 0.8s linear 0.5s, blink 0.8s linear 2.4s;
-  -webkit-animation: blink 0.8s linear 0.5s, blink 0.8s linear 2.4s;
-  opacity: 0;
-}
-
-.text-8 {
-  animation: blink 0.8s linear 0.6s, blink 0.8s linear 2.3s;
-  -webkit-animation: blink 0.8s linear 0.6s, blink 0.8s linear 2.3s;
-  opacity: 0;
-}
-
-.text-9 {
-  animation: blink 0.8s linear 0.7s, blink 0.8s linear 2.2s;
-  -webkit-animation: blink 0.8s linear 0.7s, blink 0.8s linear 2.2s;
-  opacity: 0;
-}
-
-.text-10 {
-  animation: blink 0.8s linear 0.8s, blink 0.8s linear 2.1s;
-  -webkit-animation: blink 0.8s linear 0.8s, blink 0.8s linear 2.1s;
-  opacity: 0;
-}
-
-.text-11 {
-  animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
-  -webkit-animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
-  opacity: 0;
+  // -webkit-animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
+  // animation: blink 0.8s linear 0.9s, blink 0.8s linear 2s;
+  // opacity: 0;
+  animation: fadeOut 2s forwards;
+  -webkit-animation: fadeOut 2s forwards;
+  animation-delay: 3s;
 }
 
 @-webkit-keyframes slide-out {

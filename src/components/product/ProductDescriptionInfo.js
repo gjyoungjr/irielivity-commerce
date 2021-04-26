@@ -1,74 +1,204 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { getProductCartQuantity } from "../../helpers/product";
-import { addToCart } from "../../redux/actions/cartActions";
-import { addToWishlist } from "../../redux/actions/wishlistActions";
-import { addToCompare } from "../../redux/actions/compareActions";
-import Rating from "./sub-components/ProductRating";
+import { Grid } from "@material-ui/core";
 
-const ProductDescriptionInfo = ({
-  product,
-  discountedPrice,
-  currency,
-  finalDiscountedPrice,
-  finalProductPrice,
-  cartItems,
-  wishlistItem,
-  compareItem,
-  addToast,
-  addToCart,
-  addToWishlist,
-  addToCompare
-}) => {
-  const [selectedProductColor, setSelectedProductColor] = useState(
-    product.variation ? product.variation[0].color : ""
-  );
-  const [selectedProductSize, setSelectedProductSize] = useState(
-    product.variation ? product.variation[0].size[0].name : ""
-  );
-  const [productStock, setProductStock] = useState(
-    product.variation ? product.variation[0].size[0].stock : product.stock
-  );
-  const [quantityCount, setQuantityCount] = useState(1);
+// components
+import AppButton from "../app-button";
 
-  const productCartQty = getProductCartQuantity(
-    cartItems,
-    product,
-    selectedProductColor,
-    selectedProductSize
-  );
+const ProductDescriptionInfo = ({ product }) => {
+  console.log(product, "here");
+  const [selectedProductSize, setSelectedProductSize] = useState("");
+  // const [isProductAdded, setIsProductAdded] = useState(false);
+  // const [isProductFavorited, setIsProductFavorited] = useState(false);
+  const [isSizeError, setIsSizeError] = useState(false);
+  // const [selectedProductColor, setSelectedProductColor] = useState("");
+  // const [open, setOpen] = React.useState(false);
+
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  console.log(product, "her");
+
+  // // add products to cart
+  // const handleAddToCart = (product) => {
+  //   // handle guard if no product
+  //   // or if no selected size was chosen
+  //   if (product.sizes.length > 0) {
+  //     if (selectedProductSize === "") {
+  //       setIsSizeError(true);
+  //       return;
+  //     }
+  //   }
+
+  //   // dispatch redux action to add product to cart
+  //   dispatch(addToCart(product));
+  //   setIsProductAdded(true);
+  // };
+
+  // // add product to wish list/favorites
+  // const handleAddToFavorites = (product) => {
+  //   // handle guard if no product
+  //   if (!product) return;
+
+  //   // dispatch redux action to add product to favorites
+  //   dispatch(addToFavorites(product));
+  //   setIsProductFavorited(true);
+  // };
 
   return (
-    <div className="product-details-content ml-70">
-      <h2>{product.name}</h2>
+    <div className="product-details-content ml-70 text-left">
+      <h2 className="text-left">{product.productName}</h2>
+
       <div className="product-details-price">
-        {discountedPrice !== null ? (
+        {product.productDiscount ? (
           <Fragment>
-            <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
-            <span className="old">
-              {currency.currencySymbol + finalProductPrice}
-            </span>
+            <span>BZD ${product.productPrice}</span>
+            <span className="old">BZD ${product.originalProductPrice}</span>
           </Fragment>
         ) : (
-          <span>{currency.currencySymbol + finalProductPrice} </span>
+          <span style={{ color: "black" }}>BZD ${product.productPrice} </span>
         )}
       </div>
-      {product.rating && product.rating > 0 ? (
-        <div className="pro-details-rating-wrap">
-          <div className="pro-details-rating">
-            <Rating ratingValue={product.rating} />
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+
       <div className="pro-details-list">
-        <p>{product.shortDescription}</p>
+        <p>{product ? product.productDescription : ""}</p>
+      </div>
+      <div className="pro-details-size-color mb-4">
+        {/* {product && product.colors ? (
+          <div className="pro-details-color-wrap">
+            <span>Color</span>
+            <div
+              className="pro-details-color-content"
+              style={{ display: "block" }}
+            >
+              <label
+                className={`pro-details-color-content--single ${product.colors}`}
+              >
+                <input
+                  type="radio"
+                  value={product.colors}
+                  name="product-color"
+                  checked={
+                    product.colors === selectedProductColor ? "checked" : ""
+                  }
+                  onChange={() => {
+                    setSelectedProductColor(product.colors);
+                  }}
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        ) : (
+          ""
+        )} */}
+
+        {product && product.sizes && product.sizes.length ? (
+          <div className="pro-details-size">
+            <div className="d-flex justify-content-between">
+              <span>Select Size</span>
+              <span
+                // onClick={() => handleClickOpen()}
+                style={{ cursor: "pointer", opacity: 0.6 }}
+              >
+                Size Guide
+              </span>
+            </div>
+            <div className="pro-details-size-content">
+              {product && product.sizes
+                ? product.sizes.map((single, key) => {
+                    return (
+                      <label
+                        className={`pro-details-size-content--single`}
+                        key={key}
+                      >
+                        <input
+                          type="radio"
+                          value={single}
+                          checked={
+                            single === selectedProductSize ? "checked" : ""
+                          }
+                          onChange={() => {
+                            setIsSizeError(false);
+                            setSelectedProductSize(single);
+                          }}
+                        />
+                        <span className="size-name">{single}</span>
+                      </label>
+                    );
+                  })
+                : ""}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
-      {product.variation ? (
+      {isSizeError && (
+        <p style={{ color: "#fe5252", marginTop: "-10px" }}>
+          Please select a size before adding to cart
+        </p>
+      )}
+
+      <Grid container spacing={2} direction="column">
+        <Grid item xs={12} lg={11} md={11}>
+          <div className="pro-details-cart ">
+            {product.quantity === 0 || product.quantity < 0 ? (
+              <AppButton
+                label="Out of Stock"
+                bgColor="black"
+                color="white"
+                width="100%"
+                height="60px"
+                borderRadius="30px"
+              />
+            ) : (
+              <AppButton
+                label="Add to Cart"
+                bgColor="black"
+                color="white"
+                width="100%"
+                height="60px"
+                borderRadius="30px"
+                // onClick={() =>
+                //   handleAddToCart({
+                //     ...product,
+                //     selectedSize: selectedProductSize,
+                //   })
+                // }
+              />
+            )}
+          </div>
+        </Grid>
+        {/* <Grid item xs={12} lg={11} md={11}>
+          <div>
+            <AppButton
+              label={
+                <>
+                  <span>Favorite</span>
+                  <FavoriteBorderIcon
+                    style={{ fontSize: "16px", marginLeft: "9px" }}
+                  />
+                </>
+              }
+              bgColor="white"
+              color="black"
+              border="1px solid grey"
+              width="100%"
+              height="60px"
+              borderRadius="30px"
+              onClick={() => handleAddToFavorites(product)}
+            />
+          </div>
+        </Grid> */}
+      </Grid>
+
+      {/* {product.variation ? (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
             <span>Color</span>
@@ -103,7 +233,7 @@ const ProductDescriptionInfo = ({
             <span>Size</span>
             <div className="pro-details-size-content">
               {product.variation &&
-                product.variation.map(single => {
+                product.variation.map((single) => {
                   return single.color === selectedProductColor
                     ? single.size.map((singleSize, key) => {
                         return (
@@ -265,7 +395,7 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
+      )}  */}
 
       <div className="pro-details-social">
         <ul>
@@ -301,46 +431,7 @@ const ProductDescriptionInfo = ({
 };
 
 ProductDescriptionInfo.propTypes = {
-  addToCart: PropTypes.func,
-  addToCompare: PropTypes.func,
-  addToWishlist: PropTypes.func,
-  addToast: PropTypes.func,
-  cartItems: PropTypes.array,
-  compareItem: PropTypes.array,
-  currency: PropTypes.object,
-  discountedPrice: PropTypes.number,
-  finalDiscountedPrice: PropTypes.number,
-  finalProductPrice: PropTypes.number,
   product: PropTypes.object,
-  wishlistItem: PropTypes.object
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToCart: (
-      item,
-      addToast,
-      quantityCount,
-      selectedProductColor,
-      selectedProductSize
-    ) => {
-      dispatch(
-        addToCart(
-          item,
-          addToast,
-          quantityCount,
-          selectedProductColor,
-          selectedProductSize
-        )
-      );
-    },
-    addToWishlist: (item, addToast) => {
-      dispatch(addToWishlist(item, addToast));
-    },
-    addToCompare: (item, addToast) => {
-      dispatch(addToCompare(item, addToast));
-    }
-  };
-};
-
-export default connect(null, mapDispatchToProps)(ProductDescriptionInfo);
+export default ProductDescriptionInfo;

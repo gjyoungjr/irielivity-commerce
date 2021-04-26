@@ -27,8 +27,8 @@ const useStyles = makeStyles({
     margin: "5px 5px 5px 5px",
   },
   card: {
-    position: "absolute",
-    bottom: "5%",
+    position: "absolute !important",
+    top: "30%",
     zIndex: 10,
     left: "50%",
     transform: "translate(-50%, -50%)",

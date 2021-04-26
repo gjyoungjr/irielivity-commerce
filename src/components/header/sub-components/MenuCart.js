@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { useToasts } from "react-toast-notifications";
+// import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../../helpers/product";
 
 const MenuCart = ({ cartData, currency, deleteFromCart }) => {
   let cartTotalPrice = 0;
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
   return (
     <div className="shopping-cart-content">
       {cartData && cartData.length > 0 ? (
@@ -65,7 +65,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     )}
                   </div>
                   <div className="shopping-cart-delete">
-                    <button onClick={() => deleteFromCart(single, addToast)}>
+                    <button>
                       <i className="fa fa-times-circle" />
                     </button>
                   </div>
@@ -103,7 +103,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
 MenuCart.propTypes = {
   cartData: PropTypes.array,
   currency: PropTypes.object,
-  deleteFromCart: PropTypes.func
+  deleteFromCart: PropTypes.func,
 };
 
 export default MenuCart;

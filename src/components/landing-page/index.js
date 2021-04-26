@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // import { IconButton } from "@material-ui/core";
 // import { Howl } from "howler";
 import { Hidden } from "@material-ui/core";
-
+import CountUp from "react-countup";
 // audio
 // import introAudio from "../../assets/audio/intro.mp3";
 // icons
@@ -67,17 +67,9 @@ export default function LandingPage() {
     <div className="landing-wrapper" id="landing-wrapper">
       <div className="animated-text-container">
         <div className="animated-text-wrapper">
-          <div className="text-1 text">Irielivity</div>
-          <div className="text-2 text">Irielivity</div>
-          <div className="text-3 text">Irielivity</div>
-          <div className="text-4 text">Irielivity</div>
-          <div className="text-5 text">Irielivity</div>
-          <div className="text-6 text">Irielivity</div>
-          <div className="text-7 text">Irielivity</div>
-          <div className="text-8 text">Irielivity</div>
-          <div className="text-9 text">Irielivity</div>
-          <div className="text-10 text">Irielivity</div>
-          <div className="text-11 text">Irielivity</div>
+          <div className="text-1 text">
+            Loading - <CountUp start={0} end={100} duration={3} />%
+          </div>
         </div>
       </div>
 
@@ -143,7 +135,7 @@ export default function LandingPage() {
         </div> */}
 
         <div className="slider-control">
-          <p className="explore" onClick={() => history.push("/new")}>
+          <p className="explore" onClick={() => history.push("/categories")}>
             Explore <ArrowForwardIcon />
           </p>
         </div>

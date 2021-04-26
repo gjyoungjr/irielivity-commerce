@@ -27,15 +27,11 @@ const styles = (theme) => ({
     color: "black",
     backgroundColor: "#f5f5f5",
   },
-  //   backDrop: {
-  //     backdropFilter: "blur(3px)",
-  //     backgroundColor:'rgba(0,0,30,0.4)'
-  //   },
 });
 const useStyles = makeStyles(() => ({
   backDrop: {
     backdropFilter: "blur(3px)",
-    backgroundColor: "rgba(0,0,30,0.4)",
+    backgroundColor: "rgba(0,0,30,0.01)",
   },
   paper: {
     width: "530px",
@@ -122,11 +118,11 @@ export default function FormDialog({ open, onClose }) {
         open={open}
         PaperProps={{ style: { borderRadius: "25px" } }}
         classes={{ paper: classes.paper }}
-        // BackdropProps={{
-        //     classes: {
-        //       root: classes.backDrop,
-        //     },
-        //   }}
+        BackdropProps={{
+          classes: {
+            root: classes.backDrop,
+          },
+        }}
       >
         <DialogTitle onClose={onClose} />
 

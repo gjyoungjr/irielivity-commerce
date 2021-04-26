@@ -1,17 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import gsap, { TimelineMax, Expo, Power2 } from "gsap";
 import { Link } from "react-router-dom";
 
 // components
-import ProductCategories from "./ProductCategories";
 import AuthFormDialog from "../../auth/FormDialog";
 import MobileAuthNav from "./MobileAuthNav";
 // icons & imgs
 import closeIcon from "../../../assets/img/close-icon.png";
 gsap.registerPlugin();
 
+const menuItems = [
+  {
+    id: 1,
+    name: "Home",
+    url: "/",
+    number: "01",
+  },
+  {
+    id: 2,
+    name: "Shop",
+    url: "/",
+    number: "02",
+  },
+  {
+    id: 3,
+    name: "Media",
+    url: "/",
+    number: "03",
+  },
+  {
+    id: 4,
+    name: "Contact",
+    url: "/",
+    number: "04",
+  },
+];
 export default function Menu() {
-  const [showProductCategories, setShowProductCategories] = useState(false);
   const [showAuthForm, setShowAuthForm] = React.useState(false);
 
   // handles dipslay of auth form signin /register
@@ -20,13 +44,6 @@ export default function Menu() {
   };
   const handleCloseAuthForm = () => {
     setShowAuthForm(false);
-  };
-  // handles display of product categories menu
-  const handleShowProductCategories = () => {
-    setShowProductCategories(true);
-  };
-  const handleHideProductCategories = () => {
-    setShowProductCategories(false);
   };
 
   // open menu and nav link animations
@@ -134,39 +151,19 @@ export default function Menu() {
         <div className="hr"></div>
         <div className="nav-menu1">
           <div className="nav-menu-left">
-            {!showProductCategories ? (
-              <>
-                <div className="nav-menu-links" id="nav-menu-links">
-                  <div className="nav-menu-link">
-                    <Link to="/">
-                      Home <span>01</span>
-                    </Link>
-                  </div>
-                  <div className="nav-menu-link">
-                    <Link to="#" onClick={handleShowProductCategories}>
-                      Shop <span>02</span>
-                    </Link>
-                  </div>
-                  <div className="nav-menu-link">
-                    <Link to="#">
-                      Media <span>03</span>
-                    </Link>
-                  </div>
-                  <div className="nav-menu-link">
-                    <Link to="#">
-                      Contact <span>04</span>
-                    </Link>
-                  </div>
+            <div className="nav-menu-links" id="nav-menu-links">
+              {menuItems.map((item, key) => (
+                <div className="nav-menu-link" key={key}>
+                  <Link to={item.url}>
+                    {item.name} <span>{item.number}</span>
+                  </Link>
                 </div>
+              ))}
+            </div>
 
-                <MobileAuthNav handleOpenAuthForm={handleOpenAuthForm} />
-              </>
-            ) : (
-              <ProductCategories
-                hideProductCategories={handleHideProductCategories}
-              />
-            )}
+            <MobileAuthNav handleOpenAuthForm={handleOpenAuthForm} />
           </div>
+
           <div className="nav-menu-right">
             <div className="contact">
               <div className="mail">

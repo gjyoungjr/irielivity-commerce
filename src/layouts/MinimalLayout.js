@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import AuthFormDialog from "../components/auth/FormDialog";
 import { default as NavMenu } from "../components/header/OffCanvasNavMenu";
 import CartDrawer from "../components/cart";
+// import SmoothScroll from "../components/smooth-scroll";
 
 // utils fxn
 import { checkIsUserAdmin } from "../firebase/utils";
@@ -122,7 +123,7 @@ export default function MinimalLayout({ children }) {
     <div className={classes.grow}>
       {/* Log in regsiter form  */}
       <AuthFormDialog open={showAuthForm} onClose={handleCloseAuthForm} />
-      
+
       {/* Cart Drawer */}
       <CartDrawer
         toggleCartDrawer={toggleCartDrawer}
@@ -131,7 +132,6 @@ export default function MinimalLayout({ children }) {
 
       <AppBar position="fixed" style={styles.appbar}>
         <NavMenu />
-
         <Toolbar>
           <div className="menu-open">
             <p style={styles.menuItems}>Menu</p>
@@ -150,8 +150,6 @@ export default function MinimalLayout({ children }) {
 
           {/* Desktop */}
           <div className={classes.sectionDesktop}>
-            {/* Auth Listener to Logout/Login */}
-
             {!currentUser && (
               <div className="mr-4" onClick={() => handleOpenAuthForm()}>
                 <p style={styles.menuItems}>Login</p>
@@ -185,7 +183,9 @@ export default function MinimalLayout({ children }) {
       </AppBar>
 
       {/* Children */}
+      {/* <SmoothScroll> */}
       <div className="children-wrapper">{children}</div>
+      {/* </SmoothScroll> */}
     </div>
   );
 }
@@ -201,6 +201,6 @@ const styles = {
     backgroundColor: "white",
     boxShadow: "none",
     borderBottom: "1px solid #f5f5f5",
-    zIndex: 5,
+    zIndex: 1,
   },
 };

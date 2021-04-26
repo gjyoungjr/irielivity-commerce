@@ -4,7 +4,7 @@ import React from "react";
 const productImageGallerySticky = ({ product }) => {
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
-      {product.discount || product.new ? (
+      {/* {product.discount || product.new ? (
         <div className="product-img-badges">
           {product.discount ? (
             <span className="pink">-{product.discount}%</span>
@@ -15,14 +15,14 @@ const productImageGallerySticky = ({ product }) => {
         </div>
       ) : (
         ""
-      )}
+      )} */}
       <div className="product-sticky-image mb--10">
-        {product.image &&
-          product.image.map((single, key) => {
+        {product.subImages &&
+          product.subImages.map((imgSrc, key) => {
             return (
               <div className="product-sticky-image__single mb-10" key={key}>
                 <img
-                  src={process.env.PUBLIC_URL + single}
+                  src={process.env.PUBLIC_URL + imgSrc}
                   alt=""
                   className="img-fluid"
                 />
@@ -35,7 +35,7 @@ const productImageGallerySticky = ({ product }) => {
 };
 
 productImageGallerySticky.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 export default productImageGallerySticky;
