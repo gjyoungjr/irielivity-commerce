@@ -4,7 +4,7 @@ import MetaTags from "react-meta-tags";
 // layout
 import MinimalLayout from "../layouts/MinimalLayout";
 //components
-import ProductCategories from "../components/shop-categories";
+import { default as ProductCategories } from "../components/shop/ShopCategories";
 
 export default function ShopCategories() {
   return (

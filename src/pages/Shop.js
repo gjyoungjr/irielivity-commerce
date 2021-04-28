@@ -53,10 +53,6 @@ const Shop = ({ location }) => {
         <div className="shop-area pt-95 pb-100">
           <div className="container-fluid">
             <div className="row">
-              {/* <div className="col-lg-2 order-2 order-lg-1">
-                {/* shop sidebar 
-                <ShopSidebar products={products} sideSpaceClass="mr-30" />
-              </div> */}
               <div className="col-lg-12 order-1 order-lg-2">
                 {/* shop topbar default */}
                 <ShopTopBar
@@ -66,21 +62,6 @@ const Shop = ({ location }) => {
 
                 {/* shop page content default */}
                 <ShopProducts products={products} />
-
-                {/* shop product pagination
-                <div className="pro-pagination-style text-center mt-30">
-                  {/* <Paginator
-                    totalRecords={sortedProducts.length}
-                    pageLimit={pageLimit}
-                    pageNeighbours={2}
-                    setOffset={setOffset}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageContainerClass="mb-0 mt-0"
-                    pagePrevText="«"
-                    pageNextText="»"
-                  /> *
-                </div> */}
               </div>
             </div>
           </div>

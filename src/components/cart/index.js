@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import {  IconButton, Drawer } from "@material-ui/core";
+import { IconButton, Drawer, makeStyles } from "@material-ui/core";
 
 // icons
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -73,9 +73,14 @@ const cartData = [
     productPrice: 400,
   },
 ];
+const useStyles = makeStyles({
+  paper: {
+    backgroundColor: "#fdfbf4",
+  },
+});
 
 export default function TemporaryDrawer({ toggleCartDrawer, cartDrawerPos }) {
-
+  const classes = useStyles();
   const list = (anchor) => (
     <div className="shopping-cart-content" style={{ marginTop: "-14px" }}>
       {cartData && cartData.length > 0 ? (
@@ -136,18 +141,6 @@ export default function TemporaryDrawer({ toggleCartDrawer, cartDrawerPos }) {
             >
               Checkout
             </Link>
-            <div
-              className="shopping-cart-btn-1 text-center"
-              style={{ marginTop: "-8px" }}
-            >
-              <Link
-                style={{ textTransform: "none" }}
-                className="default-btn"
-                to={process.env.PUBLIC_URL + "/cart"}
-              >
-                View Cart
-              </Link>
-            </div>
           </div>
         </Fragment>
       ) : (
@@ -160,6 +153,7 @@ export default function TemporaryDrawer({ toggleCartDrawer, cartDrawerPos }) {
     <div>
       <React.Fragment>
         <Drawer
+          classes={{ paper: classes.paper }}
           anchor={"right"}
           open={cartDrawerPos["right"]}
           onClose={toggleCartDrawer("right", false)}

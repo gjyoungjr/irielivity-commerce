@@ -1,6 +1,40 @@
 /*----- 9. Banner style  -------*/
 /** Custom Product Banner **/
 
+.categories-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.img-reveal img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform-origin: right !important;
+}
+.img-reveal {
+  visibility: hidden;
+  // position: relative;
+  width: 100%;
+  height: 80%;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.categories-link {
+  margin-top: -13%;
+  font-size: 20px;
+  font-weight: lighter;
+  &.right {
+    margin-top: -9%;
+  }
+}
+
 .banner-wrapper {
   overflow: hidden;
 

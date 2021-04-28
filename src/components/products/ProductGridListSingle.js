@@ -24,8 +24,6 @@ const ProductGridListSingle = ({
 }) => {
   // const dispatch = useDispatch();
 
-  console.log(product);
-
   // handles remove favorite item
   // const handleRemoveFavoriteItem = (product) => {
   //   dispatch(removeFavoriteItem(product));
@@ -109,13 +107,13 @@ const ProductGridListSingle = ({
               <div className="product-price">
                 {product.productDiscount ? (
                   <Fragment>
-                    <span>BZD {product.productPrice}</span>
+                    <span>BZD ${product.productPrice}</span>
                     <span className="old">
-                      BZD {product.originalProductPrice}
+                      BZD ${product.originalProductPrice}
                     </span>
                   </Fragment>
                 ) : (
-                  <span>BZD {product.productPrice}</span>
+                  <span>BZD ${product.productPrice}</span>
                 )}
               </div>
             </div>
@@ -124,23 +122,6 @@ const ProductGridListSingle = ({
       ) : (
         ""
       )}
-      {/* product modal */}
-      {/* <ProductModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        product={product}
-        currency={currency}
-        // discountedprice={discountedPrice}
-        // finalproductprice={finalProductPrice}
-        // finaldiscountedprice={finalDiscountedPrice}
-        cartitem={cartItem}
-        wishlistitem={wishlistItem}
-        compareitem={compareItem}
-        addtocart={addToCart}
-        addtowishlist={addToWishlist}
-        addtocompare={addToCompare}
-        addtoast={addToast}
-      /> */}
     </Fragment>
   );
 };
@@ -153,14 +134,3 @@ ProductGridListSingle.propTypes = {
 };
 
 export default ProductGridListSingle;
-
-// const styles = {
-//   deleteIconWrapper: {
-//     marginTop: "-4px",
-//     backgroundColor: "white",
-//     borderRadius: "25px",
-//     height: "30px",
-//     width: "32px",
-//     padding: "6px",
-//   },
-// };

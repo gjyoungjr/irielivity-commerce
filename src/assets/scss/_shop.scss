@@ -2,31 +2,15 @@
 // new top bar
 .product-types {
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 25px;
   padding: 7px;
   cursor: pointer;
-}
-/* unvisited link */
-
-.product-types :link {
-  color: red;
-}
-
-/* visited link */
-a:visited {
-  color: green;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 }
 
-/* mouse over link */
-.product-types:hover {
-  background-color: black;
-  color: white;
-}
-
-/* selected link */
-a:active {
-  color: blue;
-}
 .shop-top-bar {
   display: flex;
   align-items: center;

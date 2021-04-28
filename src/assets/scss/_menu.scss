@@ -153,10 +153,21 @@
   .nav-close-icon {
     width: 40%;
   }
+  .nav-menu-links {
+    margin-left: -40%;
+    margin-top: -20%;
+  }
   .nav-menu-link a {
     text-decoration: none;
     color: #fff;
-    font-size: 50px;
+    font-size: 35px;
+    text-align: left;
+  }
+  .nav-menu-link {
+    margin-bottom: 40px;
+  }
+  .nav-menu-link span {
+    display: none;
   }
   .nav-menu-link:first-child a::before {
     display: none;
@@ -166,15 +177,14 @@
 /* MOBILE NAV FOR AUTH ON MENU */
 .mobile-auth-wrapper {
   position: absolute;
-  bottom: 15%;
-  left: 15%;
+  bottom: 20%;
+  left: 10%;
   @media #{$md-layout} {
-    left: 28%;
+    left: 20%;
   }
 }
 
 /*  PRODUCT CATEGORIES MENU */
-
 .project {
   width: 100%;
   // position: relative;

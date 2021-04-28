@@ -19,13 +19,13 @@ const menuItems = [
   {
     id: 2,
     name: "Shop",
-    url: "/",
+    url: "/categories",
     number: "02",
   },
   {
     id: 3,
     name: "Media",
-    url: "/",
+    url: "/media",
     number: "03",
   },
   {

@@ -4,6 +4,7 @@ import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect, useDispatch } from "react-redux";
+import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 // utils
 import { setCurrentUser } from "./redux/reducers/user/userActions";
@@ -12,7 +13,6 @@ import { auth, handleUserProfile } from "./firebase/utils";
 // hoc for auth handling
 import WithAuth from "./hoc/withAuth";
 import WithAdminAuth from "./hoc/withAdminAuth";
-import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 /*** PAGES **/
 const Home = lazy(() => import("./pages/Home"));
@@ -29,6 +29,7 @@ const AdminCustomers = lazy(() => import("./pages/admin/Customers"));
 const AdminAccount = lazy(() => import("./pages/admin/Account"));
 
 /*** END PAGES **/
+
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 // home pages

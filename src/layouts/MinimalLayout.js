@@ -36,8 +36,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     flexGrow: 40,
     fontWeight: "600",
-    fontSize: "25px",
-    textTransform: "uppercase",
+    fontSize: "27px",
     cursor: "pointer",
   },
   search: {
@@ -96,6 +95,8 @@ export default function MinimalLayout({ children }) {
   const [cartDrawerPos, setCartDrawerPos] = React.useState({
     right: false,
   });
+
+  // hanldes display of auth form
   const handleOpenAuthForm = () => {
     setShowAuthForm(true);
   };
@@ -198,9 +199,9 @@ const styles = {
     cursor: "pointer",
   },
   appbar: {
-    backgroundColor: "white",
+    backgroundColor: "#fdfbf4",
     boxShadow: "none",
-    borderBottom: "1px solid #f5f5f5",
+    borderBottom: "1px solid #dadada",
     zIndex: 1,
   },
 };

@@ -13,6 +13,7 @@
     "circletype": "^2.3.0",
     "firebase": "^8.2.9",
     "formik": "^2.2.6",
+    "framer-motion": "^4.1.11",
     "google-maps-react": "^2.0.2",
     "gsap": "^3.6.0",
     "howler": "^2.2.1",

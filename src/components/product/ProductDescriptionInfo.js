@@ -4,15 +4,17 @@ import { Grid } from "@material-ui/core";
 
 // components
 import AppButton from "../app-button";
-
+import CartDrawer from "../cart";
 const ProductDescriptionInfo = ({ product }) => {
-  console.log(product, "here");
   const [selectedProductSize, setSelectedProductSize] = useState("");
   // const [isProductAdded, setIsProductAdded] = useState(false);
   // const [isProductFavorited, setIsProductFavorited] = useState(false);
   const [isSizeError, setIsSizeError] = useState(false);
   // const [selectedProductColor, setSelectedProductColor] = useState("");
   // const [open, setOpen] = React.useState(false);
+  const [cartDrawerPos, setCartDrawerPos] = React.useState({
+    right: false,
+  });
 
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -20,8 +22,6 @@ const ProductDescriptionInfo = ({ product }) => {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-
-  console.log(product, "her");
 
   // // add products to cart
   // const handleAddToCart = (product) => {
@@ -49,26 +49,43 @@ const ProductDescriptionInfo = ({ product }) => {
   //   setIsProductFavorited(true);
   // };
 
+  // opens & close cart drawer
+  const toggleCartDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setCartDrawerPos({ ...cartDrawerPos, [anchor]: open });
+  };
   return (
-    <div className="product-details-content ml-70 text-left">
-      <h2 className="text-left">{product.productName}</h2>
+    <Fragment>
+      {/* Cart Drawer */}
+      <CartDrawer
+        toggleCartDrawer={toggleCartDrawer}
+        cartDrawerPos={cartDrawerPos}
+      />
+      <div className="product-details-content ml-70 text-left">
+        <h2 className="text-left">{product.productName}</h2>
 
-      <div className="product-details-price">
-        {product.productDiscount ? (
-          <Fragment>
-            <span>BZD ${product.productPrice}</span>
-            <span className="old">BZD ${product.originalProductPrice}</span>
-          </Fragment>
-        ) : (
-          <span style={{ color: "black" }}>BZD ${product.productPrice} </span>
-        )}
-      </div>
+        <div className="product-details-price">
+          {product.productDiscount ? (
+            <Fragment>
+              <span>BZD ${product.productPrice}</span>
+              <span className="old">BZD ${product.originalProductPrice}</span>
+            </Fragment>
+          ) : (
+            <span style={{ color: "black" }}>BZD ${product.productPrice} </span>
+          )}
+        </div>
 
-      <div className="pro-details-list">
-        <p>{product ? product.productDescription : ""}</p>
-      </div>
-      <div className="pro-details-size-color mb-4">
-        {/* {product && product.colors ? (
+        <div className="pro-details-list">
+          <p>{product ? product.productDescription : ""}</p>
+        </div>
+        <div className="pro-details-size-color mb-4">
+          {/* {product && product.colors ? (
           <div className="pro-details-color-wrap">
             <span>Color</span>
             <div
@@ -97,85 +114,86 @@ const ProductDescriptionInfo = ({ product }) => {
           ""
         )} */}
 
-        {product && product.sizes && product.sizes.length ? (
-          <div className="pro-details-size">
-            <div className="d-flex justify-content-between">
-              <span>Select Size</span>
-              <span
-                // onClick={() => handleClickOpen()}
-                style={{ cursor: "pointer", opacity: 0.6 }}
-              >
-                Size Guide
-              </span>
+          {product && product.sizes && product.sizes.length ? (
+            <div className="pro-details-size">
+              <div className="d-flex justify-content-between">
+                <span>Select Size</span>
+                <span
+                  // onClick={() => handleClickOpen()}
+                  style={{ cursor: "pointer", opacity: 0.6 }}
+                >
+                  Size Guide
+                </span>
+              </div>
+              <div className="pro-details-size-content">
+                {product && product.sizes
+                  ? product.sizes.map((single, key) => {
+                      return (
+                        <label
+                          className={`pro-details-size-content--single`}
+                          key={key}
+                        >
+                          <input
+                            type="radio"
+                            value={single}
+                            checked={
+                              single === selectedProductSize ? "checked" : ""
+                            }
+                            onChange={() => {
+                              setIsSizeError(false);
+                              setSelectedProductSize(single);
+                            }}
+                          />
+                          <span className="size-name">{single}</span>
+                        </label>
+                      );
+                    })
+                  : ""}
+              </div>
             </div>
-            <div className="pro-details-size-content">
-              {product && product.sizes
-                ? product.sizes.map((single, key) => {
-                    return (
-                      <label
-                        className={`pro-details-size-content--single`}
-                        key={key}
-                      >
-                        <input
-                          type="radio"
-                          value={single}
-                          checked={
-                            single === selectedProductSize ? "checked" : ""
-                          }
-                          onChange={() => {
-                            setIsSizeError(false);
-                            setSelectedProductSize(single);
-                          }}
-                        />
-                        <span className="size-name">{single}</span>
-                      </label>
-                    );
-                  })
-                : ""}
-            </div>
-          </div>
-        ) : (
-          ""
+          ) : (
+            ""
+          )}
+        </div>
+
+        {isSizeError && (
+          <p style={{ color: "#fe5252", marginTop: "-10px" }}>
+            Please select a size before adding to cart
+          </p>
         )}
-      </div>
 
-      {isSizeError && (
-        <p style={{ color: "#fe5252", marginTop: "-10px" }}>
-          Please select a size before adding to cart
-        </p>
-      )}
-
-      <Grid container spacing={2} direction="column">
-        <Grid item xs={12} lg={11} md={11}>
-          <div className="pro-details-cart ">
-            {product.quantity === 0 || product.quantity < 0 ? (
-              <AppButton
-                label="Out of Stock"
-                bgColor="black"
-                color="white"
-                width="100%"
-                height="60px"
-                borderRadius="30px"
-              />
-            ) : (
-              <AppButton
-                label="Add to Cart"
-                bgColor="black"
-                color="white"
-                width="100%"
-                height="60px"
-                borderRadius="30px"
-                // onClick={() =>
-                //   handleAddToCart({
-                //     ...product,
-                //     selectedSize: selectedProductSize,
-                //   })
-                // }
-              />
-            )}
-          </div>
-        </Grid>
-        {/* <Grid item xs={12} lg={11} md={11}>
+        <Grid container spacing={2} direction="column">
+          <Grid item xs={12} lg={11} md={11}>
+            <div className="pro-details-cart ">
+              {product.quantity === 0 || product.quantity < 0 ? (
+                <AppButton
+                  label="Out of Stock"
+                  bgColor="black"
+                  color="white"
+                  width="100%"
+                  height="60px"
+                  borderRadius="30px"
+                />
+              ) : (
+                <AppButton
+                  label="Add to Cart"
+                  bgColor="black"
+                  color="white"
+                  width="100%"
+                  height="60px"
+                  borderRadius="30px"
+                  onClick={toggleCartDrawer("right", true)}
+                  // onClick={() =>
+                  //   handleAddToCart({
+                  //     ...product,
+                  //     selectedSize: selectedProductSize,
+                  //   })
+                  // }
+                />
+              )}
+            </div>
+          </Grid>
+          {/* <Grid item xs={12} lg={11} md={11}>
           <div>
             <AppButton
               label={
@@ -196,9 +214,9 @@ const ProductDescriptionInfo = ({ product }) => {
             />
           </div>
         </Grid> */}
-      </Grid>
+        </Grid>
 
-      {/* {product.variation ? (
+        {/* {product.variation ? (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
             <span>Color</span>
@@ -397,36 +415,37 @@ const ProductDescriptionInfo = ({ product }) => {
         ""
       )}  */}
 
-      <div className="pro-details-social">
-        <ul>
-          <li>
-            <a href="//facebook.com">
-              <i className="fa fa-facebook" />
-            </a>
-          </li>
-          <li>
-            <a href="//dribbble.com">
-              <i className="fa fa-dribbble" />
-            </a>
-          </li>
-          <li>
-            <a href="//pinterest.com">
-              <i className="fa fa-pinterest-p" />
-            </a>
-          </li>
-          <li>
-            <a href="//twitter.com">
-              <i className="fa fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="//linkedin.com">
-              <i className="fa fa-linkedin" />
-            </a>
-          </li>
-        </ul>
+        <div className="pro-details-social">
+          <ul>
+            <li>
+              <a href="//facebook.com">
+                <i className="fa fa-facebook" />
+              </a>
+            </li>
+            <li>
+              <a href="//dribbble.com">
+                <i className="fa fa-dribbble" />
+              </a>
+            </li>
+            <li>
+              <a href="//pinterest.com">
+                <i className="fa fa-pinterest-p" />
+              </a>
+            </li>
+            <li>
+              <a href="//twitter.com">
+                <i className="fa fa-twitter" />
+              </a>
+            </li>
+            <li>
+              <a href="//linkedin.com">
+                <i className="fa fa-linkedin" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

@@ -67,8 +67,8 @@ export default function LandingPage() {
     <div className="landing-wrapper" id="landing-wrapper">
       <div className="animated-text-container">
         <div className="animated-text-wrapper">
-          <div className="text-1 text">
-            Loading - <CountUp start={0} end={100} duration={3} />%
+          <div className="loader-text-1 loader-text">
+            Loading - <CountUp start={0} end={100} duration={3.5} />%
           </div>
         </div>
       </div>
@@ -79,10 +79,17 @@ export default function LandingPage() {
             <Slider {...textConfigs}>
               <div className="text-slide">
                 <h1>
+                  we found Haile-I way, <br />
+                  trodding now! 🇪🇹
+                </h1>
+              </div>
+              <div className="text-slide">
+                <h1>
                   An introduction to <br />
                   Rastafari Livity.
                 </h1>
               </div>
+
               <div className="text-slide">
                 <h1>
                   From youths
@@ -90,18 +97,11 @@ export default function LandingPage() {
                   for the youths.
                 </h1>
               </div>
-
               <div className="text-slide">
                 <h1>
                   They didn’t
                   <br />
                   teach us the right way,
-                </h1>
-              </div>
-              <div className="text-slide">
-                <h1>
-                  we found Haile-I way, <br />
-                  trodding now! 🇪🇹
                 </h1>
               </div>
             </Slider>

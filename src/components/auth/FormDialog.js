@@ -36,6 +36,7 @@ const useStyles = makeStyles(() => ({
   paper: {
     width: "530px",
     maxHeight: "600px",
+    backgroundColor: "#fdfbf4",
   },
 }));
 
