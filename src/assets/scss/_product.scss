@@ -257,10 +257,10 @@
       //   height: 520px;
       // }
       @media #{$xs-layout} {
-        height: 390px;
+        height: 350px;
       }
       @media #{$xxs-layout} {
-        height: 390px;
+        height: 340px;
       }
       @media #{$xl-layout} {
         height: 390px;
@@ -644,7 +644,7 @@
     margin: 20px 0 34px;
     padding: 0 0 37px;
 
-    // border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
     ul {
       li {
         margin: 0 0 5px;

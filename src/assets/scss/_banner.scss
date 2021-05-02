@@ -1,40 +1,68 @@
 /*----- 9. Banner style  -------*/
-/** Custom Product Banner **/
-
-.categories-img-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/** Horizontal Product Category **/
+.category-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
-  width: 100%;
-  position: relative;
-  cursor: pointer;
 }
-.img-reveal img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  transform-origin: right !important;
-}
-.img-reveal {
-  visibility: hidden;
-  // position: relative;
-  width: 100%;
-  height: 80%;
-  max-width: 500px;
-  overflow: hidden;
-}
-
-.categories-link {
-  margin-top: -13%;
-  font-size: 20px;
-  font-weight: lighter;
-  &.right {
-    margin-top: -9%;
+.category-bg-title {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  font-weight: bold;
+  opacity: 0.7;
+  @media #{$xs-layout} {
+    font-size: 65px;
   }
 }
+.category-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+.categories-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2800px;
+  height: 100%;
+}
+.categories-slider-inner {
+  position: absolute;
+  top: 15%;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.category-item {
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  // filter: grayscale(0.9);
+  // transition: 1s ease;
+  cursor: pointer;
+  &:hover {
+    filter: grayscale(0);
+    // transition-delay: 1s;
+  }
+}
+.category-img {
+  position: absolute;
+  left: -100px;
+  width: 600px;
+  height: 100%;
+}
 
+// 2D product grid
 .banner-wrapper {
   overflow: hidden;
 

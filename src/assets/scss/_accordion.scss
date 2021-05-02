@@ -1,0 +1,9 @@
+.product-details {
+  text-align: left;
+  margin-left: 100px;
+  font-size: 20px;
+  font-weight: 600;
+  @media #{$xs-layout} {
+    margin-left: 0;
+  }
+}

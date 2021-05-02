@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
 import { IconButton, Drawer, makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 // icons
 import CancelIcon from "@material-ui/icons/Cancel";
 
+// utils
 import { currencyFormatter } from "../../utils";
-import { Link } from "react-router-dom";
+import { selectCartItems } from "../../redux/reducers/cart/cartSelectors";
 
 const cartData = [
   {
@@ -79,14 +83,22 @@ const useStyles = makeStyles({
   },
 });
 
+// grabs cart items data
+const mapState = createStructuredSelector({
+  cartItems: selectCartItems,
+});
+
 export default function TemporaryDrawer({ toggleCartDrawer, cartDrawerPos }) {
   const classes = useStyles();
+  // access cart data items
+  const { cartItems } = useSelector(mapState);
+
   const list = (anchor) => (
     <div className="shopping-cart-content" style={{ marginTop: "-14px" }}>
       {cartData && cartData.length > 0 ? (
         <Fragment>
           <ul>
-            {cartData.map((single, key) => {
+            {cartItems.map((single, key) => {
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">

@@ -1,75 +1,21 @@
 /*---- 18. Shop page  -------*/
 // new top bar
 .product-types {
-  border: 1px solid black;
-  border-radius: 25px;
-  padding: 7px;
-  cursor: pointer;
+  opacity: 0.6;
+  text-transform: uppercase;
   &:hover {
-    background-color: black;
-    color: white;
+    color: black;
+    opacity: 1;
   }
 }
 
 .shop-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media #{$xs-layout} {
-    display: block;
-  }
-  @media #{$sm-layout} {
-    display: flex;
-  }
-  .select-shoing-wrap {
-    display: flex;
+  .product-count,
+  .product-type {
+    font-size: 60px;
+    font-weight: bold;
     @media #{$xs-layout} {
-      display: block;
-    }
-    @media #{$sm-layout} {
-      display: flex;
-    }
-    .shop-select {
-      margin-right: 50px;
-      select {
-        font-size: 14px;
-
-        min-width: 143px;
-        padding: 5px;
-
-        color: #606060;
-        border: 1px solid #e6e6e6;
-      }
-    }
-    p {
-      margin: 0;
-
-      color: #606060;
-      @media #{$xs-layout} {
-        margin: 5px 0 10px;
-      }
-      @media #{$sm-layout} {
-        margin: 0;
-      }
-    }
-  }
-  .shop-tab {
-    a,
-    button {
-      font-size: 18px;
-
-      margin-left: 20px;
-      padding: 0;
-
-      color: #606060;
-      border: none;
-      background: none;
-      &:first-child {
-        margin-left: 0;
-      }
-      &.active {
-        color: #fa6bff;
-      }
+      font-size: 40px;
     }
   }
 }

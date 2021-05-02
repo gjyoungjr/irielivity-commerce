@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
+// import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 
 const ProductTabLeft = ({ location, product }) => {
@@ -39,11 +39,11 @@ const ProductTabLeft = ({ location, product }) => {
           galleryType="leftThumb"
         />
 
-        {/* product description tab */}
+        {/* product description tab
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
           productFullDesc={product.fullDescription}
-        />
+        /> */}
 
         {/* related product slider */}
         <RelatedProductSlider
@@ -57,15 +57,15 @@ const ProductTabLeft = ({ location, product }) => {
 
 ProductTabLeft.propTypes = {
   location: PropTypes.object,
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const itemId = ownProps.match.params.id;
   return {
     product: state.productData.products.filter(
-      single => single.id === itemId
-    )[0]
+      (single) => single.id === itemId
+    )[0],
   };
 };
 

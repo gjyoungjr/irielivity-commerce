@@ -40,7 +40,7 @@ const ProductImageDescriptionSticky = ({
 };
 
 ProductImageDescriptionSticky.propTypes = {
-  cartItems: PropTypes.array,
+  // cartItems: PropTypes.array,
   compareItems: PropTypes.array,
   currency: PropTypes.object,
   product: PropTypes.object,

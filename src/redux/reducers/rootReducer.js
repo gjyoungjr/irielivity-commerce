@@ -3,8 +3,9 @@
 // import cartReducer from "./cartReducer";
 // import wishlistReducer from "./wishlistReducer";
 // import compareReducer from "./compareReducer";
-import usersReducer from './user/userReducer'
-import productReducer from './products/productsReducer'
+import usersReducer from "./user/userReducer";
+import productReducer from "./products/productsReducer";
+import cartReducer from "./cart/cartReducer";
 import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
 
@@ -12,10 +13,10 @@ const rootReducer = combineReducers({
   multilanguage: createMultilanguageReducer({ currentLanguageCode: "en" }),
   // currencyData: currencyReducer,
   productsData: productReducer,
-  // cartData: cartReducer,
+  cartData: cartReducer,
   // wishlistData: wishlistReducer,
   // compareData: compareReducer,
-  user: usersReducer
+  user: usersReducer,
 });
 
 export default rootReducer;

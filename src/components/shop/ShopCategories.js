@@ -1,130 +1,123 @@
 import React, { useEffect, Fragment } from "react";
-import { Grid } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import gsap, { Power2 } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
 
 // imgs
 import cat1 from "../../assets/img/cat1.jpg";
 import cat2 from "../../assets/img/cat2.jpg";
+import cat3 from "../../assets/img/cat3.jpg";
 
-gsap.registerPlugin(ScrollTrigger);
+import cat4 from "../../assets/img/cat4.jpg";
+
+// data for product categories
+const productCategories = [
+  {
+    id: 1,
+    label: "Tops",
+    url: "/shop/Tops",
+    imgSrc: cat3,
+  },
+  {
+    id: 2,
+    label: "Footware",
+    url: "/shop/Footware",
+    imgSrc: cat1,
+  },
+  {
+    id: 3,
+    label: "Accessories",
+    url: "/shop/Tops",
+    imgSrc: cat2,
+  },
+  {
+    id: 4,
+    label: "Tops",
+    url: "/shop/Tops",
+    imgSrc: cat4,
+  },
+];
+
 const ProductBanner = () => {
   const history = useHistory();
 
-  // const handleRedirect = (url) => {
-  //   history.push(url);
-  // };
   useEffect(() => {
-    let revealContainers = document.querySelectorAll(".img-reveal");
+    // select all imgs
+    let images = document.querySelectorAll(".category-item");
+    // select slider
+    let slider = document.querySelector(".categories-slider");
+    let sliderWidth,
+      current = 0,
+      target = 0,
+      ease = 0.05;
+    let imgWidth;
 
-    revealContainers.forEach((container) => {
-      let image = container.querySelector("img");
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          // toggleActions: "restart none none reset",
-        },
-      });
+    // smooth scroll fxn
+    const activateSmoothScroll = (start, end, t) => {
+      return start * (1 - t) + end * t;
+    };
 
-      tl.set(container, { autoAlpha: 1 });
-      tl.from(container, 1.5, {
-        xPercent: -70,
-        ease: Power2.out,
+    // transform div
+    const setTransform = (el, transform) => {
+      el.style.transform = transform;
+    };
+
+    // activate horizontal scroll
+    const init = () => {
+      sliderWidth = slider.getBoundingClientRect().width;
+      imgWidth = sliderWidth / images.length;
+      document.body.style.height = `${
+        sliderWidth - (window.innerWidth - window.innerHeight)
+      }px`;
+    };
+
+    // animate slider
+    const animate = () => {
+      current = parseFloat(activateSmoothScroll(current, target, ease)).toFixed(
+        2
+      );
+      target = window.scrollY;
+      setTransform(slider, `translateX(-${current}px)`);
+      animateImages();
+      requestAnimationFrame(animate);
+    };
+
+    // parallax animation on imgs
+    const animateImages = () => {
+      let ratio = current / imgWidth;
+      let intersectionRatioValue;
+      images.forEach((img, index) => {
+        intersectionRatioValue = ratio - index * 0.7;
+        setTransform(img, `translateX(${intersectionRatioValue * 70}px)`);
       });
-      tl.from(image, 1.5, {
-        xPercent: 100,
-        scale: 1.3,
-        delay: -1.5,
-        ease: Power2.out,
-      });
-    });
-  });
+    };
+    init();
+    animate();
+
+    //whenver browsers resize run init fxn
+    window.addEventListener("resize", () => init());
+  }, []);
   return (
     <Fragment>
-      <Grid container spacing={3}>
-        <Grid item xs={12} lg={4}>
-          <div
-            className="categories-img-container"
-            onClick={() => history.push("/shop/Jewelry")}
-          >
-            <div className="img-reveal">
-              <motion.img
-                src={cat1}
-                alt=""
-                whileHover={{
-                  scale: 1.1,
-                }}
-              />
-            </div>
-          </div>
-          <div className="categories-link">T-Shirts</div>
-        </Grid>
-        <Grid item xs={12} lg={8}>
-          {" "}
-        </Grid>
-      </Grid>
+      <div className="category-bg-title">Collections</div>
+      <div className="category-wrapper">
+        <div className="categories-slider">
+          <div className="categories-slider-inner">
+            {productCategories.map((category) => (
+              <Fragment>
+                <div
+                  key={category.id}
+                  className="category-item"
+                  style={{ backgroundImage: `url(${category.imgSrc})` }}
+                  onClick={() => history.push(category.url)}
+                >
+                  <p className="category-label">{category.label}</p>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} lg={6}>
-          {" "}
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <div className="categories-img-container">
-            <div className="img-reveal">
-              <motion.img
-                src={cat2}
-                alt=""
-                whileHover={{
-                  scale: 1.1,
-                }}
-              />{" "}
-            </div>
+                  <div className="category-img"></div>
+                </div>
+              </Fragment>
+            ))}
           </div>
-          <div className="categories-link right">Accessories</div>
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={3}>
-        <Grid item xs={12} lg={4}>
-          <div className="categories-img-container">
-            <div className="img-reveal">
-              <motion.img
-                src={cat1}
-                alt=""
-                whileHover={{
-                  scale: 1.1,
-                }}
-              />{" "}
-            </div>
-          </div>
-          <div className="categories-link">Jewelry</div>
-        </Grid>
-        <Grid item xs={12} lg={8}>
-          {" "}
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={3}>
-        <Grid item xs={12} lg={6}>
-          {" "}
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <div className="categories-img-container">
-            <div className="img-reveal">
-              <motion.img
-                src={cat2}
-                alt=""
-                whileHover={{
-                  scale: 1.1,
-                }}
-              />{" "}
-            </div>
-          </div>
-          <div className="categories-link right">T-Shirts</div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Fragment>
   );
 };

@@ -13,7 +13,7 @@ import {
 } from "../redux/reducers/products/productsActions";
 
 import RelatedProductSlider from "../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../wrappers/product/ProductDescriptionTab";
+import ProductDescriptionTab from "../components/products/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../wrappers/product/ProductImageDescriptionSticky";
 // layout
 import MinimalLayout from "../layouts/MinimalLayout";

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 const productTypes = [
@@ -10,44 +10,49 @@ const productTypes = [
   },
   {
     id: 2,
-    label: "T-Shirt",
-    url: "/shop/T-Shirt",
+    label: "Tops",
+    url: "/shop/Tops",
   },
   {
     id: 3,
-    label: "Jewelry",
-    url: "/shop/Jewelry",
+    label: "Footware",
+    url: "/shop/Footware",
   },
 ];
 
 const ShopTopAction = ({ productCount, productType }) => {
-  const [selectedProductType, setSelectedProductType] = useState(null);
   return (
     <div className="shop-top-bar mb-35">
       <div className="select-shoing-wrap">
-        <div className="shop-select text-left">
-          {productTypes.map((product) => {
-            return (
-              <NavLink
-                key={product.id}
-                onClick={() => setSelectedProductType(product.url)}
-                exact
-                className="product-types mr-4"
-                to={product.url}
-                activeStyle={{
-                  backgroundColor: "black",
-                  color: "white",
-                }}
-              >
-                {product.label}
-                {selectedProductType === product.url ? (
-                  <span>({productCount})</span>
-                ) : (
-                  ""
-                )}
-              </NavLink>
-            );
-          })}
+        <div className="shop-select text-center">
+          <div className="mb-4">
+            <div className="d-flex justify-content-between">
+              <div className="product-count">{productCount}</div>
+              <div className="product-type">
+                {productType ? productType : "All"}
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <div>
+            {productTypes.map((product) => {
+              return (
+                <NavLink
+                  key={product.id}
+                  exact
+                  className="product-types mr-2"
+                  to={product.url}
+                  activeStyle={{
+                    color: "black",
+                    opacity: 1,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {product.label},
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
