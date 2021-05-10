@@ -48,11 +48,8 @@ export default function ProductSticky() {
     <MinimalLayout>
       <Fragment>
         <MetaTags>
-          <title>Flone | Product Page</title>
-          <meta
-            name="description"
-            content="Product page of flone react minimalist eCommerce template."
-          />
+          <title>Irieilivity</title>
+          <meta name="description" content="Product page" />
         </MetaTags>
 
         {/* product description with image */}

@@ -12,6 +12,7 @@ import CartDrawer from "../components/cart";
 
 // utils fxn
 import { checkIsUserAdmin } from "../firebase/utils";
+import { selectCartItemsCount } from "../redux/reducers/cart/cartSelectors";
 
 // imgs -> company logo
 import logo from "../assets/logo/logo.png";
@@ -20,6 +21,132 @@ import logo from "../assets/logo/logo.png";
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
 });
+
+// utils fxn calculate num of items in cart
+const mapCartItemsCountState = (state) => ({
+  totalNumCartItems: selectCartItemsCount(state),
+});
+
+export default function MinimalLayout({ children }) {
+  const classes = useStyles();
+  const history = useHistory();
+  const [showAuthForm, setShowAuthForm] = React.useState(false);
+  const [cartDrawerPos, setCartDrawerPos] = React.useState({
+    right: false,
+  });
+
+  // hanldes display of auth form
+  const handleOpenAuthForm = () => {
+    setShowAuthForm(true);
+  };
+  const handleCloseAuthForm = () => {
+    setShowAuthForm(false);
+  };
+  // destructure current user from redux state
+  const { currentUser } = useSelector(mapState);
+  // destructure cart item count from  redux state
+  const { totalNumCartItems } = useSelector(mapCartItemsCountState);
+
+  //boolean state to detrmine if user is amdin
+  const isAdmin = checkIsUserAdmin(currentUser);
+
+  // opens & close cart drawer
+  const toggleCartDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setCartDrawerPos({ ...cartDrawerPos, [anchor]: open });
+  };
+
+  return (
+    <div className={classes.grow}>
+      {/* Log in regsiter form  */}
+      <AuthFormDialog open={showAuthForm} onClose={handleCloseAuthForm} />
+
+      {/* Cart Drawer */}
+      <CartDrawer
+        toggleCartDrawer={toggleCartDrawer}
+        cartDrawerPos={cartDrawerPos}
+      />
+
+      <AppBar position="fixed" style={styles.appbar}>
+        <NavMenu />
+        <Toolbar>
+          <div className="menu-open">
+            <p style={styles.menuItems}>Menu</p>
+          </div>
+
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+            onClick={() => history.push("/")}
+          >
+            <img src={logo} alt="" className="logo-img" /> Irielivity
+          </Typography>
+
+          <div className={classes.grow} />
+
+          {/* Desktop */}
+          <div className={classes.sectionDesktop}>
+            {!currentUser && (
+              <div className="mr-4" onClick={() => handleOpenAuthForm()}>
+                <p style={styles.menuItems}>Login</p>
+              </div>
+            )}
+
+            {currentUser && !isAdmin && (
+              <div className="mr-4" onClick={() => history.push("/members")}>
+                <p style={styles.menuItems}>Account</p>
+              </div>
+            )}
+
+            {currentUser && isAdmin && (
+              <div className="mr-4" onClick={() => history.push("/admin/home")}>
+                <p style={styles.menuItems}>Dashboard</p>
+              </div>
+            )}
+
+            <div onClick={toggleCartDrawer("right", true)}>
+              <p style={styles.menuItems}>Bag({totalNumCartItems})</p>
+            </div>
+          </div>
+
+          {/* Mobile */}
+          <div className={classes.sectionMobile}>
+            <div onClick={toggleCartDrawer("right", true)}>
+              <p style={styles.menuItems}>Bag({totalNumCartItems})</p>
+            </div>
+          </div>
+        </Toolbar>
+      </AppBar>
+
+      {/* Children */}
+      {/* <SmoothScroll> */}
+      <div className="children-wrapper">{children}</div>
+      {/* </SmoothScroll> */}
+    </div>
+  );
+}
+
+const styles = {
+  menuItems: {
+    fontSize: "16px",
+    fontWeight: "600",
+    color: "black",
+    cursor: "pointer",
+  },
+  appbar: {
+    backgroundColor: "#fdfbf4",
+    boxShadow: "none",
+    borderBottom: "1px solid #dadada",
+    zIndex: 1,
+  },
+};
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -87,121 +214,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-export default function MinimalLayout({ children }) {
-  const classes = useStyles();
-  const history = useHistory();
-  const [showAuthForm, setShowAuthForm] = React.useState(false);
-  const [cartDrawerPos, setCartDrawerPos] = React.useState({
-    right: false,
-  });
-
-  // hanldes display of auth form
-  const handleOpenAuthForm = () => {
-    setShowAuthForm(true);
-  };
-  const handleCloseAuthForm = () => {
-    setShowAuthForm(false);
-  };
-  // destructure current user from redux state
-  const { currentUser } = useSelector(mapState);
-
-  //boolean state to detrmine if user is amdin
-  const isAdmin = checkIsUserAdmin(currentUser);
-
-  // opens & close cart drawer
-  const toggleCartDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setCartDrawerPos({ ...cartDrawerPos, [anchor]: open });
-  };
-  return (
-    <div className={classes.grow}>
-      {/* Log in regsiter form  */}
-      <AuthFormDialog open={showAuthForm} onClose={handleCloseAuthForm} />
-
-      {/* Cart Drawer */}
-      <CartDrawer
-        toggleCartDrawer={toggleCartDrawer}
-        cartDrawerPos={cartDrawerPos}
-      />
-
-      <AppBar position="fixed" style={styles.appbar}>
-        <NavMenu />
-        <Toolbar>
-          <div className="menu-open">
-            <p style={styles.menuItems}>Menu</p>
-          </div>
-
-          <Typography
-            className={classes.title}
-            variant="h6"
-            noWrap
-            onClick={() => history.push("/")}
-          >
-            <img src={logo} alt="" className="logo-img" /> Irielivity
-          </Typography>
-
-          <div className={classes.grow} />
-
-          {/* Desktop */}
-          <div className={classes.sectionDesktop}>
-            {!currentUser && (
-              <div className="mr-4" onClick={() => handleOpenAuthForm()}>
-                <p style={styles.menuItems}>Login</p>
-              </div>
-            )}
-
-            {currentUser && !isAdmin && (
-              <div className="mr-4" onClick={() => history.push("/members")}>
-                <p style={styles.menuItems}>Account</p>
-              </div>
-            )}
-
-            {currentUser && isAdmin && (
-              <div className="mr-4" onClick={() => history.push("/admin/home")}>
-                <p style={styles.menuItems}>Dashboard</p>
-              </div>
-            )}
-
-            <div onClick={toggleCartDrawer("right", true)}>
-              <p style={styles.menuItems}>Bag(0)</p>
-            </div>
-          </div>
-
-          {/* Mobile */}
-          <div className={classes.sectionMobile}>
-            <div onClick={toggleCartDrawer("right", true)}>
-              <p style={styles.menuItems}>Bag(0)</p>
-            </div>
-          </div>
-        </Toolbar>
-      </AppBar>
-
-      {/* Children */}
-      {/* <SmoothScroll> */}
-      <div className="children-wrapper">{children}</div>
-      {/* </SmoothScroll> */}
-    </div>
-  );
-}
-
-const styles = {
-  menuItems: {
-    fontSize: "16px",
-    fontWeight: "600",
-    color: "black",
-    cursor: "pointer",
-  },
-  appbar: {
-    backgroundColor: "#fdfbf4",
-    boxShadow: "none",
-    borderBottom: "1px solid #dadada",
-    zIndex: 1,
-  },
-};
