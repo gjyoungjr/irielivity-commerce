@@ -78,27 +78,27 @@ const ResetPasswordFormModel = {
 //     },
 //   };
 
-  const AdminAccountDetailsFormModel = {
-    formId: "AdminAccountDetailsFormModel",
-    formField: {
-      adminFirstName: {
-        name: "adminFirstName",
-        label: "First Name",
-        requiredErrorMsg: "First Name is required",
-      },
-      adminLastName: {
-        name: "adminLastName",
-        label: "Last Name",
-        requiredErrorMsg: "Last Name is required",
-      },
-      adminEmail: {
-        name: "adminEmail",
-        label: "Email address",
-        requiredErrorMsg: "Email is required",
-        invalidErrorMsg: "Please Enter a valid email address",
-      },
+const AdminAccountDetailsFormModel = {
+  formId: "AdminAccountDetailsFormModel",
+  formField: {
+    adminFirstName: {
+      name: "adminFirstName",
+      label: "First Name",
+      requiredErrorMsg: "First Name is required",
     },
-  };
+    adminLastName: {
+      name: "adminLastName",
+      label: "Last Name",
+      requiredErrorMsg: "Last Name is required",
+    },
+    adminEmail: {
+      name: "adminEmail",
+      label: "Email address",
+      requiredErrorMsg: "Email is required",
+      invalidErrorMsg: "Please Enter a valid email address",
+    },
+  },
+};
 
 //   const ChangePasswordFormModel = {
 //     formId: "ChangePasswordFormModel",
@@ -132,139 +132,139 @@ const ResetPasswordFormModel = {
 //     },
 //   };
 
-  const AddProductFormModel = {
-    formId: "AddProductFormModel",
-    formField: {
-      productName: {
-        name: "productName",
-        label: "Product Name",
-        requiredErrorMsg: "Product name is required",
-      },
-      productPrice: {
-        name: "productPrice",
-        label: "Product Price",
-        requiredErrorMsg: "Product price is required",
-        invalidErrorMsg: "Invalid input",
-      },
-      productDiscount: {
-        name: "productDiscount",
-        label: "Percentage discount",
-      },
-
-      productDescription: {
-        name: "productDescription",
-        label: "Product Description",
-        requiredErrorMsg: "Product description is required",
-      },
-      category: {
-        name: "category",
-        label: "Product main category",
-        requiredErrorMsg: "Product category is required",
-      },
-
-      subCategory: {
-        name: "subCategory",
-        label: "Product sub category",
-        requiredErrorMsg: "Product sub category is required",
-      },
-
-      mainImgUrl: {
-        name: "mainImgUrl",
-        requiredErrorMsg: "Adding an image is required",
-      },
-      subImages: {
-        name: "subImages",
-      },
-      materials: {
-        name: "materials",
-        label: "Enter product materials",
-        requiredErrorMsg: "Minimum of 1 material is required.",
-      },
-      fit: {
-        name: "fit",
-        label: "Select product fit",
-      },
-      sizes: {
-        name: "sizes",
-        label: "Enter product sizes",
-      },
-      dimensions: {
-        name: "dimensions",
-        label: "Enter product dimensions",
-        requiredErrorMsg: "Dimensions is required",
-      },
-      quantity: {
-        name: "quantity",
-        label: "Enter product quantity",
-        requiredErrorMsg: "Product quantity is required",
-      },
-      colors: {
-        name: "colors",
-        label: "Enter product color",
-      },
+const AddProductFormModel = {
+  formId: "AddProductFormModel",
+  formField: {
+    productName: {
+      name: "productName",
+      label: "Product Name",
+      requiredErrorMsg: "Product name is required",
     },
-  };
+    productPrice: {
+      name: "productPrice",
+      label: "Product Price",
+      requiredErrorMsg: "Product price is required",
+      invalidErrorMsg: "Invalid input",
+    },
+    productDiscount: {
+      name: "productDiscount",
+      label: "Percentage discount",
+    },
 
-//   const CheckOutFormModel = {
-//     formId: "CheckOutFormModel",
-//     formField: {
-//       first_Name: {
-//         name: "first_Name",
-//         label: "First Name",
-//         requiredErrorMsg: "First name is required",
-//       },
-//       last_Name: {
-//         name: "last_Name",
-//         label: "Last Name",
-//         requiredErrorMsg: "Last name is required",
-//       },
-//       e_mail: {
-//         name: "e_mail",
-//         label: "E-mail",
-//         requiredErrorMsg: "E-mail is required",
-//         invalidErrorMsg: "Please Enter a valid e-mail address",
-//       },
-//       phoneNumber: {
-//         name: "phoneNumber",
-//         label: "Phone number (Optional)",
-//         // requiredErrorMsg: "E-mail is required",
-//         // invalidErrorMsg: "Please Enter a valid e-mail address",
-//       },
-//       address1: {
-//         name: "address1",
-//         label: "Address",
-//         requiredErrorMsg: "Address is required",
-//       },
-//       town_city: {
-//         name: "town_city",
-//         label: "City/Town",
-//         requiredErrorMsg: "City/Town is required.",
-//       },
-//       country: {
-//         name: "country",
-//         label: "Country",
-//         requiredErrorMsg: "Country is required.",
-//       },
-//       zip: {
-//         name: "zip",
-//         label: "Zip",
-//         requiredErrorMsg: "Zip is required.",
-//       },
-//       state: {
-//         name: "state",
-//         label: "State",
-//       },
-//       deliveryMethod: {
-//         name: "deliveryMethod",
-//       },
-//       paymentMethod: {
-//         name: "paymentMethod",
-//       },
-//       paymentReceipt: {
-//         name: "paymentReceipt",
-//       },
-//     },
-//   };
+    productDescription: {
+      name: "productDescription",
+      label: "Product Description",
+      requiredErrorMsg: "Product description is required",
+    },
+    category: {
+      name: "category",
+      label: "Product main category",
+      requiredErrorMsg: "Product category is required",
+    },
+
+    subCategory: {
+      name: "subCategory",
+      label: "Product sub category",
+      requiredErrorMsg: "Product sub category is required",
+    },
+
+    mainImgUrl: {
+      name: "mainImgUrl",
+      requiredErrorMsg: "Adding an image is required",
+    },
+    subImages: {
+      name: "subImages",
+    },
+    materials: {
+      name: "materials",
+      label: "Enter product materials",
+      requiredErrorMsg: "Minimum of 1 material is required.",
+    },
+    fit: {
+      name: "fit",
+      label: "Select product fit",
+    },
+    sizes: {
+      name: "sizes",
+      label: "Enter product sizes",
+    },
+    dimensions: {
+      name: "dimensions",
+      label: "Enter product dimensions",
+      requiredErrorMsg: "Dimensions is required",
+    },
+    quantity: {
+      name: "quantity",
+      label: "Enter product quantity",
+      requiredErrorMsg: "Product quantity is required",
+    },
+    colors: {
+      name: "colors",
+      label: "Enter product color",
+    },
+  },
+};
+
+const CheckOutFormModel = {
+  formId: "CheckOutFormModel",
+  formField: {
+    first_Name: {
+      name: "first_Name",
+      label: "First Name",
+      requiredErrorMsg: "First name is required",
+    },
+    last_Name: {
+      name: "last_Name",
+      label: "Last Name",
+      requiredErrorMsg: "Last name is required",
+    },
+    e_mail: {
+      name: "e_mail",
+      label: "E-mail",
+      requiredErrorMsg: "E-mail is required",
+      invalidErrorMsg: "Please Enter a valid e-mail address",
+    },
+    phoneNumber: {
+      name: "phoneNumber",
+      label: "Phone number (Optional)",
+      // requiredErrorMsg: "E-mail is required",
+      // invalidErrorMsg: "Please Enter a valid e-mail address",
+    },
+    address1: {
+      name: "address1",
+      label: "Address",
+      requiredErrorMsg: "Address is required",
+    },
+    town_city: {
+      name: "town_city",
+      label: "City/Town",
+      requiredErrorMsg: "City/Town is required.",
+    },
+    country: {
+      name: "country",
+      label: "Country",
+      requiredErrorMsg: "Country is required.",
+    },
+    zip: {
+      name: "zip",
+      label: "Zip",
+      requiredErrorMsg: "Zip is required.",
+    },
+    state: {
+      name: "state",
+      label: "State",
+    },
+    deliveryMethod: {
+      name: "deliveryMethod",
+    },
+    paymentMethod: {
+      name: "paymentMethod",
+    },
+    paymentReceipt: {
+      name: "paymentReceipt",
+    },
+  },
+};
 
 //   const ProductReviewFormModel = {
 //     formId: "ProductReviewFormModel",
@@ -294,7 +294,7 @@ export {
   // ChangePasswordFormModel,
   // ReauthFormModel,
   AddProductFormModel,
-  // CheckOutFormModel,
+  CheckOutFormModel,
   // ProductReviewFormModel,
   AdminAccountDetailsFormModel,
 };

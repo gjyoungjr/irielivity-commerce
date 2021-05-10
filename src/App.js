@@ -20,6 +20,7 @@ const MembersSettings = lazy(() => import("./pages/MembersSettings"));
 const ShopCategories = lazy(() => import("./pages/ShopCategories"));
 const Shop = lazy(() => import("./pages/Shop"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const CheckOut = lazy(() => import("./pages/CheckOut"));
 
 /**ADMIN PAGES **/
 const AdminHome = lazy(() => import("./pages/admin/Home"));
@@ -128,7 +129,7 @@ const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
-const Checkout = lazy(() => import("./pages/other/Checkout"));
+// const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -217,7 +218,10 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/product/:productID"}
                 component={ProductDetails}
               />
-
+              <Route
+                path={process.env.PUBLIC_URL + "/checkout"}
+                component={CheckOut}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/members"}
                 render={(routeProps) => (
@@ -544,10 +548,6 @@ const App = (props) => {
               <Route
                 path={process.env.PUBLIC_URL + "/compare"}
                 component={Compare}
-              />
-              <Route
-                path={process.env.PUBLIC_URL + "/checkout"}
-                component={Checkout}
               />
 
               <Route

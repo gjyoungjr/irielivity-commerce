@@ -6,10 +6,10 @@ import {
   //   AccountDetailsFormModel,
   //   ChangePasswordFormModel,
   //   ReauthFormModel,
-    AddProductFormModel,
-  //   CheckOutFormModel,
+  AddProductFormModel,
+  CheckOutFormModel,
   //   ProductReviewFormModel,
-    AdminAccountDetailsFormModel,
+  AdminAccountDetailsFormModel,
 } from "./FormModel";
 
 // grabs form fields
@@ -47,17 +47,17 @@ const {
   },
 } = AddProductFormModel;
 
-// const {
-//   formField: {
-//     first_Name,
-//     last_Name,
-//     e_mail,
-//     address1,
-//     town_city,
-//     country,
-//     zip,
-//   },
-// } = CheckOutFormModel;
+const {
+  formField: {
+    first_Name,
+    last_Name,
+    e_mail,
+    address1,
+    town_city,
+    country,
+    zip,
+  },
+} = CheckOutFormModel;
 
 // const {
 //   formField: { subject, message, rating },
@@ -161,29 +161,29 @@ const AddProductValidationSchema = [
 ];
 
 // // check out form validation schema
-// const CheckOutValidationSchema = [
-//   Yup.object().shape({
-//     [first_Name.name]: Yup.string().required(`${first_Name.requiredErrorMsg}`),
-//     [last_Name.name]: Yup.string().required(`${last_Name.requiredErrorMsg}`),
-//     [e_mail.name]: Yup.string()
-//       .required(`${e_mail.requiredErrorMsg}`)
-//       .email(`${e_mail.invalidErrorMsg}`),
-//     [country.name]: Yup.string().required(`${country.requiredErrorMsg}`),
-//     [zip.name]: Yup.string().required(`${zip.requiredErrorMsg}`),
-//     [town_city.name]: Yup.string().required(`${town_city.requiredErrorMsg}`),
-//     [address1.name]: Yup.string().required(`${address1.requiredErrorMsg}`),
+const CheckOutValidationSchema = [
+  Yup.object().shape({
+    [first_Name.name]: Yup.string().required(`${first_Name.requiredErrorMsg}`),
+    [last_Name.name]: Yup.string().required(`${last_Name.requiredErrorMsg}`),
+    [e_mail.name]: Yup.string()
+      .required(`${e_mail.requiredErrorMsg}`)
+      .email(`${e_mail.invalidErrorMsg}`),
+    [country.name]: Yup.string().required(`${country.requiredErrorMsg}`),
+    [zip.name]: Yup.string().required(`${zip.requiredErrorMsg}`),
+    [town_city.name]: Yup.string().required(`${town_city.requiredErrorMsg}`),
+    [address1.name]: Yup.string().required(`${address1.requiredErrorMsg}`),
 
-//     // [category.name]: Yup.string().required(`${category.requiredErrorMsg}`),
-//     // [subCategory.name]: Yup.string().required(
-//     //   `${subCategory.requiredErrorMsg}`
-//     // ),
-//   }),
-//   // Yup.object().shape({
-//   //   [quantity.name]: Yup.string().required(`${quantity.requiredErrorMsg}`),
-//   //   [dimensions.name]: Yup.string().required(`${dimensions.requiredErrorMsg}`),
-//   //   [materials.name]: Yup.array().min(1, `${materials.requiredErrorMsg}`),
-//   // }),
-// ];
+    // [category.name]: Yup.string().required(`${category.requiredErrorMsg}`),
+    // [subCategory.name]: Yup.string().required(
+    //   `${subCategory.requiredErrorMsg}`
+    // ),
+  }),
+  // Yup.object().shape({
+  //   [quantity.name]: Yup.string().required(`${quantity.requiredErrorMsg}`),
+  //   [dimensions.name]: Yup.string().required(`${dimensions.requiredErrorMsg}`),
+  //   [materials.name]: Yup.array().min(1, `${materials.requiredErrorMsg}`),
+  // }),
+];
 
 // // product review form validation schema
 // const ProductReviewValidationSchema = Yup.object().shape({
@@ -199,8 +199,8 @@ export {
   //   accountDetailsValidationSchema,
   //   changePasswordValidationSchema,
   //   reauthValidationSchema,
-    AddProductValidationSchema,
-  //   CheckOutValidationSchema,
+  AddProductValidationSchema,
+  CheckOutValidationSchema,
   //   ProductReviewValidationSchema,
-    AdminAccountDetailsValidationSchema,
+  AdminAccountDetailsValidationSchema,
 };

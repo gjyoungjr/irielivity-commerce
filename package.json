@@ -11,6 +11,7 @@
     "bootstrap": "4.5.0",
     "chart.js": "^2.9.4",
     "circletype": "^2.3.0",
+    "emailjs-com": "^2.6.4",
     "firebase": "^8.2.9",
     "formik": "^2.2.6",
     "framer-motion": "^4.1.11",
