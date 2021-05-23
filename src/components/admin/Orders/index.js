@@ -229,7 +229,7 @@ export default function OrdersList({ orders }) {
       {/* Data Table */}
       <MuiThemeProvider theme={theme}>
         <MUIDataTable
-          style={{ borderRadius: "20px" }}
+          style={{ borderRadius: "20px", cursor: "pointer" }}
           title="Order List"
           data={orders}
           columns={columns}

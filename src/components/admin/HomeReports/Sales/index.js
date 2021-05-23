@@ -30,52 +30,52 @@ const Sales = ({ className, weeklySales, ...rest }) => {
   const [days, setDays] = useState([]);
   const [dailySales, setDailySales] = useState([]);
 
-  // useEffect(() => {
-  //   // if no data exit
-  //   if (!weeklySales.length) return;
+  useEffect(() => {
+    // if no data exit
+    if (!weeklySales.length) return;
 
-  //   // map through data
-  //   // extract date
-  //   weeklySales.map((sale) => {
-  //     _days.push(formatDate(sale.createdAt));
-  //     // filter date to get only unique days
-  //     const filteredDays = filterArray(_days);
-  //     // set state with filtered days
-  //     setDays(filteredDays);
-  //   });
+    // map through data
+    // extract date
+    weeklySales.map((sale) => {
+      _days.push(formatDate(sale.createdAt));
+      // filter date to get only unique days
+      const filteredDays = filterArray(_days);
+      // set state with filtered days
+      setDays(filteredDays);
+    });
 
-  //   // counts sales per day
-  //   const countSalesPerDay = (days) => {
-  //     // loop thru days
-  //     // increment object with key value for every duplicated day found
-  //     for (let i = 0; i < days.length; i++) {
-  //       if (salesCount[days[i]]) {
-  //         salesCount[days[i]] += 1;
-  //       } else {
-  //         salesCount[days[i]] = 1;
-  //       }
-  //     }
-  //     // extract the day and the sale per day into array with key value pairs
-  //     for (let prop in salesCount) {
-  //       if (salesCount[prop]) {
-  //         // console.log(prop + " counted: " + salesCount[prop] + " times.");
-  //         _dailySales.push({
-  //           x: prop,
-  //           y: salesCount[prop],
-  //         });
-  //       }
-  //     }
-  //   };
-  //   // set state with filtered data
-  //   countSalesPerDay(_days);
-  //   setDailySales(_dailySales);
-  // }, [weeklySales]);
+    // counts sales per day
+    const countSalesPerDay = (days) => {
+      // loop thru days
+      // increment object with key value for every duplicated day found
+      for (let i = 0; i < days.length; i++) {
+        if (salesCount[days[i]]) {
+          salesCount[days[i]] += 1;
+        } else {
+          salesCount[days[i]] = 1;
+        }
+      }
+      // extract the day and the sale per day into array with key value pairs
+      for (let prop in salesCount) {
+        if (salesCount[prop]) {
+          // console.log(prop + " counted: " + salesCount[prop] + " times.");
+          _dailySales.push({
+            x: prop,
+            y: salesCount[prop],
+          });
+        }
+      }
+    };
+    // set state with filtered data
+    countSalesPerDay(_days);
+    setDailySales(_dailySales);
+  }, [weeklySales]);
 
   const data = {
     datasets: [
       {
         backgroundColor: "#46C5BC",
-        // data: dailySales,
+        data: dailySales,
         label: "This Week",
       },
     ],
@@ -114,8 +114,7 @@ const Sales = ({ className, weeklySales, ...rest }) => {
             display: true,
             fontColor: theme.palette.text.secondary,
             beginAtZero: true,
-            stepSize: 1
-            
+            stepSize: 1,
           },
           gridLines: {
             borderDash: [2],

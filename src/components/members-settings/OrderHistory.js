@@ -14,12 +14,6 @@ import {
 // components
 import { CompletedChip, InTransitChip, ProcessingChip } from "../chips";
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
-
 // data for table columns
 const columns = [
   {
@@ -40,15 +34,6 @@ const columns = [
   },
 ];
 
-const orders = [
-  {
-    id: "12/12/12",
-    documentID: 999023,
-    status: "Processing",
-    orderTotal: 8000,
-  },
-];
-
 // currency format fxn
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -56,22 +41,21 @@ const formatter = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
 });
 
-// // format fxn for date
-// const formatDate = (value) => {
-//   const timeStampDate = value;
-//   const dateInMillis = timeStampDate.seconds * 1000;
-//   value = new Date(dateInMillis).toDateString();
+// format fxn for date
+const formatDate = (value) => {
+  const timeStampDate = value;
+  const dateInMillis = timeStampDate.seconds * 1000;
+  value = new Date(dateInMillis).toDateString();
 
-//   return value;
-// };
+  return value;
+};
 
 const formatText = (columnName, columnValue) => {
   switch (columnName) {
     case "orderTotal":
       return formatter.format(columnValue);
     case "createdAt":
-      return columnValue;
-    //   return formatDate(columnValue);
+      return formatDate(columnValue);
     case "status":
       return columnValue === "Processing" ? (
         <ProcessingChip label={columnValue} />
@@ -85,7 +69,7 @@ const formatText = (columnName, columnValue) => {
   }
 };
 
-export default function OrderHistory({ tabValue }) {
+export default function OrderHistory({ tabValue, usersOrders }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -105,9 +89,9 @@ export default function OrderHistory({ tabValue }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Array.isArray(orders) &&
-              orders.length > 0 &&
-              orders.map((row, pos) => {
+            {Array.isArray(usersOrders) &&
+              usersOrders.length > 0 &&
+              usersOrders.map((row, pos) => {
                 const { documentID } = row;
 
                 return (
@@ -134,3 +118,10 @@ export default function OrderHistory({ tabValue }) {
     </div>
   );
 }
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650,
+    backgroundColor: "#fdfbf4",
+  },
+});

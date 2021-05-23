@@ -201,7 +201,17 @@ export default function ProductCard({ className, product, ...rest }) {
 
             {product.quantity === 0 || product.quantity < 0 ? (
               <div className="text-right">
-                <Chip label="Out of stock." />
+                <Chip
+                  label="Out of stock."
+                  style={{ backgroundColor: "black", color: "white" }}
+                />
+              </div>
+            ) : product.quantity >= 1 && product.quantity <= 2 ? (
+              <div className="text-right">
+                <Chip
+                  label="Low stock."
+                  style={{ backgroundColor: "#fff1ac", color: "black" }}
+                />
               </div>
             ) : (
               ""

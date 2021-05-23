@@ -107,7 +107,10 @@ const ProductBanner = () => {
                   key={category.id}
                   className="category-item"
                   style={{ backgroundImage: `url(${category.imgSrc})` }}
-                  onClick={() => history.push(category.url)}
+                  onClick={() => {
+                    history.push(category.url);
+                    window.location.reload();
+                  }}
                 >
                   <p className="category-label">{category.label}</p>
 

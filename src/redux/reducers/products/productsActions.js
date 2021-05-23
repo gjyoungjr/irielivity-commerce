@@ -49,3 +49,17 @@ export const setProductReview = (product) => ({
   type: productsTypes.SET_PRODUCT_REVIEW,
   payload: product,
 });
+
+export const addProductCategory = (productData) => ({
+  type: productsTypes.ADD_PRODUCT_CATEGORY,
+  payload: productData,
+});
+
+export const fetchProductCategories = () => ({
+  type: productsTypes.FETCH_PRODUCT_CATEGORIES,
+});
+
+export const setProductCategories = (productsCategories) => ({
+  type: productsTypes.SET_PRODUCT_CATEGORIES,
+  payload: productsCategories,
+});

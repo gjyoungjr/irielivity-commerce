@@ -10,19 +10,23 @@ import {
   handleUpdateProduct,
   handleAddProductReview,
   handleFetchProductReviewStart,
+  handleAddProductCategory,
+  handleGetAllProductCategories,
 } from "./productsHelper";
 import {
   setProducts,
   fetchProductsStart,
+  fetchProductCategories,
   setProduct,
   setProductReview,
+  setProductCategories,
 } from "./productsActions";
 import { auth } from "../../../firebase/utils";
 
 // ADDS PRODUCT TO DB
 export function* addProduct({ payload }) {
   try {
-    console.log('....added!!')
+    console.log("....added!!");
     const timestamp = new Date();
     // adding fields to db
     yield handleAddProduct({
@@ -142,6 +146,45 @@ export function* onFetchProductReviewStart() {
   );
 }
 
+// adds product cateogry
+export function* addProductCategory({ payload }) {
+  try {
+    // const timestamp = new Date();
+    // adding fields to db
+    yield handleAddProductCategory({
+      ...payload,
+    });
+    yield put(fetchProductCategories());
+  } catch (err) {
+    console.log("Add Product->", err);
+  }
+}
+
+// starter fxn calls add product category
+export function* onAddProductCategoryStart() {
+  yield takeLatest(productsTypes.ADD_PRODUCT_CATEGORY, addProductCategory);
+}
+
+// get all product categories from db
+export function* getAllProductCategories() {
+  try {
+    // assign product categories to data being returned from api call
+    const productCategories = yield handleGetAllProductCategories();
+    // update redux store with all orders
+    yield put(setProductCategories(productCategories));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// call get product categoires fxn
+export function* onGetAllProductCategoriesStart() {
+  yield takeLatest(
+    productsTypes.FETCH_PRODUCT_CATEGORIES,
+    getAllProductCategories
+  );
+}
+
 // export saga functions
 export default function* productsSagas() {
   yield all([
@@ -152,5 +195,7 @@ export default function* productsSagas() {
     call(onUpdateProductStart),
     call(onAddProductReviewStart),
     call(onFetchProductReviewStart),
+    call(onAddProductCategoryStart),
+    call(onGetAllProductCategoriesStart),
   ]);
 }

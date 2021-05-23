@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   root: {
     width: 300,
     height: 50,
+    backgroundColor: "#fdfbf4",
   },
   selected: {
     backgroundColor: "black",
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
   },
   card: {
     position: "absolute !important",
-    top: "30%",
+    bottom: "5%",
     zIndex: 10,
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -36,20 +37,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function UsersNavigation() {
+export default function BottomNav({ usersOrders }) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
 
   // fxn handles sign out of user
   const handleSignOut = () => {
+    window.location.href = "/";
     auth.signOut();
-    window.location.href = "/new";
   };
 
   return (
     <Fragment>
       {/* Props passed to order history for conditional Render */}
-      <OrderHistory tabValue={tabValue} />
+      <OrderHistory tabValue={tabValue} usersOrders={usersOrders} />
       <Card className={classes.card} elevation={10}>
         <Box maxWidth={400}>
           <BottomNavigation

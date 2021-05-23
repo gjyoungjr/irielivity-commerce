@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import {
   Stepper,
@@ -205,13 +206,13 @@ export default function CheckoutPage() {
     dispatch(setOrdersNotificationData(allOrders));
 
     // fxn calls to send email out to admin & user on order success
-    alertAdminOnOrder(emailjs, currentUser.firstName, currentUser.lastName);
-    alertUserOnOrder(
-      emailjs,
-      currentUser.email,
-      currentUser.firstName,
-      currentUser.lastName
-    );
+    // alertAdminOnOrder(emailjs, currentUser.firstName, currentUser.lastName);
+    // alertUserOnOrder(
+    //   emailjs,
+    //   currentUser.email,
+    //   currentUser.firstName,
+    //   currentUser.lastName
+    // );
 
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
@@ -244,15 +245,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="checkout-wrapper">
-      {/* <div className="mt-3 mb-5">
-        <Avatar
-          src={Logo}
-          className="check-out-logo"
-          onClick={() => history.push("/")}
-          style={{ height: 70, width: 70, cursor: "pointer" }}
-        />
-      </div> */}
-
       <div className="cart-summary-mobile">{/* <CartSummaryMobile /> */}</div>
 
       <ThemeProvider theme={theme}>

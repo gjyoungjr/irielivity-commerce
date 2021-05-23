@@ -15,12 +15,11 @@ const useAdminAuth = () => {
   // use for redirect
   const history = useHistory();
 
-
   useEffect(() => {
-    console.log(currentUser)
+    console.log(currentUser);
 
     if (!checkIsUserAdmin(currentUser)) {
-      history.push("/login");
+      history.push("/");
     }
   }, [currentUser, history]);
 

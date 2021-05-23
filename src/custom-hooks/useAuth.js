@@ -16,14 +16,13 @@ const useAuth = () => {
   // use for redirect
   const history = useHistory();
 
-
   // // boolean state is admin
   // const isAdmin = checkIsUserAdmin(currentUser);
 
   useEffect(() => {
     // if user not signed in redirect to sign in
     if (!currentUser) {
-      history.push(process.env.PUBLIC_URL + "/login");
+      history.push(process.env.PUBLIC_URL + "/");
     }
 
     // if (isAdmin) {

@@ -31,7 +31,7 @@ const TotalOrders = ({ className, ordersStats, ...rest }) => {
   const classes = useStyles();
 
   // gets orders count from props being passed
-  // const ordersCount = ordersStats.length ? ordersStats[0].ordersCount : 0;
+  const ordersCount = ordersStats.length ? ordersStats[0].ordersCount : 0;
 
   return (
     <Card
@@ -58,7 +58,7 @@ const TotalOrders = ({ className, ordersStats, ...rest }) => {
             >
               <CountUp
                 start={0}
-                // end={ordersCount}
+                end={ordersCount}
                 duration={2.75}
                 separator=","
               />

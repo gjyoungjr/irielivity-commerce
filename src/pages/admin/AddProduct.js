@@ -247,9 +247,9 @@ export default function CheckoutPage() {
 
     const handleSuccessfulSubmit = () => {
       setDisplayNotif(true);
-      // setTimeout(() => {
-      //   history.push("/admin/products");
-      // }, 1000);
+      setTimeout(() => {
+        history.push("/admin/products");
+      }, 1000);
     };
 
     handleSuccessfulSubmit();

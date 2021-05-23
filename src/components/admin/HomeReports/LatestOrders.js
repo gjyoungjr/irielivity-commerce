@@ -80,7 +80,7 @@ const LatestOrders = ({ className, latestOrders, ...rest }) => {
               <TableCell className="font-weight-bold">Status</TableCell>
             </TableRow>
           </TableHead>
-          {/* <TableBody>
+          <TableBody>
             {latestOrders.length > 0 ? (
               latestOrders.map((order) => (
                 <TableRow hover key={order.documentID}>
@@ -101,7 +101,7 @@ const LatestOrders = ({ className, latestOrders, ...rest }) => {
             ) : (
               <p className="text-center">No orders as yet.</p>
             )}
-          </TableBody> */}
+          </TableBody>
         </Table>
       </TableContainer>
 

@@ -24,6 +24,8 @@ export default function Orders() {
     dispatch(getAllOrders());
   }, [dispatch]);
 
+  console.log(orders);
+
   return (
     <DashboardLayout>
       <OrdersList orders={orders} />

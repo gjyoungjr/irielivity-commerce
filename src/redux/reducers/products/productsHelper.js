@@ -9,8 +9,44 @@ export const handleAddProduct = (product) => {
       .doc()
       .set(product)
       .then(() => {
-        console.log('...set')
+        console.log("...set");
         resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+// adds product category to db
+export const handleAddProductCategory = (product) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("productCategories")
+      .doc()
+      .set(product)
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+// get all records from orders table in db
+export const handleGetAllProductCategories = () => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("productCategories")
+      .get()
+      .then((snapshot) => {
+        const productCategoriesArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+          };
+        });
+        resolve(productCategoriesArray);
       })
       .catch((err) => {
         reject(err);
