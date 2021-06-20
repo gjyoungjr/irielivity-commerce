@@ -219,6 +219,7 @@ const styles = {
     borderRadius: "9px",
     boxShadow: "none",
     border: "1px solid #F2F2F2",
+    backgroundColor: "#fdfbf4",
   },
   btn: {
     borderRadius: "20px",

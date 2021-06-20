@@ -167,16 +167,16 @@ export const deleteUser = async (userAuth) => {
 };
 
 export const checkIsUserAdmin = (currentUser) => {
-  // if no current user signed in
-  // or no user roles array found in user data
-  // break
-  if (!currentUser || !Array.isArray(currentUser.userRoles)) return false;
+  // if no current user is sign in exit
+  if (!currentUser) return false;
 
-  // grabs user rols array
-  const { userRoles } = currentUser;
+  // grabs field from current user data
+  const { isAdmin } = currentUser;
   // chekc if user has role of admin
-  if (userRoles.includes("admin")) return true;
+  // if yes return true
+  if (isAdmin) return true;
 
+  // else return false
   return false;
 };
 
@@ -205,7 +205,9 @@ export const handleUserProfile = async (userAuth, firstName, lastName) => {
     const { email } = userAuth;
     // timestampe for createdAt
     const timestamp = new Date();
-    const userRoles = ["user"];
+    // const userRoles = ["user"];
+    const isAdmin = false;
+    const isSuperAdmin = false;
 
     try {
       batch.set(userRef, {
@@ -214,7 +216,9 @@ export const handleUserProfile = async (userAuth, firstName, lastName) => {
         email: email,
         createdAt: timestamp,
         fullName: firstName + " " + lastName,
-        userRoles,
+        // userRoles,
+        isAdmin,
+        isSuperAdmin,
       });
       // keeps track of user counts
       batch.set(

@@ -21,3 +21,8 @@ export const setTotalUsers = (usersCount) => ({
   type: userTypes.SET_TOTAL_USERS,
   payload: usersCount,
 });
+
+export const setAdminUser = (user) => ({
+  type: userTypes.SET_ADMIN_USER,
+  payload: user,
+});

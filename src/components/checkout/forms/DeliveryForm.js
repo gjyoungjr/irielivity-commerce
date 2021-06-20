@@ -20,17 +20,19 @@ import CallMadeIcon from "@material-ui/icons/CallMade";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
     marginLeft: "auto",
     marginRight: "auto",
     marginBottom: "25px",
+    backgroundColor: "#fdfbf4",
   },
 }));
 
 export default function SelectedListItem() {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState("Pick-Up");
+  const [selectedDeliveryMethod, setSelectedDeliveryMethod] =
+    useState("Pick-Up");
 
   const { setFieldValue } = useFormikContext();
 
@@ -55,7 +57,8 @@ export default function SelectedListItem() {
           borderRadius: "none",
           boxShadow: "none",
           border: "1px solid #F2F2F2",
-          padding: '10px'
+          padding: "10px",
+          backgroundColor: "#fdfbf4",
         }}
         elevation={1}
       >
@@ -87,9 +90,9 @@ export default function SelectedListItem() {
         <a
           style={{
             color: "black",
-            marginLeft: '20px',
-            marginBottom: '20px',
-            backgroundColor: "white",
+            marginLeft: "20px",
+            marginBottom: "20px",
+            backgroundColor: "#fdfbf4",
             padding: "6px 12px",
             borderRadius: "20px",
             border: "1px solid black",
@@ -108,6 +111,7 @@ export default function SelectedListItem() {
           boxShadow: "none",
           border: "1px solid #F2F2F2",
           marginTop: "15px",
+          backgroundColor: "#fdfbf4",
         }}
         elevation={1}
       >
@@ -143,6 +147,7 @@ export default function SelectedListItem() {
           boxShadow: "none",
           border: "1px solid #F2F2F2",
           marginTop: "15px",
+          backgroundColor: "#fdfbf4",
         }}
         elevation={1}
       >

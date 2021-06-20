@@ -41,3 +41,19 @@ export const handleGetTotalUsers = () => {
       });
   });
 };
+
+// update user account to an admin account
+export const handleSetUserAdmin = (userID, user) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(userID)
+      .update(user)
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

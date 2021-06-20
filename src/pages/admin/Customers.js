@@ -20,17 +20,17 @@ export default function Customers() {
   // gets users
   const { users } = useSelector(mapState);
 
- 
-  // filter for only regular customers account
-  const regularUsers =
-    users && users.filter((user) => user.userRoles.length !== 2);
+  // filter for only regular customers & admin account
+  const filteredUsers =
+    users && users.filter((user) => user.isSuperAdmin === false);
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
   return (
     <DashboardLayout>
-      <CustomerList users={regularUsers} />
+      <CustomerList users={filteredUsers} />
     </DashboardLayout>
   );
 }
