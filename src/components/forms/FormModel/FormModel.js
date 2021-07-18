@@ -256,12 +256,40 @@ const CheckOutFormModel = {
     },
     deliveryMethod: {
       name: "deliveryMethod",
+      requiredErrorMsg: "Delivery method is required.",
     },
     paymentMethod: {
       name: "paymentMethod",
+      requiredErrorMsg: "Payment method is required.",
     },
     paymentReceipt: {
       name: "paymentReceipt",
+      requiredErrorMsg: "Payment upload of receipt is required.",
+    },
+    billingName: {
+      name: "billingName",
+      label: "Name on card",
+      requiredErrorMsg: "This field is required",
+    },
+    billingAddress: {
+      name: "billingAddress",
+      label: "Address",
+      requiredErrorMsg: "This field is required",
+    },
+    billingCity: {
+      name: "billingCity",
+      label: "City",
+      requiredErrorMsg: "This field is required",
+    },
+    billingState: {
+      name: "billingState",
+      label: "State",
+      requiredErrorMsg: "This field is required",
+    },
+    billingPostalCode: {
+      name: "billingPostalCode",
+      label: "State",
+      requiredErrorMsg: "This field is required",
     },
   },
 };

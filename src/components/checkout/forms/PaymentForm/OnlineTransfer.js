@@ -102,7 +102,7 @@ export default function OnlineTransfer() {
     getInputProps,
   } = useDropzone({
     onDrop,
-    accept: ".pdf",
+    accept: ".pdf, image/jpeg, image/png",
   });
 
   return (
@@ -152,7 +152,7 @@ export default function OnlineTransfer() {
                   <div className="font-size-sm">
                     Upload receipt of payment here.{" "}
                     <span className="font-size-xs text-dark">
-                      (pdf format only)
+                      (Acceptable format: pdf or jpeg/png )
                     </span>
                   </div>
                 </div>

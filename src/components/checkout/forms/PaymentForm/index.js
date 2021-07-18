@@ -1,45 +1,98 @@
-import React, { useState, useEffect } from "react";
-import { Radio, RadioGroup, FormControlLabel } from "@material-ui/core";
+import React from "react";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  makeStyles,
+} from "@material-ui/core";
 import { useFormikContext } from "formik";
 
 // components
 import PayOnPickUp from "./PayOnPickUp";
 import OnlineTransfer from "./OnlineTransfer";
+import Billing from "./Billing";
 
-export default function PaymentForm() {
-  const [value, setValue] = useState("Pay-On-Pick-Up");
-  const { setFieldValue } = useFormikContext();
+const paymentTypes = [
+  {
+    value: "Online-Transfer",
+  },
+  {
+    value: "Pay-On-Pick-Up",
+  },
+  {
+    value: "Credit-Card",
+  },
+];
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  // set payment method field every time value changes
-  useEffect(() => {
-    setFieldValue("paymentMethod", value);
-  }, [value, setFieldValue]);
+export default function PaymentForm({ formField, orderTotal }) {
+  const classes = useStyles();
+  const { setFieldValue, values, errors } = useFormikContext();
+  const { paymentMethod } = formField;
 
   return (
     <div style={styles.wrapper}>
-      <RadioGroup value={value} onChange={handleChange}>
-        <div className="d-flex justify-content-between">
-          <FormControlLabel
-            value="Pay-On-Pick-Up"
-            control={<Radio style={{ color: "black" }} />}
-            label="Pay On Pick Up"
-          />
-          <FormControlLabel
-            value="Online-Transfer"
-            control={<Radio style={{ color: "black" }} />}
-            label="Online-Transfer"
-          />
-        </div>
-      </RadioGroup>
+      {errors && <div style={styles.errorMsg}>{errors.paymentMethod}</div>}
+      {errors && <div style={styles.errorMsg}>{errors.paymentReceipt}</div>}
+      <FormControl component="fieldset" fullWidth>
+        <RadioGroup
+          name={paymentMethod.name}
+          value={values.paymentMethod}
+          onChange={(event) => {
+            setFieldValue(paymentMethod.name, event.currentTarget.value);
+          }}
+        >
+          <div className="d-flex justify-content-between">
+            {paymentTypes &&
+              paymentTypes.map((pymtType) => (
+                <div key={pymtType.value}>
+                  <FormControlLabel
+                    value={pymtType.value}
+                    control={
+                      <Radio
+                        classes={{
+                          root: classes.radio,
+                          checked: classes.checked,
+                        }}
+                      />
+                    }
+                    label={pymtType.value}
+                  />
+                </div>
+              ))}
+          </div>
+        </RadioGroup>
+      </FormControl>
 
-      {value === "Pay-On-Pick-Up" ? <PayOnPickUp /> : <OnlineTransfer />}
+      {values.paymentMethod === "Pay-On-Pick-Up" ? (
+        <PayOnPickUp />
+      ) : values.paymentMethod === "Credit-Card" ? (
+        <Billing formField={formField} orderTotal={orderTotal} />
+      ) : (
+        <OnlineTransfer />
+      )}
+
+      <pre>{JSON.stringify(values, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
     </div>
   );
 }
+// style config
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    backgroundColor: theme.palette.background.paper,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: "25px",
+  },
+  radio: {
+    "&$checked": {
+      color: "#000",
+    },
+  },
+  checked: {},
+}));
 
 const styles = {
   bottomSpacer: {
@@ -53,5 +106,9 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     width: "100%",
+  },
+  errorMsg: {
+    color: "red",
+    fontSize: "14px",
   },
 };

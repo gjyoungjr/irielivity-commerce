@@ -1,4 +1,4 @@
-/*--- flone preloader ---*/
+/*---  preloader ---*/
 
 .flone-preloader-wrapper {
   position: fixed;
@@ -30,7 +30,7 @@
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background: #7460ef;
+  background: black;
   -webkit-animation: preloader 1.3s linear infinite;
   animation: preloader 1.3s linear infinite;
 }
@@ -62,4 +62,4 @@
   }
 }
 
-/*--- end of flone preloader ---*/
+/*--- end of preloader ---*/

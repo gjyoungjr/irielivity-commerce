@@ -54,6 +54,11 @@ const {
     paymentMethod,
     deliveryMethod,
     paymentReceipt,
+    billingAddress,
+    billingCity,
+    billingName,
+    billingPostalCode,
+    billingState,
   },
 } = CheckOutFormModel;
 
@@ -147,6 +152,11 @@ const CheckOutFormValues = {
   [paymentMethod.name]: "",
   [deliveryMethod.name]: "",
   [paymentReceipt.name]: "",
+  [billingName.name]: "",
+  [billingCity.name]: "",
+  [billingAddress.name]: "",
+  [billingPostalCode.name]: "",
+  [billingState.name]: "",
 };
 
 //   const ProductReviewFormValues = {

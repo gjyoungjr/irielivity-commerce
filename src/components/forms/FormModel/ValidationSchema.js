@@ -56,6 +56,13 @@ const {
     town_city,
     country,
     zip,
+    paymentMethod,
+    paymentReceipt,
+    // billingAddress,
+    // billingCity,
+    // billingName,
+    // billingPostalCode,
+    // billingState,
   },
 } = CheckOutFormModel;
 
@@ -172,17 +179,21 @@ const CheckOutValidationSchema = [
     [zip.name]: Yup.string().required(`${zip.requiredErrorMsg}`),
     [town_city.name]: Yup.string().required(`${town_city.requiredErrorMsg}`),
     [address1.name]: Yup.string().required(`${address1.requiredErrorMsg}`),
-
-    // [category.name]: Yup.string().required(`${category.requiredErrorMsg}`),
-    // [subCategory.name]: Yup.string().required(
-    //   `${subCategory.requiredErrorMsg}`
+  }),
+  Yup.object().shape({
+    // [paymentMethod.name]: Yup.string().required(
+    //   `${paymentMethod.requiredErrorMsg}`
     // ),
   }),
-  // Yup.object().shape({
-  //   [quantity.name]: Yup.string().required(`${quantity.requiredErrorMsg}`),
-  //   [dimensions.name]: Yup.string().required(`${dimensions.requiredErrorMsg}`),
-  //   [materials.name]: Yup.array().min(1, `${materials.requiredErrorMsg}`),
-  // }),
+  Yup.object().shape({
+    [paymentMethod.name]: Yup.string().required(
+      `${paymentMethod.requiredErrorMsg}`
+    ),
+    [paymentReceipt.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Online-Transfer",
+      then: Yup.string().required(`${paymentReceipt.requiredErrorMsg}`),
+    }),
+  }),
 ];
 
 // // product review form validation schema

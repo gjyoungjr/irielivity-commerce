@@ -21,6 +21,7 @@ export default function Receipts() {
 
   // filter orders & return orders that has a payment receipt
   const filteredOrders = orders.filter((item) => item.paymentReceipt !== "");
+  console.log(filteredOrders);
 
   // fetch orders on component mount
   // later pass as props to children
