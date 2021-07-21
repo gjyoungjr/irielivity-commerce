@@ -2,10 +2,15 @@ import React from "react";
 import { Select, MenuItem, FormControl } from "@material-ui/core";
 
 //components
-import { ProcessingChip, InTransitChip, CompletedChip } from "../../chips";
+import {
+  ProcessingChip,
+  InTransitChip,
+  CompletedChip,
+  CancelledChip,
+} from "../../chips";
 
 export default function Statuses({ value, onChange }) {
-  const statuses = ["Processing", "In-Transit", "Completed"];
+  const statuses = ["Processing", "In-Transit", "Completed", "Cancelled"];
 
   return (
     <FormControl fullWidth>
@@ -22,6 +27,8 @@ export default function Statuses({ value, onChange }) {
                 <ProcessingChip label={status} />
               ) : status === "In-Transit" ? (
                 <InTransitChip label={status} />
+              ) : status === "Cancelled" ? (
+                <CancelledChip label={status} />
               ) : (
                 <CompletedChip label={status} />
               )}

@@ -132,7 +132,7 @@ export default function AddressForm({ formField }) {
                 }
                 setIsCountryError(false);
                 setFieldValue("zip", value.phone || "");
-                setFieldValue("country", value.label || "");
+                setFieldValue("country", value.code || "");
               }}
               onBlur={() => {
                 if (!values.country) {

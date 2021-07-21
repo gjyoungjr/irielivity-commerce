@@ -46,20 +46,6 @@ const steps = ["Main Information", "Variants", "Review"];
 // grabs props from form model
 const { formId, formField } = AddProductFormModel;
 
-// switch function to determine step rendering
-function _renderStepContent(step) {
-  switch (step) {
-    case 0:
-      return <MainInformation formField={formField} />;
-    case 1:
-      return <Variants formField={formField} />;
-    case 2:
-      return <Review />;
-    default:
-      return <Review />;
-  }
-}
-
 // stylesheet
 const useStyles = makeStyles(() => ({
   root: {
@@ -93,9 +79,22 @@ export default function CheckoutPage() {
 
   // grabs productID from url
   const { productID } = useParams();
-
   // destructure to get product from redux store
   const { product } = useSelector(mapState);
+
+  // switch function to determine step rendering
+  function _renderStepContent(step) {
+    switch (step) {
+      case 0:
+        return <MainInformation formField={formField} productID={productID} />;
+      case 1:
+        return <Variants formField={formField} productID={productID} />;
+      case 2:
+        return <Review />;
+      default:
+        return <Review />;
+    }
+  }
 
   // calls dispatch action to submit data to db
   const _submitForm = (values, actions) => {
@@ -238,8 +237,6 @@ export default function CheckoutPage() {
     // set state with form values
     setFetchedFormValues(formValues);
   }, [product]);
-
-  // console.log(product);
 
   // controls redirect on last step
   useEffect(() => {

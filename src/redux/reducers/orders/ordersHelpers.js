@@ -29,6 +29,22 @@ export const handleSaveOrder = (order) => {
   });
 };
 
+// delete order from db
+export const handleDeleteOrder = (documentID) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("orders")
+      .doc(documentID)
+      .delete()
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 // gets user order from db
 export const handleGetUserOrderHistory = (uid) => {
   return new Promise((resolve, reject) => {
@@ -166,7 +182,6 @@ export const handleGetWeeklyOrders = () => {
   return new Promise((resolve, reject) => {
     const startOfWeek = moment().startOf("week").toDate();
     const endOfWeek = moment().endOf("week").toDate();
-
 
     firestore
       .collection("orders")

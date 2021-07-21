@@ -9,12 +9,17 @@ import {
   CheckOutFormModel,
   // ProductReviewFormModel,
   AdminAccountDetailsFormModel,
+  ProductCategoryFormModel
 } from "./FormModel";
 
 // GRABS FORM FIELDS
 const {
   formField: { email, password },
 } = LoginFormModel;
+
+const {
+  formField: { categoryName, subCategories },
+} = ProductCategoryFormModel;
 
 const {
   formField: { _email, _password, firstName, lastName },
@@ -165,6 +170,12 @@ const CheckOutFormValues = {
 //     [rating.name]: 0,
 //   };
 
+const ProductCategoryFormValues = {
+  [categoryName.name]: "",
+  [subCategories.name]: [],
+};
+
+
 export {
   LoginFormValues,
   RegisterFormValues,
@@ -176,4 +187,5 @@ export {
   CheckOutFormValues,
   // ProductReviewFormValues,
   AdminAccountDetailsFormValues,
+  ProductCategoryFormValues
 };

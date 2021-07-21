@@ -286,9 +286,14 @@ const CheckOutFormModel = {
       label: "State",
       requiredErrorMsg: "This field is required",
     },
+    billingCountry: {
+      name: "billingCountry",
+      label: "Country",
+      requiredErrorMsg: "This field is required",
+    },
     billingPostalCode: {
       name: "billingPostalCode",
-      label: "State",
+      label: "Zip Code",
       requiredErrorMsg: "This field is required",
     },
   },
@@ -314,6 +319,23 @@ const CheckOutFormModel = {
 //     },
 //   };
 
+const ProductCategoryFormModel = {
+  formId: "ProductCategoryFormModel",
+  formField: {
+    categoryName: {
+      name: "categoryName",
+      label: "Enter category name",
+      requiredErrorMsg: "Category name is required",
+    },
+    subCategories: {
+      name: "subCategories",
+      label: "Enter sub categories",
+      requiredErrorMsg: "Sub Categories is required",
+    },
+  },
+};
+
+
 export {
   LoginFormModel,
   RegisterFormModel,
@@ -325,4 +347,5 @@ export {
   CheckOutFormModel,
   // ProductReviewFormModel,
   AdminAccountDetailsFormModel,
+  ProductCategoryFormModel
 };

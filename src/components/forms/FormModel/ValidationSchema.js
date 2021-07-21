@@ -10,12 +10,19 @@ import {
   CheckOutFormModel,
   //   ProductReviewFormModel,
   AdminAccountDetailsFormModel,
+  ProductCategoryFormModel,
+
 } from "./FormModel";
 
 // grabs form fields
 const {
   formField: { email, password },
 } = LoginFormModel;
+
+const {
+  formField: { categoryName, subCategories },
+} = ProductCategoryFormModel;
+
 const {
   formField: { _email, _password, firstName, lastName },
 } = RegisterFormModel;
@@ -58,11 +65,12 @@ const {
     zip,
     paymentMethod,
     paymentReceipt,
-    // billingAddress,
-    // billingCity,
-    // billingName,
-    // billingPostalCode,
-    // billingState,
+    billingAddress,
+    billingCity,
+    billingName,
+    billingPostalCode,
+    billingState,
+    billingCountry
   },
 } = CheckOutFormModel;
 
@@ -193,6 +201,32 @@ const CheckOutValidationSchema = [
       is: "Online-Transfer",
       then: Yup.string().required(`${paymentReceipt.requiredErrorMsg}`),
     }),
+    [billingAddress.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingAddress.requiredErrorMsg}`),
+    }),
+    [billingCity.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingCity.requiredErrorMsg}`),
+    }),
+    [billingCountry.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingCountry.requiredErrorMsg}`),
+    }),
+    [billingName.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingName.requiredErrorMsg}`),
+    }),
+    [billingState.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingState.requiredErrorMsg}`),
+    }),
+    [billingPostalCode.name]: Yup.string().when(`${paymentMethod.name}`, {
+      is: "Credit-Card",
+      then: Yup.string().required(`${billingPostalCode.requiredErrorMsg}`),
+    }),
+
+
   }),
 ];
 
@@ -202,6 +236,15 @@ const CheckOutValidationSchema = [
 //   [message.name]: Yup.string().required(`${message.requiredErrorMsg}`),
 //   [rating.name]: Yup.string().required(`${rating.requiredErrorMsg}`),
 // });
+
+// product category form validation schema
+const ProductCategoryValidationSchema = Yup.object().shape({
+  [categoryName.name]: Yup.string().required(
+    `${categoryName.requiredErrorMsg}`
+  ),
+  [subCategories.name]: Yup.array().min(1, `${subCategories.requiredErrorMsg}`),
+});
+
 
 export {
   LoginValidationSchema,
@@ -214,4 +257,5 @@ export {
   CheckOutValidationSchema,
   //   ProductReviewValidationSchema,
   AdminAccountDetailsValidationSchema,
+  ProductCategoryValidationSchema
 };

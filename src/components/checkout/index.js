@@ -16,7 +16,6 @@ import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import emailjs from "emailjs-com";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 // utils
 import {
@@ -36,7 +35,6 @@ import {
   alertAdminOnOrder,
   alertUserOnOrder,
 } from "../../redux/reducers/orders/ordersHelpers";
-import { apiInstance } from "../../redux/reducers/payments/paymentHelpers";
 
 // components -> forms
 import { AddressForm, DeliveryForm, PaymentForm } from "./forms";
@@ -149,11 +147,6 @@ export default function CheckoutPage() {
       deliveryMethod,
       paymentMethod,
       paymentReceipt,
-      billingAddress,
-      billingCity,
-      billingName,
-      billingPostalCode,
-      billingState,
     } = values;
     // create order object to be submitted
     const configOrder = {
@@ -212,50 +205,6 @@ export default function CheckoutPage() {
     dispatch(saveOrderHistory(configOrder));
     dispatch(setOrdersNotificationData(allOrders));
 
-    // // make api call to handle procesing of stripe payments
-    // apiInstance
-    //   .post("/payments/create", {
-    //     amount: orderTotal * 100, // so currency can be in cents
-    //     shipping: {
-    //       name: billingName,
-    //       address: {
-    //         ...billing_address,
-    //       },
-    //     },
-    //   })
-    //   .then(({ data: clientSecret }) => {
-    //     console.log(clientSecret);
-    //     stripe
-    //       .createPaymentMethod({
-    //         type: "card",
-    //         card: cardElement,
-    //         billing_details: {
-    //           name: billingName,
-    //           address: {
-    //             ...billing_address,
-    //           },
-    //         },
-    //       })
-    //       .then(({ paymentMethod }) => {
-    //         stripe
-    //           .confirmCardPayment(clientSecret, {
-    //             payment_method: paymentMethod.id,
-    //           })
-    //           .then(({ paymentIntent }) => {
-    //             console.log(paymentIntent);
-    //           });
-    //       });
-    //   });
-
-    // fxn calls to send email out to admin & user on order success
-    // alertAdminOnOrder(emailjs, currentUser.firstName, currentUser.lastName);
-    // alertUserOnOrder(
-    //   emailjs,
-    //   currentUser.email,
-    //   currentUser.firstName,
-    //   currentUser.lastName
-    // );
-
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
   }
@@ -302,55 +251,59 @@ export default function CheckoutPage() {
 
       <Divider style={{ marginTop: "-20px", marginBottom: "20px" }} />
       <React.Fragment>
-        <Formik
-          initialValues={CheckOutFormValues}
-          validationSchema={currentValidationSchema}
-          onSubmit={_handleSubmit}
-        >
-          {({ isSubmitting }) => (
-            <Form id={formId}>
-              {_renderStepContent(activeStep)}
+        {activeStep === steps.length ? (
+          <Redirect to="/members" />
+        ) : (
+          <Formik
+            initialValues={CheckOutFormValues}
+            validationSchema={currentValidationSchema}
+            onSubmit={_handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form id={formId}>
+                {_renderStepContent(activeStep)}
 
-              <div className="d-flex justify-content-start">
-                {activeStep !== 0 && (
-                  <div className="mr-5">
-                    <AppButton
-                      onClick={_handleBack}
-                      bgColor="black"
-                      color="white"
-                      label="Back"
-                    />
-                  </div>
-                )}
-                <div>
-                  {isLastStep ? (
-                    <AppButton
-                      disabled={isSubmitting}
-                      type="submit"
-                      bgColor="black"
-                      color="white"
-                      label={
-                        isSubmitting ? (
-                          <Loading size={15} color="white" />
-                        ) : (
-                          "Place order"
-                        )
-                      }
-                    />
-                  ) : (
-                    <AppButton
-                      disabled={isSubmitting}
-                      type="submit"
-                      bgColor="black"
-                      color="white"
-                      label="Next"
-                    />
+                <div className="d-flex justify-content-start">
+                  {activeStep !== 0 && (
+                    <div className="mr-5">
+                      <AppButton
+                        onClick={_handleBack}
+                        bgColor="black"
+                        color="white"
+                        label="Back"
+                      />
+                    </div>
                   )}
+                  <div>
+                    {isLastStep ? (
+                      <AppButton
+                        disabled={isSubmitting}
+                        type="submit"
+                        bgColor="black"
+                        color="white"
+                        label={
+                          isSubmitting ? (
+                            <Loading size={15} color="white" />
+                          ) : (
+                            "Place order"
+                          )
+                        }
+                      />
+                    ) : (
+                      <AppButton
+                        disabled={isSubmitting}
+                        type="submit"
+                        bgColor="black"
+                        color="white"
+                        label="Next"
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
-            </Form>
-          )}
-        </Formik>
+              </Form>
+            )}
+          </Formik>
+        )}
       </React.Fragment>
     </div>
   );

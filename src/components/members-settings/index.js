@@ -28,9 +28,9 @@ const useStyles = makeStyles({
     margin: "5px 5px 5px 5px",
   },
   card: {
-    position: "absolute !important",
-    bottom: "5%",
-    zIndex: 10,
+    position: "fixed !important",
+    bottom: "2%",
+    zIndex: 1,
     left: "50%",
     transform: "translate(-50%, -50%)",
     borderRadius: "35px",

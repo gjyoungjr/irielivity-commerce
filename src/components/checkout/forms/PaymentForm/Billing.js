@@ -1,37 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useFormikContext } from "formik";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 // form fields
 import { InputField } from "../../../forms/FormFields";
 // components
 import AppButton from "../../../app-button";
-
+// api calll
 import { apiInstance } from "../../../../redux/reducers/payments/paymentHelpers";
+// data
+import { countries } from "../../data";
+// icons
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-// stripe card configs
-const configCardElement = {
-  iconStyle: "solid",
-  iconColor: "black",
-  style: {
-    base: {
-      fontSize: "16px",
-      color: "#000",
-      borderRadius: "10px",
-      "::placeholder": {
-        color: "gray",
-      },
-    },
-    invalid: {
-      color: "#9e2146",
-    },
-  },
-  hidePostalCode: true,
-};
 export default function Billing({ formField, orderTotal }) {
   const stripe = useStripe();
   const elements = useElements();
-  const { values } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
+  const [loading, setLoading] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
   // gets form fields form props
   const {
@@ -40,6 +28,7 @@ export default function Billing({ formField, orderTotal }) {
     billingName,
     billingPostalCode,
     billingState,
+    billingCountry,
   } = formField;
 
   const cardElement = elements.getElement("card");
@@ -49,7 +38,7 @@ export default function Billing({ formField, orderTotal }) {
     city: values.billingCity,
     state: values.billingState,
     postal_code: values.billingPostalCode,
-    country: "US",
+    country: values.billingCountry,
   };
 
   const handleStripePymt = () => {
@@ -65,7 +54,7 @@ export default function Billing({ formField, orderTotal }) {
         },
       })
       .then(({ data: clientSecret }) => {
-        console.log(clientSecret);
+        setLoading(true);
         stripe
           .createPaymentMethod({
             type: "card",
@@ -78,18 +67,17 @@ export default function Billing({ formField, orderTotal }) {
             },
           })
           .then(({ paymentMethod }) => {
-            console.log(paymentMethod);
             stripe
               .confirmCardPayment(clientSecret, {
                 payment_method: paymentMethod.id,
               })
               .then(({ paymentIntent }) => {
-                console.log(paymentIntent);
+                setLoading(false);
+                setIsComplete(true);
               });
           });
       });
   };
-  // comment
 
   return (
     <div>
@@ -121,6 +109,52 @@ export default function Billing({ formField, orderTotal }) {
         variant="outlined"
         className="mb-3"
       />
+
+      <Autocomplete
+        id="combo-box-demo"
+        className="mb-3"
+        fullWidth
+        name={billingCountry.name}
+        // classes={{
+        //   option: classes.option,
+        // }}
+        options={countries}
+        onChange={(event, value) => {
+          // if (!value) {
+          //   setIsCountryError(true);
+          //   setFieldValue("zip", "");
+          //   return;
+          // }
+          // setIsCountryError(false);
+          // setFieldValue("zip", value.phone || "");
+          setFieldValue("billingCountry", value.code || "");
+        }}
+        onBlur={() => {
+          // if (!values.) {
+          //   setIsCountryError(true);
+          // }
+        }}
+        getOptionLabel={(option) => option.label}
+        renderOption={(option) => (
+          <React.Fragment>
+            <span>{countryToFlag(option.code)}</span>
+            {option.label} ({option.code}) +{option.phone}
+          </React.Fragment>
+        )}
+        renderInput={(params) => (
+          <InputField
+            {...params}
+            label={billingCountry.label}
+            name={billingCountry.name}
+            variant="outlined"
+            // helperText={
+            //   isCountryError && isCountryTouched && "Country is required"
+            // }
+            // error={isCountryError && isCountryTouched}
+          />
+        )}
+      />
+
       <InputField
         name={billingPostalCode.name}
         label={billingPostalCode.label}
@@ -139,9 +173,17 @@ export default function Billing({ formField, orderTotal }) {
         <CardElement options={configCardElement} />
       </div>
 
-      <div>
+      <div className="text-right mt-2">
         <AppButton
-          label="Pay Now"
+          label={
+            loading ? (
+              "Loading"
+            ) : isComplete ? (
+              <CheckCircleIcon style={{ color: "green" }} />
+            ) : (
+              "Pay Now"
+            )
+          }
           color="white"
           bgColor="black"
           width="100px"
@@ -151,3 +193,35 @@ export default function Billing({ formField, orderTotal }) {
     </div>
   );
 }
+
+// ISO 3166-1 alpha-2
+// ⚠️ No support for IE 11
+function countryToFlag(isoCode) {
+  return typeof String.fromCodePoint !== "undefined"
+    ? isoCode
+        .toUpperCase()
+        .replace(/./g, (char) =>
+          String.fromCodePoint(char.charCodeAt(0) + 127397)
+        )
+    : isoCode;
+}
+
+// stripe card configs
+const configCardElement = {
+  iconStyle: "solid",
+  iconColor: "black",
+  style: {
+    base: {
+      fontSize: "16px",
+      color: "#000",
+      borderRadius: "10px",
+      "::placeholder": {
+        color: "gray",
+      },
+    },
+    invalid: {
+      color: "#9e2146",
+    },
+  },
+  hidePostalCode: true,
+};

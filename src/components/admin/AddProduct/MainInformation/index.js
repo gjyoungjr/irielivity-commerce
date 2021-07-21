@@ -5,14 +5,14 @@ import { Grid } from "@material-ui/core";
 import MainImage from "./MainImage";
 import MainInformation from "./ProductMainInformation";
 
-export default function index({ formField }) {
+export default function index({ formField, productID }) {
   return (
     <Grid container spacing={2}>
-      <Grid item lg={6}  xs={12}>
+      <Grid item lg={6} xs={12}>
         <MainInformation formField={formField} />
       </Grid>
       <Grid item lg={6} xs={12}>
-        <MainImage formField={formField} />
+        <MainImage formField={formField} productID={productID} />
       </Grid>
     </Grid>
   );

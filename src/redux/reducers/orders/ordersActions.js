@@ -74,3 +74,8 @@ export const setWeeklyOrders = (orders) => ({
   type: ordersTypes.SET_WEEKLY_ORDERS,
   payload: orders,
 });
+
+export const deleteOrder = (orderRef) => ({
+  type: ordersTypes.DELETE_ORDER,
+  payload: orderRef,
+});

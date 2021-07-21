@@ -11,6 +11,7 @@ import {
   handleGetLatestOrders,
   handleGetOrdersStats,
   handleGetWeeklyOrders,
+  handleDeleteOrder,
 } from "./ordersHelpers";
 import { auth } from "../../../firebase/utils";
 import { clearCart } from "../cart/cartActions";
@@ -22,6 +23,7 @@ import {
   setLatestOrders,
   setOrdersStats,
   setWeeklyOrders,
+  getAllOrders,
 } from "./ordersActions";
 import { setDeliveryFee } from "../delivery/deliveryActions";
 
@@ -90,7 +92,7 @@ export function* onGetOrderDetailsStart() {
 }
 
 // fetch orders from db
-export function* getAllOrders() {
+export function* fetchAllOrders() {
   try {
     // assign orders to data being returned from api call
     const orders = yield handleGetAllOrders();
@@ -103,7 +105,7 @@ export function* getAllOrders() {
 
 // call get orders fxn
 export function* onGetAllOrdersStart() {
-  yield takeLatest(ordersTypes.GET_ALL_ORDERS, getAllOrders);
+  yield takeLatest(ordersTypes.GET_ALL_ORDERS, fetchAllOrders);
 }
 
 // update order status in db
@@ -173,6 +175,21 @@ export function* onGetWeeklyOrdersStart() {
   yield takeLatest(ordersTypes.GET_WEEKLY_ORDERS, getWeeklyOrders);
 }
 
+// DELETES ORDER FROM DB
+export function* deleteOrder({ payload }) {
+  try {
+    yield handleDeleteOrder(payload);
+    yield put(getAllOrders());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// CALLS DELETE ORDER FXN
+export function* onDeleteOrderStart() {
+  yield takeLatest(ordersTypes.DELETE_ORDER, deleteOrder);
+}
+
 export default function* ordersSagas() {
   yield all([
     call(onSaveOrderHistoryStart),
@@ -183,5 +200,6 @@ export default function* ordersSagas() {
     call(onGetLatestOrdersStart),
     call(onGetOrdersStatsStart),
     call(onGetWeeklyOrdersStart),
+    call(onDeleteOrderStart),
   ]);
 }

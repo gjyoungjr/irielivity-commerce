@@ -7,12 +7,18 @@ import { useDispatch } from "react-redux";
 import {
   updateOrderStatus,
   getAllOrders,
+  deleteOrder,
 } from "../../../redux/reducers/orders/ordersActions";
 
 // component
 import AppToolBar from "./AppToolBar";
 import ViewOrderedProducts from "./ViewOrderedProducts";
-import { ProcessingChip, InTransitChip, CompletedChip } from "../../chips";
+import {
+  ProcessingChip,
+  InTransitChip,
+  CompletedChip,
+  CancelledChip,
+} from "../../chips";
 
 // format fxn for date
 const formatDate = (value) => {
@@ -119,6 +125,8 @@ const columns = [
           <ProcessingChip label={value} />
         ) : value === "In-Transit" ? (
           <InTransitChip label={value} />
+        ) : value === "Cancelled" ? (
+          <CancelledChip label={value} />
         ) : (
           <CompletedChip label={value} />
         );
@@ -198,7 +206,8 @@ export default function OrdersList({ orders }) {
     responsive: "standard",
     elevation: 7,
     enableNestedDataAccess: ".",
-    onRowClick: (rowData) => {
+    selectableRows: "none",
+    onRowClick: (rowData, dataIndex) => {
       // gets products && user from row data
       // assign to state
       // so admin can know who ordered what product
@@ -225,11 +234,12 @@ export default function OrdersList({ orders }) {
         orderRef={orderRef}
         statusValue={statusValue}
         handleStatusChange={handleStatusChange}
+        deleteOrder={deleteOrder}
       />
       {/* Data Table */}
       <MuiThemeProvider theme={theme}>
         <MUIDataTable
-          style={{ borderRadius: "20px", cursor: "pointer" }}
+          style={{ borderRadius: "20px" }}
           title="Order List"
           data={orders}
           columns={columns}

@@ -68,7 +68,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function LivePreviewExample() {
+export default function ImageUpload({ productID }) {
   const classes = useStyles();
   const { setFieldValue, values } = useFormikContext();
   const [uploadProgress, setUploadProgress] = useState(null);
@@ -230,6 +230,28 @@ export default function LivePreviewExample() {
                 </Card>
               ))
             : ""}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {productID &&
+            values &&
+            values.subImages &&
+            values.subImages.map((imgSrc, index) => (
+              <img
+                key={index}
+                src={imgSrc}
+                alt=""
+                width="24%"
+                style={{ borderRadius: "15px" }}
+                className="mr-2 text-center"
+              />
+            ))}
         </div>
 
         {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}

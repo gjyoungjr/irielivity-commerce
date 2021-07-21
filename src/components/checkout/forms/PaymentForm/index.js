@@ -72,7 +72,7 @@ export default function PaymentForm({ formField, orderTotal }) {
         <OnlineTransfer />
       )}
 
-      <pre>{JSON.stringify(values, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
       {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
     </div>
   );
