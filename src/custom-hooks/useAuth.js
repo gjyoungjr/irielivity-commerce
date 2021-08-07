@@ -22,7 +22,7 @@ const useAuth = () => {
   useEffect(() => {
     // if user not signed in redirect to sign in
     if (!currentUser) {
-      history.push(process.env.PUBLIC_URL + "/");
+      history.push(process.env.PUBLIC_URL + "/home");
     }
 
     // if (isAdmin) {

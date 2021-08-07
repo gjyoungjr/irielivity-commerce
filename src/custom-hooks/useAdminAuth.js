@@ -17,7 +17,7 @@ const useAdminAuth = () => {
 
   useEffect(() => {
     if (!checkIsUserAdmin(currentUser)) {
-      history.push("/");
+      history.push("/home");
     }
   }, [currentUser, history]);
 
