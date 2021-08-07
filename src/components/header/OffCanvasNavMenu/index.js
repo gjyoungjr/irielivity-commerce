@@ -13,7 +13,7 @@ const menuItems = [
   {
     id: 1,
     name: "Home",
-    url: "/",
+    url: "/home",
     number: "01",
   },
   {

@@ -1,5 +1,6 @@
 import axios from "axios";
 
 export const apiInstance = axios.create({
-  baseURL: "http://localhost:5001/irielivity-commerce/us-central1/api",
+  // baseURL: "http://localhost:5001/irielivity-commerce/us-central1/api",
+  baseURL: "https://irielivity.com/irielivity-commerce/us-central1/api",
 });

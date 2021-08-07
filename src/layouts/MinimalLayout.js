@@ -84,7 +84,7 @@ export default function MinimalLayout({ children }) {
             className={classes.title}
             variant="h6"
             noWrap
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/home")}
           >
             <img src={logo} alt="" className="logo-img" /> Irielivity
           </Typography>

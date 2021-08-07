@@ -12,7 +12,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 // import VolumeOffTwoToneIcon from "@material-ui/icons/VolumeOffTwoTone";
 // import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
-export default function LandingPage() {
+export default function LandingPage({ onFirstLoad }) {
   const history = useHistory();
   // const [isPlaying, setIsPlaying] = useState(false);
 
@@ -65,13 +65,17 @@ export default function LandingPage() {
   };
   return (
     <div className="landing-wrapper" id="landing-wrapper">
-      <div className="animated-text-container">
-        <div className="animated-text-wrapper">
-          <div className="loader-text-1 loader-text">
-            Loading - <CountUp start={0} end={100} duration={3.5} />%
+      {onFirstLoad ? (
+        <div className="animated-text-container">
+          <div className="animated-text-wrapper">
+            <div className="loader-text-1 loader-text">
+              Loading - <CountUp start={0} end={100} duration={3.5} />%
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
 
       <div className="landing-inner">
         <div className="text-slider-wrapper">

@@ -12,7 +12,7 @@ const HomeLandingPage = () => {
         <meta name="description" content="Irielivity" />
       </MetaTags>
       <div>
-        <LandingPage />
+        <LandingPage onFirstLoad={false} />
       </div>
     </Fragment>
   );

@@ -15,6 +15,7 @@ import WithAuth from "./hoc/withAuth";
 import WithAdminAuth from "./hoc/withAdminAuth";
 
 /*** PAGES **/
+const Loader = lazy(() => import("./pages/Loader"));
 const Home = lazy(() => import("./pages/Home"));
 const MembersSettings = lazy(() => import("./pages/MembersSettings"));
 const ShopCategories = lazy(() => import("./pages/ShopCategories"));
@@ -95,6 +96,11 @@ const App = (props) => {
               <Route
                 exact
                 path={process.env.PUBLIC_URL + "/"}
+                component={Loader}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + "/home"}
                 component={Home}
               />
               <Route
