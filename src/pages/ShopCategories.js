@@ -15,7 +15,7 @@ export default function ShopCategories() {
 
   useEffect(() => {
     dispatch(fetchProductCategories());
-  }, []);
+  }, [dispatch]);
   return (
     <MinimalLayout>
       <MetaTags>
