@@ -16,6 +16,7 @@ import ShopTopBar from "../components/shop/ShopTopBar";
 
 // utils
 import { fetchProductsStart } from "../redux/reducers/products/productsActions";
+import { apiInstance } from "../redux/reducers/payments/paymentHelpers";
 
 // grabs product from redux store
 const mapState = ({ productsData }) => ({
@@ -36,6 +37,12 @@ const Shop = ({ location }) => {
   useEffect(() => {
     // fetch products from db when component mounts
     dispatch(fetchProductsStart({ filterType }));
+
+    apiInstance
+      .post("/sendMail", {
+        dest: "gilbert.young@thinktechnow.com",
+      })
+      .then((res) => console.log(res));
   }, [dispatch, filterType]);
 
   // return only products that are in stock

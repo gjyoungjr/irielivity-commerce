@@ -12,7 +12,7 @@ import {
   setProductReview,
 } from "../redux/reducers/products/productsActions";
 
-import RelatedProductSlider from "../wrappers/product/RelatedProductSlider";
+// import RelatedProductSlider from "../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../components/products/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../wrappers/product/ProductImageDescriptionSticky";
 // layout
@@ -60,16 +60,13 @@ export default function ProductSticky() {
         />
 
         {/* product description tab */}
-        <ProductDescriptionTab
-          spaceBottomClass="pb-90"
-          // productFullDesc={product.fullDescription}
-        />
+        <ProductDescriptionTab spaceBottomClass="pb-90" product={product} />
 
         {/* related product slider */}
-        <RelatedProductSlider
+        {/* <RelatedProductSlider
           spaceBottomClass="pb-95"
           // category={product.category[0]}
-        />
+        /> */}
       </Fragment>
     </MinimalLayout>
   );

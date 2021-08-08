@@ -207,21 +207,33 @@ const ProductDescriptionInfo = ({ product }) => {
         <div className="pro-details-social">
           <ul>
             <li>
-              <a href="//facebook.com">
+              <a
+                href="https://www.facebook.com/IRIEBRAND13"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-facebook" />
               </a>
             </li>
             <li>
-              <a href="//dribbble.com">
-                <i className="fa fa-dribbble" />
+              <a
+                href="https://www.instagram.com/irielivity/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fa fa-instagram" />
               </a>
             </li>
             <li>
-              <a href="//pinterest.com">
+              <a
+                href="https://www.instagram.com/irielivity/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-pinterest-p" />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="//twitter.com">
                 <i className="fa fa-twitter" />
               </a>
@@ -230,7 +242,7 @@ const ProductDescriptionInfo = ({ product }) => {
               <a href="//linkedin.com">
                 <i className="fa fa-linkedin" />
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
