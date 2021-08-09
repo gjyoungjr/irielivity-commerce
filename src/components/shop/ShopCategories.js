@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 
 // imgs
-import cat1 from "../../assets/img/cat1.jpg";
+import cat1 from "../../assets/img/home-5.jpg";
 import cat2 from "../../assets/img/cat2.jpg";
 import cat3 from "../../assets/img/cat3.jpg";
 
@@ -12,14 +12,14 @@ import cat4 from "../../assets/img/cat4.jpg";
 const productCategories = [
   {
     id: 1,
-    label: "Tops",
-    url: "/shop/Tops",
+    label: "Jewelry",
+    url: "/shop/Jewelry",
     imgSrc: cat3,
   },
   {
     id: 2,
-    label: "Footware",
-    url: "/shop/Footware",
+    label: "Clothing",
+    url: "/shop/Clothing",
     imgSrc: cat1,
   },
   {
