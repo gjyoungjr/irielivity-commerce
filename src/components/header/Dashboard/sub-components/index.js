@@ -42,9 +42,9 @@ export default function Notification() {
         aria-haspopup="true"
         ref={divRef}
       >
-        {/* <Badge badgeContent={ordersNotificationData.length} color="primary">
+        <Badge badgeContent={1} color="primary">
           <NotificationsIcon />
-        </Badge> */}
+        </Badge>
       </Fab>
       <NotificationList
         anchorEl={anchorEl}

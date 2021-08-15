@@ -14,7 +14,6 @@ import {
 
 // icons
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 
 // components
 import Logo from "./DashboardLogo";
@@ -44,12 +43,6 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <Box flexGrow={1} />
 
         <Hidden mdDown>
-          <Fab
-            size="small"
-            style={{ marginRight: "10px", backgroundColor: "#EFF0F3" }}
-          >
-            <SearchIcon />
-          </Fab>
           <Notification />
           <Divider />
         </Hidden>

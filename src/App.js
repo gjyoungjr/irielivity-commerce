@@ -31,6 +31,7 @@ const AdminProducts = lazy(() => import("./pages/admin/Products"));
 const AdminCustomers = lazy(() => import("./pages/admin/Customers"));
 const AdminAccount = lazy(() => import("./pages/admin/Account"));
 const AdminOrders = lazy(() => import("./pages/admin/Orders"));
+const AdminReceipts = lazy(() => import("./pages/admin/Receipts"));
 
 /*** END PAGES **/
 
@@ -204,6 +205,14 @@ const App = (props) => {
                 render={(routeProps) => (
                   <WithAdminAuth>
                     <AdminOrders />
+                  </WithAdminAuth>
+                )}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/admin/receipts"}
+                render={(routeProps) => (
+                  <WithAdminAuth>
+                    <AdminReceipts />
                   </WithAdminAuth>
                 )}
               />

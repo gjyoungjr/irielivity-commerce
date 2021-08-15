@@ -4,7 +4,7 @@ import { createMuiTheme, MuiThemeProvider, Avatar } from "@material-ui/core";
 
 // components
 import AppToolbar from "./AppToolBar";
-import AdminSwitch from "./AdminSwitch";
+// import AdminSwitch from "./AdminSwitch";
 
 // utils
 // import { checkIsUserAdmin } from "../../../firebase/utils";
@@ -37,20 +37,21 @@ const theme = createMuiTheme({
 });
 
 const CustomerListView = ({ users }) => {
-  const [userId, setUserId] = React.useState(null);
+  // const [userId, setUserId] = React.useState(null);
 
   const options = {
     filterType: "dropdown",
     responsive: "standard",
     elevation: 7,
     filter: false,
-    onRowClick: (rowData) => {
-      console.log(rowData);
-      // gets user id from row data
-      // assign to state
-      const _userId = rowData[0];
-      setUserId(_userId);
-    },
+    selectableRows: "none",
+    // onRowClick: (rowData) => {
+    //   // console.log(rowData);
+    //   // gets user id from row data
+    //   // assign to state
+    //   const _userId = rowData[0];
+    //   setUserId(_userId);
+    // },
   };
 
   // config objects
@@ -133,17 +134,17 @@ const CustomerListView = ({ users }) => {
         display: "excluded",
       },
     },
-    {
-      name: "isAdmin",
-      label: "Admin",
+    // {
+    //   name: "isAdmin",
+    //   label: "Admin",
 
-      options: {
-        filter: true,
-        customBodyRender: (value) => {
-          return <AdminSwitch rowValue={value} userId={userId} />;
-        },
-      },
-    },
+    //   options: {
+    //     filter: true,
+    //     customBodyRender: (value) => {
+    //       return <AdminSwitch rowValue={value} userId={userId} />;
+    //     },
+    //   },
+    // },
   ];
 
   return (

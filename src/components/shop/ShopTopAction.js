@@ -10,13 +10,13 @@ const productTypes = [
   },
   {
     id: 2,
-    label: "Jewelry",
-    url: "/shop/Jewelry",
+    label: "Clothing",
+    url: "/shop/Clothing",
   },
   {
     id: 3,
-    label: "Clothing",
-    url: "/shop/Clothing",
+    label: "Jewelry",
+    url: "/shop/Jewelry",
   },
 ];
 

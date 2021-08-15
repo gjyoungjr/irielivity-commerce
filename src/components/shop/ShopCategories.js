@@ -2,38 +2,36 @@ import React, { useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 
 // imgs
-import cat1 from "../../assets/img/home-5.jpg";
-import cat2 from "../../assets/img/cat2.jpg";
-import cat3 from "../../assets/img/cat3.jpg";
-
-import cat4 from "../../assets/img/cat4.jpg";
+import clothingImg from "../../assets/img/clothing.jpg";
+import jewelryImg from "../../assets/img/jewelry.jpg";
+import craftImg from "../../assets/img/craft.jpg";
 
 // data for product categories
 const productCategories = [
   {
     id: 1,
-    label: "Jewelry",
-    url: "/shop/Jewelry",
-    imgSrc: cat3,
+    label: "Clothing",
+    url: "/shop/Clothing",
+    imgSrc: clothingImg,
   },
   {
     id: 2,
-    label: "Clothing",
-    url: "/shop/Clothing",
-    imgSrc: cat1,
+    label: "Jewelry",
+    url: "/shop/Jewelry",
+    imgSrc: jewelryImg,
   },
   {
     id: 3,
-    label: "Accessories",
+    label: "Wooden Crafts",
     url: "/shop/Tops",
-    imgSrc: cat2,
+    imgSrc: craftImg,
   },
-  {
-    id: 4,
-    label: "Tops",
-    url: "/shop/Tops",
-    imgSrc: cat4,
-  },
+  // {
+  //   id: 4,
+  //   label: "Tops",
+  //   url: "/shop/Tops",
+  //   imgSrc: cat4,
+  // },
 ];
 
 const ProductBanner = () => {

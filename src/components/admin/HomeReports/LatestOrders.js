@@ -25,7 +25,12 @@ import {
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 // components -> chips
-import { ProcessingChip, InTransitChip, CompletedChip } from "../../chips";
+import {
+  ProcessingChip,
+  InTransitChip,
+  CompletedChip,
+  CancelledChip,
+} from "../../chips";
 
 // utils fxn
 // format fxn for date
@@ -92,6 +97,8 @@ const LatestOrders = ({ className, latestOrders, ...rest }) => {
                       <InTransitChip label={order.status} />
                     ) : order.status === "Processing" ? (
                       <ProcessingChip label={order.status} />
+                    ) : order.status === "Cancelled" ? (
+                      <CancelledChip label={order.status} />
                     ) : (
                       <CompletedChip label={order.status} />
                     )}

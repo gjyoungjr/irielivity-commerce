@@ -24,8 +24,8 @@ const menuItems = [
   },
   {
     id: 3,
-    name: "Media",
-    url: "/media",
+    name: "About",
+    url: "/about",
     number: "03",
   },
   {

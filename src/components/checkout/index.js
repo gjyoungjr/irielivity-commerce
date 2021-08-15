@@ -165,9 +165,12 @@ export default function CheckoutPage() {
       status: processing,
       deliveryFee: deliveryFee,
       user: {
-        fullName: currentUser.firstName + " " + currentUser.lastName,
-        email: currentUser.email,
+        fullName: first_Name + " " + last_Name,
+        email: e_mail,
         avatarUrl: currentUser.avatarUrl ? currentUser.avatarUrl : "",
+        // fullName: currentUser.firstName + " " + currentUser.lastName,
+        // email: currentUser.email,
+        // avatarUrl: currentUser.avatarUrl ? currentUser.avatarUrl : "",
       },
       // map through cart items to save all data that was in cart
       orderItems: cartItems.map((item) => {

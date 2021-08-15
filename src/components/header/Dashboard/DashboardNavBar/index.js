@@ -23,7 +23,7 @@ import {
 } from "react-feather";
 
 // utils
-import { auth } from "../../../../firebase/utils"
+import { auth } from "../../../../firebase/utils";
 
 // components
 import NavItem from "./NavItem";
@@ -51,7 +51,7 @@ const items = [
     title: "Orders",
   },
   {
-    href: "/admin/payment-receipts",
+    href: "/admin/receipts",
     icon: PaymentIcon,
     title: "Receipts",
   },
@@ -130,7 +130,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
                 icon={item.icon}
                 onClick={() => {
                   auth.signOut();
-                  history.push("/");
+                  history.push("/home");
                 }}
               />
             ))}
