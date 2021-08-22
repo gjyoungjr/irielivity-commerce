@@ -5,8 +5,6 @@ import { Grid } from "@material-ui/core";
 import ProductDetailsAccordion from "./ProductDetailsAccordion";
 
 const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
-  console.log(product, "*");
-
   return (
     <div className={`description-review-area mt-4 ${spaceBottomClass}`}>
       <Grid container spacing={2}>

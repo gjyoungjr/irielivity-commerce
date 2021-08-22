@@ -54,6 +54,7 @@ export default function Billing({ formField, orderTotal }) {
         },
       })
       .then(({ data: clientSecret }) => {
+        console.log(clientSecret, "**");
         setLoading(true);
         stripe
           .createPaymentMethod({

@@ -19,7 +19,7 @@ const menuItems = [
   {
     id: 2,
     name: "Shop",
-    url: "/categories",
+    url: "/shop",
     number: "02",
   },
   {

@@ -5,20 +5,21 @@ import { useHistory } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-// get stripe publish key
-import { publishableKey } from "../stripe/config";
-
 // components
 import CheckoutForm from "../components/checkout";
 import CartSummary from "../components/cart/CartSummary";
 // imgs
 import Logo from "../assets/logo/logo.png";
 
+// get stripe publishable key
+const { REACT_APP_STRIPE_PUBLISHABLE_KEY } = process.env;
+
 // load stripe
-const stripePromise = loadStripe(publishableKey);
+const stripePromise = loadStripe(REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 export default function CheckOut() {
   const history = useHistory();
+
   return (
     <Elements stripe={stripePromise}>
       <div style={{ overflow: "hidden" }}>
@@ -26,7 +27,7 @@ export default function CheckOut() {
           <Avatar
             src={Logo}
             className="check-out-logo"
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/home")}
             style={{ height: 70, width: 70, cursor: "pointer" }}
           />
         </div>

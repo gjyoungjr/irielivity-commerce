@@ -38,11 +38,11 @@ const Shop = ({ location }) => {
     // fetch products from db when component mounts
     dispatch(fetchProductsStart({ filterType }));
 
-    apiInstance
-      .post("/sendMail", {
-        dest: "gilbert.young@thinktechnow.com",
-      })
-      .then((res) => console.log(res));
+    // apiInstance
+    //   .post("/sendMail", {
+    //     dest: "gilbert.young@thinktechnow.com",
+    //   })
+    //   .then((res) => console.log(res));
   }, [dispatch, filterType]);
 
   // return only products that are in stock
