@@ -61,7 +61,7 @@ export default function UserOrderHistory({ usersOrders }) {
       const products = rowData[5];
       const _orderRef = rowData[0];
       setOrderRef(_orderRef);
-      const deadLine = moment(rowData[2].props.children).add(2, "h").toDate();
+      const deadLine = moment(rowData[2].props.children).add(24, "h").toDate();
       setRefundDeadline(deadLine);
       setOrderedProducts(products);
       handleDisplayOrderedProducts();
