@@ -43,7 +43,6 @@ export default function BottomNav({ usersOrders }) {
 
   // fxn handles sign out of user
   const handleSignOut = () => {
-    window.location.href = "/";
     auth.signOut();
   };
 

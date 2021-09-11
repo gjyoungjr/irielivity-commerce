@@ -17,10 +17,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ProductGridListSingle = ({
   product,
-  currency,
   sliderClassName,
   spaceBottomClass,
-  favorites,
 }) => {
   // const dispatch = useDispatch();
 
@@ -51,7 +49,7 @@ const ProductGridListSingle = ({
                   effect="blur"
                 />
 
-                {product.mainImgUrl ? (
+                {product.mainImgUrl && product.subImages.length > 0 ? (
                   <img
                     className="hover-img"
                     src={

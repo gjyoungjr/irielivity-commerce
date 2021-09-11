@@ -71,7 +71,7 @@ export default function ResetPassword({ open, onClose }) {
               // config object used to redirect user
               // on reset password success
               const config = {
-                url: "http://localhost:3000/login",
+                url: "https://irielivity.com/",
               };
               auth
                 .sendPasswordResetEmail(recoveryEmail, config)

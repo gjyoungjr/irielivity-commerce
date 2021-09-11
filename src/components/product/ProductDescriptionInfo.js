@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import { Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 // components
 import AppButton from "../app-button";
@@ -12,6 +13,7 @@ import { addToCart } from "../../redux/reducers/cart/cartActions";
 
 const ProductDescriptionInfo = ({ product }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [selectedProductSize, setSelectedProductSize] = useState("");
   const [isSizeError, setIsSizeError] = useState(false);
   // const [selectedProductColor, setSelectedProductColor] = useState("");
@@ -170,6 +172,7 @@ const ProductDescriptionInfo = ({ product }) => {
 
         <Grid container spacing={2} direction="column">
           <Grid item xs={12} lg={11} md={11}>
+            {/* Add To Cart Btn */}
             <div className="pro-details-cart ">
               {product.quantity === 0 || product.quantity < 0 ? (
                 <AppButton
@@ -200,6 +203,20 @@ const ProductDescriptionInfo = ({ product }) => {
                   }
                 />
               )}
+            </div>
+          </Grid>
+          {/* Back to Shop Btn */}
+          <Grid item xs={12} lg={11} md={11}>
+            <div className="pro-details-cart ">
+              <AppButton
+                label="Back To Shop"
+                bgColor="black"
+                color="white"
+                width="100%"
+                height="60px"
+                borderRadius="30px"
+                onClick={() => history.push("/shop")}
+              />
             </div>
           </Grid>
         </Grid>
@@ -233,16 +250,6 @@ const ProductDescriptionInfo = ({ product }) => {
                 <i className="fa fa-pinterest-p" />
               </a>
             </li>
-            {/* <li>
-              <a href="//twitter.com">
-                <i className="fa fa-twitter" />
-              </a>
-            </li>
-            <li>
-              <a href="//linkedin.com">
-                <i className="fa fa-linkedin" />
-              </a>
-            </li> */}
           </ul>
         </div>
       </div>
