@@ -38,8 +38,8 @@ const AppToolBar = ({ className, ...rest }) => {
   const history = useHistory();
 
   const redirectToAddProduct = () => {
-    history.push('/admin/add-product')
-  }
+    history.push("/admin/add-product");
+  };
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -55,17 +55,24 @@ const AppToolBar = ({ className, ...rest }) => {
                     </SvgIcon>
                   </InputAdornment>
                 ),
-                style: { borderRadius: "40px", backgroundColor: "white", height: '35px' },
+                style: {
+                  borderRadius: "40px",
+                  backgroundColor: "white",
+                  height: "35px",
+                },
               }}
-              placeholder="Search products"
               variant="outlined"
               fullWidth
-              style={{ height: "35px" }}
+              style={{ height: "38px" }}
             />
           </Card>
         </Box>
 
-        <Fab variant="extended" className={classes.button} onClick={redirectToAddProduct}>
+        <Fab
+          variant="extended"
+          className={classes.button}
+          onClick={redirectToAddProduct}
+        >
           Add Product
         </Fab>
       </div>

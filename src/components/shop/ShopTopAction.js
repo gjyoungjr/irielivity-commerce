@@ -1,26 +1,13 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-const productTypes = [
-  {
-    id: 1,
-    label: "All",
-    url: "/shop",
-  },
-  {
-    id: 2,
-    label: "Clothing",
-    url: "/shop/Clothing",
-  },
-  {
-    id: 3,
-    label: "Jewelry",
-    url: "/shop/Jewelry",
-  },
-];
-
-const ShopTopAction = ({ productCount, productType }) => {
+export default function ShopTopAction({
+  productCount,
+  productType,
+  productCategories,
+}) {
+  console.log(productCategories, "*");
   return (
     <div className="shop-top-bar mb-35">
       <div className="select-shoing-wrap">
@@ -35,13 +22,13 @@ const ShopTopAction = ({ productCount, productType }) => {
             </div>
           </div>
           <div>
-            {productTypes.map((product) => {
+            {productCategories.map((product) => {
               return (
                 <NavLink
-                  key={product.id}
+                  key={product.value}
                   exact
                   className="product-types mr-2"
-                  to={product.url}
+                  to={`/shop/${product.label}`}
                   activeStyle={{
                     color: "black",
                     opacity: 1,
@@ -57,12 +44,10 @@ const ShopTopAction = ({ productCount, productType }) => {
       </div>
     </div>
   );
-};
+}
 
 ShopTopAction.propTypes = {
   productCount: PropTypes.number,
   sortedProductCount: PropTypes.number,
   productType: PropTypes.string,
 };
-
-export default ShopTopAction;

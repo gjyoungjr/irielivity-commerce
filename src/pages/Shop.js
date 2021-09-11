@@ -15,11 +15,15 @@ import ShopProducts from "../components/shop/ShopProducts";
 import ShopTopBar from "../components/shop/ShopTopBar";
 
 // utils
-import { fetchProductsStart } from "../redux/reducers/products/productsActions";
+import {
+  fetchProductsStart,
+  fetchProductCategories,
+} from "../redux/reducers/products/productsActions";
 
 // grabs product from redux store
 const mapState = ({ productsData }) => ({
   products: productsData.products,
+  productCategories: productsData.productCategories,
 });
 
 const Shop = ({ location }) => {
@@ -31,11 +35,12 @@ const Shop = ({ location }) => {
   const { filterType } = useParams();
 
   // destructure to get products from redux
-  const { products } = useSelector(mapState);
+  const { products, productCategories } = useSelector(mapState);
 
   useEffect(() => {
     // fetch products from db when component mounts
     dispatch(fetchProductsStart({ filterType }));
+    dispatch(fetchProductCategories()); // gets product categories
   }, [dispatch, filterType]);
 
   // return only products that are in stock
@@ -58,6 +63,7 @@ const Shop = ({ location }) => {
                 <ShopTopBar
                   productType={filterType}
                   productCount={productsInStock.length}
+                  productCategories={productCategories}
                 />
 
                 {/* shop page content default */}

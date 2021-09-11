@@ -72,12 +72,14 @@ export default function ProductList() {
           <Box maxWidth={200}>
             <Card className={classes.card} elevation={10}>
               <FormControl fullWidth variant="outlined" style={{ height: 25 }}>
-                <InputLabel shrink>Filter by</InputLabel>
+                <InputLabel style={{ backgroundColor: "white" }} shrink>
+                  Filter by
+                </InputLabel>
                 <Select
                   fullWidth
                   value={filterType ? filterType : "All"}
                   onChange={handleProductCategory}
-                  style={{ height: "37px", borderRadius: "20px" }}
+                  style={{ height: "38px", borderRadius: "20px" }}
                 >
                   <MenuItem value="All">All</MenuItem>
                   {productCategories &&
@@ -117,18 +119,20 @@ export default function ProductList() {
               <div className="mr-auto ml-auto">
                 <Lottie
                   animationData={notInStock}
-                  style={{ height: "500px", marginTop: "20px" }}
+                  style={{
+                    height: "500px",
+                    marginTop: "20px",
+                    marginBottom: "2px",
+                  }}
+                  loop={false}
                 />
-                <h3 className="text-center">
+                <h3 className="text-center font-weight-bold">
                   No product in stock for this category.
                 </h3>
               </div>
             )}
           </Grid>
         </Box>
-        {/* <Box mt={3} display="flex" justifyContent="center">
-          <Pagination color="primary" count={3} size="small" />
-        </Box> */}
       </Container>
     </div>
   );

@@ -4,11 +4,15 @@ import React from "react";
 // component
 import ShopTopAction from "./ShopTopAction";
 
-const ShopTopbar = ({ productType, productCount }) => {
+const ShopTopbar = ({ productType, productCount, productCategories }) => {
   return (
     <div style={{ marginTop: "-25px" }}>
       {/* shop top action */}
-      <ShopTopAction productType={productType} productCount={productCount} />
+      <ShopTopAction
+        productType={productType}
+        productCount={productCount}
+        productCategories={productCategories}
+      />
     </div>
   );
 };
