@@ -37,10 +37,10 @@ const AdminReceipts = lazy(() => import("./pages/admin/Receipts"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
-const App = (props) => {
+const App = ({ currentUser }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    props.dispatch(
+    dispatch(
       loadLanguages({
         languages: {
           en: require("./translations/english.json"),
@@ -141,7 +141,10 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/members"}
                 render={(routeProps) => (
                   <WithAuth>
-                    <MembersSettings />
+                    <MembersSettings
+                      {...routeProps}
+                      currentUser={currentUser}
+                    />
                   </WithAuth>
                 )}
               />
@@ -236,4 +239,15 @@ App.propTypes = {
   dispatch: PropTypes.func,
 };
 
-export default connect()(multilanguage(App));
+const mapStateToProps = ({ user }) => {
+  return {
+    currentUser: user.currentUser,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(multilanguage(App));

@@ -56,27 +56,27 @@ const ResetPasswordFormModel = {
     },
   },
 };
-//   const AccountDetailsFormModel = {
-//     formId: "AccountDetailsFormModel",
-//     formField: {
-//       accountFirstName: {
-//         name: "accountFirstName",
-//         label: "First Name",
-//         requiredErrorMsg: "First Name is required",
-//       },
-//       accountLastName: {
-//         name: "accountLastName",
-//         label: "Last Name",
-//         requiredErrorMsg: "Last Name is required",
-//       },
-//       accountEmail: {
-//         name: "accountEmail",
-//         label: "Email address",
-//         requiredErrorMsg: "Email is required",
-//         invalidErrorMsg: "Please Enter a valid email address",
-//       },
-//     },
-//   };
+const AccountDetailsFormModel = {
+  formId: "AccountDetailsFormModel",
+  formField: {
+    accountFirstName: {
+      name: "accountFirstName",
+      label: "First Name",
+      requiredErrorMsg: "First Name is required",
+    },
+    accountLastName: {
+      name: "accountLastName",
+      label: "Last Name",
+      requiredErrorMsg: "Last Name is required",
+    },
+    accountEmail: {
+      name: "accountEmail",
+      label: "Email address",
+      requiredErrorMsg: "Email is required",
+      invalidErrorMsg: "Please Enter a valid email address",
+    },
+  },
+};
 
 const AdminAccountDetailsFormModel = {
   formId: "AdminAccountDetailsFormModel",
@@ -100,37 +100,37 @@ const AdminAccountDetailsFormModel = {
   },
 };
 
-//   const ChangePasswordFormModel = {
-//     formId: "ChangePasswordFormModel",
-//     formField: {
-//       newPassword: {
-//         name: "newPassword",
-//         label: "Password",
-//         requiredErrorMsg: "Password is required",
-//         invalidErrorMsg:
-//           "Password must have alteast eight characters, one uppercase letter and one number:",
-//       },
-//     },
-//   };
+const ChangePasswordFormModel = {
+  formId: "ChangePasswordFormModel",
+  formField: {
+    newPassword: {
+      name: "newPassword",
+      label: "Password",
+      requiredErrorMsg: "Password is required",
+      invalidErrorMsg:
+        "Password must have alteast eight characters, one uppercase letter and one number:",
+    },
+  },
+};
 
-//   const ReauthFormModel = {
-//     formId: "ReauthFormModel",
-//     formField: {
-//       reauthEmail: {
-//         name: "reauthEmail",
-//         label: "Email address",
-//         requiredErrorMsg: "Email is required",
-//         invalidErrorMsg: "Please Enter a valid email address",
-//       },
-//       reauthPassword: {
-//         name: "reauthPassword",
-//         label: "Password",
-//         requiredErrorMsg: "Password is required",
-//         invalidErrorMsg:
-//           "Password must have alteast eight characters, one uppercase letter and one number:",
-//       },
-//     },
-//   };
+const ReauthFormModel = {
+  formId: "ReauthFormModel",
+  formField: {
+    reauthEmail: {
+      name: "reauthEmail",
+      label: "Email address",
+      requiredErrorMsg: "Email is required",
+      invalidErrorMsg: "Please Enter a valid email address",
+    },
+    reauthPassword: {
+      name: "reauthPassword",
+      label: "Password",
+      requiredErrorMsg: "Password is required",
+      invalidErrorMsg:
+        "Password must have alteast eight characters, one uppercase letter and one number:",
+    },
+  },
+};
 
 const AddProductFormModel = {
   formId: "AddProductFormModel",
@@ -299,25 +299,25 @@ const CheckOutFormModel = {
   },
 };
 
-//   const ProductReviewFormModel = {
-//     formId: "ProductReviewFormModel",
-//     formField: {
-//       subject: {
-//         name: "subject",
-//         label: "Subject",
-//         requiredErrorMsg: "Subject is required",
-//       },
-//       message: {
-//         name: "message",
-//         label: "Message",
-//         requiredErrorMsg: "Message is required",
-//       },
-//       rating: {
-//         name: "rating",
-//         requiredErrorMsg: "Rating is required",
-//       },
+// const ProductReviewFormModel = {
+//   formId: "ProductReviewFormModel",
+//   formField: {
+//     subject: {
+//       name: "subject",
+//       label: "Subject",
+//       requiredErrorMsg: "Subject is required",
 //     },
-//   };
+//     message: {
+//       name: "message",
+//       label: "Message",
+//       requiredErrorMsg: "Message is required",
+//     },
+//     rating: {
+//       name: "rating",
+//       requiredErrorMsg: "Rating is required",
+//     },
+//   },
+// };
 
 const ProductCategoryFormModel = {
   formId: "ProductCategoryFormModel",
@@ -335,17 +335,16 @@ const ProductCategoryFormModel = {
   },
 };
 
-
 export {
   LoginFormModel,
   RegisterFormModel,
   ResetPasswordFormModel,
-  // AccountDetailsFormModel,
-  // ChangePasswordFormModel,
-  // ReauthFormModel,
+  AccountDetailsFormModel,
+  ChangePasswordFormModel,
+  ReauthFormModel,
   AddProductFormModel,
   CheckOutFormModel,
   // ProductReviewFormModel,
   AdminAccountDetailsFormModel,
-  ProductCategoryFormModel
+  ProductCategoryFormModel,
 };

@@ -2,14 +2,14 @@ import {
   LoginFormModel,
   RegisterFormModel,
   ResetPasswordFormModel,
-  // AccountDetailsFormModel,
-  // ChangePasswordFormModel,
-  // ReauthFormModel,
+  AccountDetailsFormModel,
+  ChangePasswordFormModel,
+  ReauthFormModel,
   AddProductFormModel,
   CheckOutFormModel,
   // ProductReviewFormModel,
   AdminAccountDetailsFormModel,
-  ProductCategoryFormModel
+  ProductCategoryFormModel,
 } from "./FormModel";
 
 // GRABS FORM FIELDS
@@ -29,21 +29,21 @@ const {
   formField: { recoveryEmail },
 } = ResetPasswordFormModel;
 
-//   const {
-//     formField: { accountEmail, accountFirstName, accountLastName },
-//   } = AccountDetailsFormModel;
+const {
+  formField: { accountEmail, accountFirstName, accountLastName },
+} = AccountDetailsFormModel;
 
 const {
   formField: { adminEmail, adminFirstName, adminLastName },
 } = AdminAccountDetailsFormModel;
 
-//   const {
-//     formField: { newPassword },
-//   } = ChangePasswordFormModel;
+const {
+  formField: { newPassword },
+} = ChangePasswordFormModel;
 
-//   const {
-//     formField: { reauthEmail, reauthPassword },
-//   } = ReauthFormModel;
+const {
+  formField: { reauthEmail, reauthPassword },
+} = ReauthFormModel;
 
 const {
   formField: {
@@ -106,11 +106,11 @@ const ResetPasswordFormValues = {
   [recoveryEmail.name]: "",
 };
 
-//   const AccountDetailsFormValues = {
-//     [accountEmail.name]: "",
-//     [accountFirstName.name]: "",
-//     [accountLastName.name]: "",
-//   };
+const AccountDetailsFormValues = {
+  [accountEmail.name]: "",
+  [accountFirstName.name]: "",
+  [accountLastName.name]: "",
+};
 
 const AdminAccountDetailsFormValues = {
   [adminEmail.name]: "",
@@ -118,14 +118,14 @@ const AdminAccountDetailsFormValues = {
   [adminLastName.name]: "",
 };
 
-//   const ChangePasswordFormValues = {
-//     [newPassword.name]: "",
-//   };
+const ChangePasswordFormValues = {
+  [newPassword.name]: "",
+};
 
-//   const ReauthFormValues = {
-//     [reauthEmail.name]: "",
-//     [reauthPassword.name]: "",
-//   };
+const ReauthFormValues = {
+  [reauthEmail.name]: "",
+  [reauthPassword.name]: "",
+};
 
 const AddProductFormValues = {
   [productDescription.name]: "",
@@ -175,17 +175,16 @@ const ProductCategoryFormValues = {
   [subCategories.name]: [],
 };
 
-
 export {
   LoginFormValues,
   RegisterFormValues,
   ResetPasswordFormValues,
-  // AccountDetailsFormValues,
-  // ChangePasswordFormValues,
-  // ReauthFormValues,
+  AccountDetailsFormValues,
+  ChangePasswordFormValues,
+  ReauthFormValues,
   AddProductFormValues,
   CheckOutFormValues,
   // ProductReviewFormValues,
   AdminAccountDetailsFormValues,
-  ProductCategoryFormValues
+  ProductCategoryFormValues,
 };

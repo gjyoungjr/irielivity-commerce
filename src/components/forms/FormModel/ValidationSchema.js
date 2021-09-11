@@ -3,15 +3,14 @@ import {
   LoginFormModel,
   RegisterFormModel,
   ResetPasswordFormModel,
-  //   AccountDetailsFormModel,
-  //   ChangePasswordFormModel,
-  //   ReauthFormModel,
+  AccountDetailsFormModel,
+  ChangePasswordFormModel,
+  ReauthFormModel,
   AddProductFormModel,
   CheckOutFormModel,
   //   ProductReviewFormModel,
   AdminAccountDetailsFormModel,
   ProductCategoryFormModel,
-
 } from "./FormModel";
 
 // grabs form fields
@@ -29,19 +28,19 @@ const {
 const {
   formField: { recoveryEmail },
 } = ResetPasswordFormModel;
-// const {
-//   formField: { accountLastName, accountFirstName, accountEmail },
-// } = AccountDetailsFormModel;
+const {
+  formField: { accountLastName, accountFirstName, accountEmail },
+} = AccountDetailsFormModel;
 const {
   formField: { adminEmail, adminFirstName, adminLastName },
 } = AdminAccountDetailsFormModel;
 
-// const {
-//   formField: { newPassword },
-// } = ChangePasswordFormModel;
-// const {
-//   formField: { reauthEmail, reauthPassword },
-// } = ReauthFormModel;
+const {
+  formField: { newPassword },
+} = ChangePasswordFormModel;
+const {
+  formField: { reauthEmail, reauthPassword },
+} = ReauthFormModel;
 const {
   formField: {
     productDescription,
@@ -70,7 +69,7 @@ const {
     billingName,
     billingPostalCode,
     billingState,
-    billingCountry
+    billingCountry,
   },
 } = CheckOutFormModel;
 
@@ -110,18 +109,18 @@ const resetPasswordValidationSchema = Yup.object().shape({
     .email(`${recoveryEmail.invalidErrorMsg}`),
 });
 
-// // account details form validaiton schema
-// const accountDetailsValidationSchema = Yup.object().shape({
-//   [accountEmail.name]: Yup.string()
-//     .required(`${accountEmail.requiredErrorMsg}`)
-//     .email(`${accountEmail.invalidErrorMsg}`),
-//   [accountFirstName.name]: Yup.string().required(
-//     `${accountFirstName.requiredErrorMsg}`
-//   ),
-//   [accountLastName.name]: Yup.string().required(
-//     `${accountLastName.requiredErrorMsg}`
-//   ),
-// });
+// account details form validaiton schema
+const accountDetailsValidationSchema = Yup.object().shape({
+  [accountEmail.name]: Yup.string()
+    .required(`${accountEmail.requiredErrorMsg}`)
+    .email(`${accountEmail.invalidErrorMsg}`),
+  [accountFirstName.name]: Yup.string().required(
+    `${accountFirstName.requiredErrorMsg}`
+  ),
+  [accountLastName.name]: Yup.string().required(
+    `${accountLastName.requiredErrorMsg}`
+  ),
+});
 
 const AdminAccountDetailsValidationSchema = Yup.object().shape({
   [adminEmail.name]: Yup.string()
@@ -135,22 +134,22 @@ const AdminAccountDetailsValidationSchema = Yup.object().shape({
   ),
 });
 
-// // account details form validaiton schema
-// const changePasswordValidationSchema = Yup.object().shape({
-//   [newPassword.name]: Yup.string()
-//     .required(`${newPassword.requiredErrorMsg}`)
-//     .matches(passwordRegex, `${newPassword.invalidErrorMsg}`),
-// });
+// account details form validaiton schema
+const changePasswordValidationSchema = Yup.object().shape({
+  [newPassword.name]: Yup.string()
+    .required(`${newPassword.requiredErrorMsg}`)
+    .matches(passwordRegex, `${newPassword.invalidErrorMsg}`),
+});
 
-// // account details form validaiton schema
-// const reauthValidationSchema = Yup.object().shape({
-//   [reauthEmail.name]: Yup.string()
-//     .required(`${reauthEmail.requiredErrorMsg}`)
-//     .email(`${reauthEmail.invalidErrorMsg}`),
-//   [reauthPassword.name]: Yup.string()
-//     .required(`${reauthPassword.requiredErrorMsg}`)
-//     .matches(passwordRegex, `${reauthPassword.invalidErrorMsg}`),
-// });
+// account details form validaiton schema
+const reauthValidationSchema = Yup.object().shape({
+  [reauthEmail.name]: Yup.string()
+    .required(`${reauthEmail.requiredErrorMsg}`)
+    .email(`${reauthEmail.invalidErrorMsg}`),
+  [reauthPassword.name]: Yup.string()
+    .required(`${reauthPassword.requiredErrorMsg}`)
+    .matches(passwordRegex, `${reauthPassword.invalidErrorMsg}`),
+});
 
 // add product form validation shcema
 const AddProductValidationSchema = [
@@ -225,8 +224,6 @@ const CheckOutValidationSchema = [
       is: "Credit-Card",
       then: Yup.string().required(`${billingPostalCode.requiredErrorMsg}`),
     }),
-
-
   }),
 ];
 
@@ -245,17 +242,16 @@ const ProductCategoryValidationSchema = Yup.object().shape({
   [subCategories.name]: Yup.array().min(1, `${subCategories.requiredErrorMsg}`),
 });
 
-
 export {
   LoginValidationSchema,
   registerValidationSchema,
   resetPasswordValidationSchema,
-  //   accountDetailsValidationSchema,
-  //   changePasswordValidationSchema,
-  //   reauthValidationSchema,
+  accountDetailsValidationSchema,
+  changePasswordValidationSchema,
+  reauthValidationSchema,
   AddProductValidationSchema,
   CheckOutValidationSchema,
   //   ProductReviewValidationSchema,
   AdminAccountDetailsValidationSchema,
-  ProductCategoryValidationSchema
+  ProductCategoryValidationSchema,
 };
