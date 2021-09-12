@@ -11,7 +11,7 @@ import { useFormikContext } from "formik";
 // components
 import PayOnPickUp from "./PayOnPickUp";
 import OnlineTransfer from "./OnlineTransfer";
-import Billing from "./Billing";
+// import Billing from "./Billing";
 
 const paymentTypes = [
   {
@@ -20,9 +20,9 @@ const paymentTypes = [
   {
     value: "Pay-On-Pick-Up",
   },
-  {
-    value: "Credit-Card",
-  },
+  // {
+  //   value: "Credit-Card",
+  // },
 ];
 
 export default function PaymentForm({ formField, orderTotal }) {
@@ -66,11 +66,16 @@ export default function PaymentForm({ formField, orderTotal }) {
 
       {values.paymentMethod === "Pay-On-Pick-Up" ? (
         <PayOnPickUp />
+      ) : (
+        <OnlineTransfer />
+      )}
+      {/* {values.paymentMethod === "Pay-On-Pick-Up" ? (
+        <PayOnPickUp />
       ) : values.paymentMethod === "Credit-Card" ? (
         <Billing formField={formField} orderTotal={orderTotal} />
       ) : (
         <OnlineTransfer />
-      )}
+      )} */}
 
       {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
       {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}

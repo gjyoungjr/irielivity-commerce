@@ -7,7 +7,6 @@ export default function ShopTopAction({
   productType,
   productCategories,
 }) {
-  console.log(productCategories, "*");
   return (
     <div className="shop-top-bar mb-35">
       <div className="select-shoing-wrap">

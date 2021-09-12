@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 
 // components
@@ -18,7 +19,7 @@ export default function ProductImageGallerySticky({ product }) {
     if (!subImages || subImages.length < 1) return; // if there is no sub images availabe for product break
     subImages.map((img) => imgs.push(img)); // else map through sub imgs & insert
     setProductImgs(imgs); // then set state
-  }, [product, productImgs, imgs]);
+  }, [product]);
 
   // set loading to false after imgs has been set to state
   useEffect(() => {
@@ -26,8 +27,6 @@ export default function ProductImageGallerySticky({ product }) {
       setLoading(false);
     }, 600);
   }, []);
-
-  console.log(productImgs, "*");
 
   return (
     <>

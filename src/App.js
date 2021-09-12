@@ -135,7 +135,11 @@ const App = ({ currentUser }) => {
               />
               <Route
                 path={process.env.PUBLIC_URL + "/checkout"}
-                component={CheckOut}
+                render={() => (
+                  <WithAuth>
+                    <CheckOut />
+                  </WithAuth>
+                )}
               />
               <Route
                 path={process.env.PUBLIC_URL + "/members"}
