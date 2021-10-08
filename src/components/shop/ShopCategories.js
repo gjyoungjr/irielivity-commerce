@@ -2,36 +2,29 @@ import React, { useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
 
 // imgs
-import clothingImg from "../../assets/img/clothing.jpg";
-import jewelryImg from "../../assets/img/jewelry.jpg";
+import clothingImg from "../../assets/img/home-3.jpg";
+import jewelryImg from "../../assets/img/shop.jpg";
 import craftImg from "../../assets/img/craft.jpg";
 
 // data for product categories
 const productCategories = [
   {
     id: 1,
-    label: "Clothing",
-    url: "/shop/Clothing",
+    label: "Shop",
+    url: "/shop",
     imgSrc: clothingImg,
   },
   {
     id: 2,
-    label: "Jewelry",
-    url: "/shop/Jewelry",
+    label: "About Us",
     imgSrc: jewelryImg,
   },
   {
     id: 3,
-    label: "Wooden Crafts",
-    url: "/shop/Tops",
+    label: "Gallery",
+    // url: "/shop/Tops",
     imgSrc: craftImg,
   },
-  // {
-  //   id: 4,
-  //   label: "Tops",
-  //   url: "/shop/Tops",
-  //   imgSrc: cat4,
-  // },
 ];
 
 const ProductBanner = () => {
@@ -42,11 +35,11 @@ const ProductBanner = () => {
     let images = document.querySelectorAll(".category-item");
     // select slider
     let slider = document.querySelector(".categories-slider");
-    let sliderWidth,
+    let sliderWidth = 0,
       current = 0,
       target = 0,
       ease = 0.05;
-    let imgWidth;
+    let imgWidth = 0;
 
     // smooth scroll fxn
     const activateSmoothScroll = (start, end, t) => {
@@ -84,7 +77,7 @@ const ProductBanner = () => {
       let intersectionRatioValue;
       images.forEach((img, index) => {
         intersectionRatioValue = ratio - index * 0.7;
-        setTransform(img, `translateX(${intersectionRatioValue * 70}px)`);
+        setTransform(img, `translateX(${intersectionRatioValue * 100}px)`);
       });
     };
     init();

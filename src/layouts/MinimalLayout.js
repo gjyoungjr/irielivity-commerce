@@ -27,7 +27,7 @@ const mapCartItemsCountState = (state) => ({
   totalNumCartItems: selectCartItemsCount(state),
 });
 
-export default function MinimalLayout({ children }) {
+export default function MinimalLayout({ children, showPadding }) {
   const classes = useStyles();
   const history = useHistory();
   const [showAuthForm, setShowAuthForm] = React.useState(false);
@@ -126,9 +126,7 @@ export default function MinimalLayout({ children }) {
       </AppBar>
 
       {/* Children */}
-      {/* <SmoothScroll> */}
-      <div className="children-wrapper">{children}</div>
-      {/* </SmoothScroll> */}
+      <div className={showPadding ? "" : "children-wrapper"}>{children}</div>
     </div>
   );
 }

@@ -23,6 +23,7 @@ const Shop = lazy(() => import("./pages/Shop"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const CheckOut = lazy(() => import("./pages/CheckOut"));
 const Media = lazy(() => import("./pages/Media"));
+const AboutUs = lazy(() => import("./pages/About"));
 
 /**ADMIN PAGES **/
 const AdminHome = lazy(() => import("./pages/admin/Home"));
@@ -121,6 +122,10 @@ const App = ({ currentUser }) => {
               <Route
                 path={process.env.PUBLIC_URL + "/media"}
                 component={Media}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/about-us"}
+                component={AboutUs}
               />
 
               <Route

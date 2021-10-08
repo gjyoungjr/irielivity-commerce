@@ -10,6 +10,8 @@ import {
   Grid,
   IconButton,
   Tooltip,
+  FormControlLabel,
+  Switch
 } from "@material-ui/core";
 import { useFormikContext } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -190,6 +192,9 @@ export default function MainInformationForm({ formField }) {
           multiline
           rows="5"
         />
+        <FormControlLabel
+        control={<Switch name="checkedA" />}
+      />
       </CardContent>
     </Card>
   );

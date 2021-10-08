@@ -67,7 +67,7 @@
   }
   h2 {
     & > span {
-      color: $theme-color;
+      color: black;
       font-size: 40px;
       font-weight: bold;
       margin: 25px 0 12px;
@@ -191,4 +191,204 @@
       padding-bottom: 60px;
     }
   }
+}
+
+/*** NEW ABOUT **/
+
+#about-wrapper {
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+}
+.about-inner {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.about-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.about-card {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  @media #{$xs-layout} {
+    height: 100vh;
+    width: 100vw;
+  }
+  // background: #fff;
+}
+
+.card-img {
+  background-position: center;
+  width: 50vw;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media #{$xs-layout} {
+    width: 100vw;
+    height: 50%;
+    object-fit: cover;
+  }
+}
+
+#img01 {
+  background-image: url("../img/shop.jpg");
+}
+
+#img02 {
+  background-image: url("../img/home-5.jpg");
+}
+
+#img03 {
+  background-image: url("../img/products.jpeg");
+}
+
+.card-content {
+  padding: 15% 5%;
+  box-sizing: border-box;
+  width: 50%;
+  background: #0a0a0a;
+  @media #{$xs-layout} {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    // z-index: 20;
+    padding: 10px;
+  }
+}
+
+.card-theme {
+  font-weight: 900;
+  font-size: 1.7vmin;
+  text-transform: uppercase;
+  // font-family: Poppins;
+  letter-spacing: 10px;
+  color: grey;
+}
+
+.card-header {
+  font-weight: 700;
+  font-size: 54px;
+  text-transform: capitalize;
+  line-height: 1;
+  margin-left: -20px;
+  margin: 3vmin 0 3.5vmin;
+  color: #fff;
+  // font-family: Poppins;
+}
+#know-me {
+  @media #{$xs-layout} {
+    font-size: 35px;
+  }
+}
+
+.card-para {
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 2.5vmin;
+  color: #fff;
+  margin-left: 20px;
+  // font-family: Poppins;
+  @media #{$xs-layout} {
+    width: 12%;
+    text-align: left;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-top: -10px;
+  }
+}
+
+.card-link {
+  color: #fff;
+  // font-family: Poppins;
+  font-size: 1.8vmin;
+  display: block;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.card-link:after {
+  content: "→";
+}
+
+.prevnext {
+  position: absolute;
+  width: 4vmin;
+  height: 8vmin;
+  right: 2%;
+  // bottom: 0;
+  top: 10%;
+  color: #fff;
+  margin: auto 0;
+}
+
+.pn-btn {
+  color: #fff;
+  width: 100%;
+  height: 50%;
+  border: 0;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+#prev,
+#next {
+  position: relative;
+  cursor: pointer;
+}
+
+#prev:focus,
+#next:focus {
+  outline: none;
+}
+
+#prev:hover:after,
+#next:hover:after {
+  opacity: 1;
+}
+
+#prev:after,
+#next:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+#prev:after {
+  content: "↑";
+}
+
+#next:after {
+  content: "↓";
+}
+
+.slick-slide.slick-center {
+  transform: scale(1.1);
+  transition: transform 0.8s 1.4s cubic-bezier(0.84, 0, 0.08, 0.99);
+  width: 100%;
+}
+
+.slick-slide {
+  transition: transform 0.7s cubic-bezier(0.84, 0, 0.08, 0.99);
+  width: 100%;
 }

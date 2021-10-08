@@ -25,7 +25,7 @@ const menuItems = [
   {
     id: 3,
     name: "About",
-    url: "/about",
+    url: "/about-us",
     number: "03",
   },
   {

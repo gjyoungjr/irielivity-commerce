@@ -140,7 +140,7 @@ export default function LandingPage({ onFirstLoad }) {
 
         <div className="slider-control">
           <p className="explore" onClick={() => history.push("/shop")}>
-            Explore <ArrowForwardIcon />
+            Shop <ArrowForwardIcon />
           </p>
         </div>
 

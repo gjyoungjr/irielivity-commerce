@@ -21,7 +21,7 @@ export default function ShopTopAction({
             </div>
           </div>
           <div>
-            {productCategories.map((product) => {
+            {productCategories.map((product, idx) => {
               return (
                 <NavLink
                   key={product.value}
@@ -34,7 +34,11 @@ export default function ShopTopAction({
                     fontWeight: "bold",
                   }}
                 >
-                  {product.label},
+                  {productCategories.length !== idx + 1 ? (
+                    <>{product.label} ,</>
+                  ) : (
+                    <>{product.label}</>
+                  )}
                 </NavLink>
               );
             })}
