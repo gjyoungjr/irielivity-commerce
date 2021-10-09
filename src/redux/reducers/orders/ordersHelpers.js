@@ -213,10 +213,10 @@ export const alertAdminOnOrder = async (emailjs, firstName, lastName) => {
 
   await emailjs
     .send(
-      "service_74gwsnm",
-      "template_0j00m5g",
+      "service_me3ysal",
+      "template_v5izxws",
       templateParams,
-      "user_9S2XyjvCrtE9DYzEOBOwT"
+      "user_Hirg0qDC5fPv3Jj7gzsAQ"
     )
     .then(
       function (response) {
@@ -237,10 +237,10 @@ export const alertUserOnOrder = async (emailjs, email, firstName, lastName) => {
 
   await emailjs
     .send(
-      "service_74gwsnm",
-      "template_lugj2bc",
+      "service_me3ysal",
+      "template_yn6tgpg",
       templateParams,
-      "user_9S2XyjvCrtE9DYzEOBOwT"
+      "user_Hirg0qDC5fPv3Jj7gzsAQ"
     )
     .then(
       function (response) {

@@ -112,9 +112,9 @@ export default function OnlineTransfer() {
           <p style={styles.bottomSpacer1}>
             Payment can be made to the below account, via online transfers.
           </p>
-          <p style={styles.bottomSpacer}>Bank: Heritage Bank</p>
-          <p style={styles.bottomSpacer}>Account Name: Zyania Alonzo</p>
-          <p>Account No: 9217462</p>
+          <p style={styles.bottomSpacer}>Bank: Atlantic Bank</p>
+          <p style={styles.bottomSpacer}>Account Name: Irielivity Ltd</p>
+          <p>Account No: 2110008884</p>
         </div>
 
         <div className="dropzone text-center mt-10">

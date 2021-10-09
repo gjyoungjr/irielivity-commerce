@@ -83,7 +83,7 @@ export default function SelectedListItem() {
                   <p>Free</p>
                 </div>
               }
-              secondary="Roaring Creek, Belmopan Area, 0000, Belize"
+              secondary="3 Sibun Street, Belize City, Belize"
             />{" "}
           </ListItem>
         </List>
@@ -97,7 +97,7 @@ export default function SelectedListItem() {
             borderRadius: "20px",
             border: "1px solid black",
           }}
-          href="https://goo.gl/maps/9V2yjBegMVhDrYsv8"
+          href="https://www.google.com/maps/place/17%C2%B029'52.7%22N+88%C2%B011'45.7%22W/@17.4979839,-88.1982107,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d17.4979839!4d-88.196022?hl=en"
           target="#"
         >
           View address

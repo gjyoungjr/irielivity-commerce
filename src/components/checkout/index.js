@@ -208,6 +208,15 @@ export default function CheckoutPage() {
     dispatch(saveOrderHistory(configOrder));
     dispatch(setOrdersNotificationData(allOrders));
 
+    // fxn calls to send email out to admin & user on order success
+    alertAdminOnOrder(emailjs, currentUser.firstName, currentUser.lastName);
+    alertUserOnOrder(
+      emailjs,
+      currentUser.email,
+      currentUser.firstName,
+      currentUser.lastName
+    );
+
     actions.setSubmitting(false);
     setActiveStep(activeStep + 1);
   }

@@ -9,7 +9,7 @@ export default function PayOnPickUp() {
     <Card className="p-2 mb-40" style={styles.card}>
       <CardContent>
         <p>
-          You can pay by cash on delivery (for Belmopan delivery/pickup orders
+          You can pay by cash on delivery (for Belize City delivery/pickup orders
           ONLY)
         </p>
         <a
