@@ -113,7 +113,7 @@ export default function OnlineTransfer() {
             Payment can be made to the below account, via online transfers.
           </p>
           <p style={styles.bottomSpacer}>Bank: Atlantic Bank</p>
-          <p style={styles.bottomSpacer}>Account Name: Irielivity Ltd</p>
+          <p style={styles.bottomSpacer}>Account Name: Irielivity Ltd.</p>
           <p>Account No: 2110008884</p>
         </div>
 
