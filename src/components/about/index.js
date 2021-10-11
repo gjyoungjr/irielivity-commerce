@@ -59,7 +59,7 @@ export default function AboutMe() {
                   Most of our products are one of a kind as each handcrafted
                   product is individually made with its own irie natural
                   meditation. All our products and services strive to uplift
-                  humanity without harming our customers or Mother Naturem,
+                  humanity without harming our customers or Mother Nature,
                   Organic.
                 </p>
               </div>
