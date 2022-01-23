@@ -28,12 +28,12 @@ const menuItems = [
     url: "/about-us",
     number: "03",
   },
-  {
-    id: 4,
-    name: "Contact",
-    url: "/",
-    number: "04",
-  },
+  // {
+  //   id: 4,
+  //   name: "Contact",
+  //   url: "/",
+  //   number: "04",
+  // },
 ];
 export default function Menu() {
   const [showAuthForm, setShowAuthForm] = React.useState(false);
@@ -174,8 +174,8 @@ export default function Menu() {
                 </div>
                 <div>
                   <span className="info">
-                    <a href="mailto:iriebrand21@gmail.com">
-                      iriebrand21@gmail.com
+                    <a href="mailto:Irielivityltd@gmail.com">
+                      Irielivityltd@gmail.com
                     </a>
                   </span>
                   <br />
@@ -189,12 +189,18 @@ export default function Menu() {
                 </div>
                 <div className="d-flex justify-content-between contact-links">
                   <span className="info">
-                    <a href="https://www.instagram.com/irielivity/" target="#">
+                    <a
+                      href="https://www.instagram.com/irielivitystore/"
+                      target="#"
+                    >
                       Instagram
                     </a>
                   </span>
                   <span className="info">
-                    <a href="https://www.facebook.com/irie.brand" target="#">
+                    <a
+                      href="https://www.facebook.com/irielivitystore/"
+                      target="#"
+                    >
                       Facebook
                     </a>
                   </span>

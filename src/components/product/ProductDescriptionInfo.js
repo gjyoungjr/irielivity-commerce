@@ -225,7 +225,7 @@ const ProductDescriptionInfo = ({ product }) => {
           <ul>
             <li>
               <a
-                href="https://www.facebook.com/IRIEBRAND13"
+                href="https://www.facebook.com/irielivitystore/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -234,7 +234,7 @@ const ProductDescriptionInfo = ({ product }) => {
             </li>
             <li>
               <a
-                href="https://www.instagram.com/irielivity/"
+                href="https://www.instagram.com/irielivitystore/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -243,7 +243,7 @@ const ProductDescriptionInfo = ({ product }) => {
             </li>
             <li>
               <a
-                href="https://www.instagram.com/irielivity/"
+                href="https://pin.it/MLZvxtY"
                 target="_blank"
                 rel="noopener noreferrer"
               >
