@@ -9,6 +9,9 @@ export default function ProductDetailsAccordion({ product }) {
     <div style={{ borderTop: "1px solid grey" }}>
       {materials && <ProductAccordion label="Materials" data={materials} />}
       {dimensions && <ProductAccordion label="Dimensions" item={dimensions} />}
+      {product.colors && (
+        <ProductAccordion label="Colors" data={product.colors.split(",")} />
+      )}
     </div>
   );
 }
