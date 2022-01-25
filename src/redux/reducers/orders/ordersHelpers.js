@@ -229,10 +229,29 @@ export const alertAdminOnOrder = async (emailjs, firstName, lastName) => {
 };
 
 // handle sending email to user on orders placed
-export const alertUserOnOrder = async (emailjs, email, firstName, lastName) => {
+export const alertUserOnOrder = async (
+  emailjs,
+  email,
+  firstName,
+  lastName,
+  orderTotal,
+  cartItems
+) => {
+  console.log(orderTotal, "tt");
   const templateParams = {
     to_email: email,
     to_name: firstName + " " + lastName,
+    total: orderTotal.toFixed(2),
+    product: cartItems.map((item) => {
+      // destructure to get needed values
+      const { productName } = item;
+      return productName;
+    }),
+    order_ref: cartItems.map((item) => {
+      // destructure to get needed values
+      const { documentID } = item;
+      return documentID;
+    }),
   };
 
   await emailjs

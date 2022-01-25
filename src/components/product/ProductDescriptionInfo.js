@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -16,7 +16,8 @@ const ProductDescriptionInfo = ({ product }) => {
   const history = useHistory();
   const [selectedProductSize, setSelectedProductSize] = useState("");
   const [isSizeError, setIsSizeError] = useState(false);
-  // const [selectedProductColor, setSelectedProductColor] = useState("");
+  const [selectedProductColor, setSelectedProductColor] = useState("");
+  const [productColors, setProductColors] = useState([]);
   // const [open, setOpen] = React.useState(false);
   const [cartDrawerPos, setCartDrawerPos] = useState({
     right: false,
@@ -68,6 +69,11 @@ const ProductDescriptionInfo = ({ product }) => {
     setCartDrawerPos({ ...cartDrawerPos, [anchor]: open });
   };
 
+  useEffect(() => {
+    if (product && product.colors) setProductColors(product.colors.split(","));
+    return;
+  }, [product]);
+
   return (
     <Fragment>
       {/* Cart Drawer */}
@@ -93,34 +99,38 @@ const ProductDescriptionInfo = ({ product }) => {
           <p>{product ? product.productDescription : ""}</p>
         </div>
         <div className="pro-details-size-color mb-4">
-          {/* {product && product.colors ? (
-          <div className="pro-details-color-wrap">
-            <span>Color</span>
-            <div
-              className="pro-details-color-content"
-              style={{ display: "block" }}
-            >
-              <label
-                className={`pro-details-color-content--single ${product.colors}`}
+          {product && product.colors ? (
+            <div className="pro-details-color-wrap">
+              <span>Color</span>
+              <div
+                className="pro-details-color-content"
+                style={{ display: "block" }}
               >
-                <input
-                  type="radio"
-                  value={product.colors}
-                  name="product-color"
-                  checked={
-                    product.colors === selectedProductColor ? "checked" : ""
-                  }
-                  onChange={() => {
-                    setSelectedProductColor(product.colors);
-                  }}
-                />
-                <span className="checkmark"></span>
-              </label>
+                {productColors && productColors.length > 0
+                  ? productColors.map((color) => (
+                      <label
+                        className={`pro-details-color-content--single ${color.toLowerCase()}`}
+                      >
+                        <input
+                          type="radio"
+                          value={product.colors}
+                          name="product-color"
+                          checked={
+                            color === selectedProductColor ? "checked" : ""
+                          }
+                          onChange={() => {
+                            setSelectedProductColor(color);
+                          }}
+                        />
+                        <span className="checkmark"></span>
+                      </label>
+                    ))
+                  : null}
+              </div>
             </div>
-          </div>
-        ) : (
-          ""
-        )} */}
+          ) : (
+            ""
+          )}
 
           {product && product.sizes && product.sizes.length ? (
             <div className="pro-details-size">
@@ -196,6 +206,7 @@ const ProductDescriptionInfo = ({ product }) => {
                       {
                         ...product,
                         selectedSize: selectedProductSize,
+                        selectedColor: selectedProductColor,
                       },
                       "right",
                       true

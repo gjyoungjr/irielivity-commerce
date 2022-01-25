@@ -146,6 +146,11 @@ export default function ViewOrderedProducts({
                               Size: {product.selectedSize}
                             </p>
                           )}
+                          {product.selectedColor && (
+                            <p style={stylesheet.fontstyle}>
+                              Color: {product.selectedColor}
+                            </p>
+                          )}
                         </div>
                       </Grid>
                     </Grid>

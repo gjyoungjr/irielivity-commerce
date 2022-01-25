@@ -183,6 +183,7 @@ export default function CheckoutPage() {
           category,
           mainImgUrl,
           selectedSize,
+          selectedColor,
         } = item;
 
         // return all fields
@@ -194,6 +195,7 @@ export default function CheckoutPage() {
           category,
           mainImgUrl,
           selectedSize,
+          selectedColor,
         };
       }),
     };
@@ -214,7 +216,9 @@ export default function CheckoutPage() {
       emailjs,
       currentUser.email,
       currentUser.firstName,
-      currentUser.lastName
+      currentUser.lastName,
+      orderTotal,
+      cartItems
     );
 
     actions.setSubmitting(false);
