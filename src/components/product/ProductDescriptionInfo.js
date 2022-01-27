@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 // components
 import AppButton from "../app-button";
 import CartDrawer from "../cart";
+import SizeChart from "../size-chart";
 
 // utils
 import { addToCart } from "../../redux/reducers/cart/cartActions";
@@ -18,17 +19,17 @@ const ProductDescriptionInfo = ({ product }) => {
   const [isSizeError, setIsSizeError] = useState(false);
   const [selectedProductColor, setSelectedProductColor] = useState("");
   const [productColors, setProductColors] = useState([]);
-  // const [open, setOpen] = React.useState(false);
+  const [showSizeChart, setShowSizeChart] = React.useState(false);
   const [cartDrawerPos, setCartDrawerPos] = useState({
     right: false,
   });
 
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleShowSizeChart = () => {
+    setShowSizeChart(true);
+  };
+  const handleCloseSizeChart = () => {
+    setShowSizeChart(false);
+  };
 
   // add products to cart
   const handleAddToCart = (product, anchor, open) => {
@@ -81,6 +82,9 @@ const ProductDescriptionInfo = ({ product }) => {
         toggleCartDrawer={toggleCartDrawer}
         cartDrawerPos={cartDrawerPos}
       />
+      {/* Size Chart */}
+      <SizeChart open={showSizeChart} handleClose={handleCloseSizeChart} />
+
       <div className="product-details-content ml-70 text-left">
         <h2 className="text-left">{product.productName}</h2>
 
@@ -137,7 +141,7 @@ const ProductDescriptionInfo = ({ product }) => {
               <div className="d-flex justify-content-between">
                 <span>Select Size</span>
                 <span
-                  // onClick={() => handleClickOpen()}
+                  onClick={() => handleShowSizeChart()}
                   style={{ cursor: "pointer", opacity: 0.6 }}
                 >
                   Size Guide
