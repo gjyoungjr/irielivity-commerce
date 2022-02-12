@@ -4632,6 +4632,18 @@
             border: 1px solid #000080;
             background-color: #000080;
           }
+          &.natural {
+            border: 1px solid burlywood;
+            background-color: burlywood;
+          }
+          &.bronze {
+            border: 1px solid gold;
+            background-color: gold;
+          }
+          &.purple {
+            border: 1px solid purple;
+            background-color: purple;
+          }
         }
       }
       &--single {
@@ -4712,6 +4724,18 @@
         &.navy.blue {
           border: 1px solid #000080;
           background-color: #000080;
+        }
+        &.natural {
+          border: 1px solid burlywood;
+          background-color: burlywood;
+        }
+        &.bronze {
+          border: 1px solid gold;
+          background-color: gold;
+        }
+        &.purple {
+          border: 1px solid purple;
+          background-color: purple;
         }
         .checkmark {
           position: relative;

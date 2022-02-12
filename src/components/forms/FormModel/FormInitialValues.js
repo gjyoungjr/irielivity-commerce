@@ -141,7 +141,7 @@ const AddProductFormValues = {
   [subImages.name]: [],
   [quantity.name]: 0,
   [productDiscount.name]: 0,
-  [colors.name]: "",
+  [colors.name]: [""],
 };
 
 const CheckOutFormValues = {

@@ -210,13 +210,40 @@ export default function ProductVariants({ formField }) {
           </Grid>
 
           <Grid item xs={12} lg={4} md={4}>
-            <InputField
+            <FieldArray
+              name="colors"
+              render={(arrayHelpers) => (
+                <ChipInput
+                  chipRenderer={chipRenderer}
+                  name={colors.name}
+                  label={colors.label}
+                  value={
+                    typeof values.colors === "string"
+                      ? values.colors.split()
+                      : values.colors
+                  }
+                  onAdd={(chip) => {
+                    // setIsMaterialsError(false);
+                    console.log(chip, "chip");
+                    arrayHelpers.push(chip);
+                  }}
+                  onDelete={(chip, index) => arrayHelpers.remove(index, chip)}
+                  fullWidth
+                  variant="outlined"
+                  // helperText={isMaterialsError && materialsErrorMsg}
+                  classes={{ helperText: classes.helperText }}
+                  // error={isMaterialsError}
+                />
+              )}
+            />
+            {/* <InputField
               name={colors.name}
               label={colors.label}
               variant="outlined"
               fullWidth
-            />
+            /> */}
           </Grid>
+          <pre>{JSON.stringify(values, null, 2)}</pre>
         </Grid>
       </CardContent>
     </Card>

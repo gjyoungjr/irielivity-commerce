@@ -229,7 +229,10 @@ export default function CheckoutPage() {
       quantity: product.quantity || 0,
       fit: product.fit || "",
       dimensions: product.dimensions || "",
-      colors: product.colors || "",
+      colors:
+        typeof product.colors === "string" && product.colors
+          ? product.colors.split(",")
+          : [],
       mainImgUrl: product.mainImgUrl || "",
       subImages: product.subImages || [],
     };
